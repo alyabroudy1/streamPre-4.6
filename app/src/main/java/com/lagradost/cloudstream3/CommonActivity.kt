@@ -36,6 +36,7 @@ import com.lagradost.cloudstream3.actions.OpenInAppAction
 import com.lagradost.cloudstream3.actions.VideoClickActionHolder
 import com.lagradost.cloudstream3.databinding.ToastBinding
 import com.lagradost.cloudstream3.mvvm.logError
+import com.lagradost.cloudstream3.providers.fasel.FaselHDPlugin
 import com.lagradost.cloudstream3.syncproviders.AccountManager
 import com.lagradost.cloudstream3.ui.home.HomeChildItemAdapter
 import com.lagradost.cloudstream3.ui.home.ParentItemAdapter
@@ -250,6 +251,7 @@ object CommonActivity {
         componentActivity.updateLocale()
         componentActivity.updateTv()
         AccountManager.initMainAPI()
+        FaselHDPlugin.registerAll()  // Register FaselHD as built-in provider
         NewPipe.init(DownloaderTestImpl.getInstance())
 
         MainActivity.activityResultLauncher =

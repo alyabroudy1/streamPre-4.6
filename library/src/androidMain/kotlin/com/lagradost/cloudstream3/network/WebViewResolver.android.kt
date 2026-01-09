@@ -133,6 +133,9 @@ actual class WebViewResolver actual constructor(
                     // Bare minimum to bypass captcha
                     settings.javaScriptEnabled = true
                     settings.domStorageEnabled = true
+                    settings.databaseEnabled = true
+
+                    CookieManager.getInstance().setAcceptThirdPartyCookies(this, true)
 
                     webViewUserAgent = settings.userAgentString
                     // Don't set user agent, setting user agent will make cloudflare break.
@@ -143,7 +146,7 @@ actual class WebViewResolver actual constructor(
 //                    settings.blockNetworkImage = true
                 }
 
-                webView?.webViewClient = object : WebViewClient() {
+                webView?.webViewClient = SafeWebViewClient(object : WebViewClient() {
                     override fun shouldInterceptRequest(
                         view: WebView,
                         request: WebResourceRequest
@@ -256,7 +259,7 @@ actual class WebViewResolver actual constructor(
                     ) {
                         handler?.proceed() // Ignore ssl issues
                     }
-                }
+                })
                 webView?.loadUrl(url, headers.toMap())
             } catch (e: Exception) {
                 logError(e)

@@ -6,6 +6,7 @@ import android.webkit.JavascriptInterface
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import com.lagradost.cloudstream3.network.SafeWebViewClient
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.fragment.findNavController
 import com.lagradost.cloudstream3.MainActivity
@@ -25,7 +26,7 @@ class WebviewFragment : BaseFragment<FragmentWebviewBinding>(
             findNavController().popBackStack()
         }
 
-        binding.webView.webViewClient = object : WebViewClient() {
+        binding.webView.webViewClient = SafeWebViewClient(object : WebViewClient() {
             override fun shouldOverrideUrlLoading(
                 view: WebView?,
                 request: WebResourceRequest?
@@ -39,7 +40,7 @@ class WebviewFragment : BaseFragment<FragmentWebviewBinding>(
 
                 return super.shouldOverrideUrlLoading(view, request)
             }
-        }
+        })
 
         binding.webView.apply {
             WebViewResolver.webViewUserAgent = settings.userAgentString
