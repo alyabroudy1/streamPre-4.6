@@ -160,9 +160,33 @@ open class FaselSniffer : ExtractorApi() {
         var sourcesJson: String? = null
         var capturedVideoUrls = mutableListOf<Pair<String, Map<String, String>>>()
 
+        // 0. Inject saved cookies into WebView CookieManager
+        try {
+            FaselHD.FaselState.init()
+            val savedHeaders = FaselHD.FaselState.headers
+            val cookies = savedHeaders["cookie"] ?: savedHeaders["Cookie"]
+            val userAgent = savedHeaders["User-Agent"] ?: savedHeaders["user-agent"]
+            
+            if (!cookies.isNullOrEmpty()) {
+                Log.i(TAG, "Injecting saved cookies into WebView CookieManager")
+                val cookieManager = android.webkit.CookieManager.getInstance()
+                cookieManager.setAcceptCookie(true)
+                val domain = "https://www.faselhds.biz" // or extract from url
+                
+                // Cookies format: "name=value; name2=value2"
+                cookies.split(";").forEach { cookie ->
+                    cookieManager.setCookie(domain, cookie.trim())
+                    cookieManager.setCookie("https://faselhd.club", cookie.trim()) // Sync both domains
+                }
+                cookieManager.flush()
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to inject cookies: ${e.message}")
+        }
+
         val resolver = WebViewResolver(
             interceptUrl = videoUrlRegex,
-            additionalUrls = listOf(videoUrlRegex, Regex("""https://faselhd\.biz/sniffer_done""")),
+            additionalUrls = listOf(videoUrlRegex, Regex("""https://faselhd\.biz/sniffer_done"""), Regex("""https://(www\.)?faselhd(s)?\.(biz|club)/.*""")), // Listen to all main site requests to capture headers
             userAgent = null,
             useOkhttp = false,
             script = extractSourcesScript,
@@ -185,7 +209,19 @@ open class FaselSniffer : ExtractorApi() {
                 method = "GET"
             ) { capturedRequest ->
                 val reqUrl = capturedRequest.url.toString()
-                
+                val headers = capturedRequest.headers.toMap()
+
+                // CAPTURE HEADERS from any request to the main site that has cookies
+                if (reqUrl.contains("fasel", ignoreCase = true) && headers.keys.any { it.equals("cookie", true) }) {
+                   // Update Hybrid State
+                   FaselHD.FaselState.updateHeaders(headers)
+                   
+                   // Also update masterHeaders if it's empty, just in case
+                   if (masterHeaders.isEmpty()) {
+                       masterHeaders = headers
+                   }
+                }
+
                 // 1. Check for JS completion signal with data
                 if (reqUrl.contains("/sniffer_done")) {
                     Log.i(TAG, "🚀 JS extraction signal received!")
@@ -208,7 +244,8 @@ open class FaselSniffer : ExtractorApi() {
                     if (!isVariantPlaylist && reqUrl.contains(".m3u8")) {
                         Log.i(TAG, "✅ Master playlist detected: $reqUrl")
                         masterPlaylistUrl = reqUrl
-                        masterHeaders = capturedRequest.headers.toMap()
+                        masterHeaders = capturedRequest.headers.toMap() // Prefer these headers for the master playlist
+                        FaselHD.FaselState.updateHeaders(masterHeaders) // Update hybrid state
                         return@resolveUsingWebView true // STOP immediately
                     } else {
                         capturedVideoUrls.add(reqUrl to capturedRequest.headers.toMap())
@@ -261,7 +298,36 @@ open class FaselSniffer : ExtractorApi() {
                                 ) {
                                     this.referer = referer ?: url
                                     this.quality = quality
-                                    this.headers = masterHeaders.ifEmpty { mapOf("User-Agent" to (resolver.userAgent ?: "")) }
+                                    
+                                    // Smart Header Selection
+                                    var finalHeaders = emptyMap<String, String>()
+                                    
+                                    // 1. Try to find actual network headers captured for this URL
+                                    val captured = capturedVideoUrls.firstOrNull { it.first == videoUrl }?.second
+                                    if (captured != null) {
+                                        finalHeaders = captured
+                                    } else {
+                                        // 2. Build from FaselState/Master headers
+                                        val baseHeaders = FaselHD.FaselState.headers.ifEmpty { 
+                                            masterHeaders.ifEmpty { 
+                                                mapOf("User-Agent" to (resolver.userAgent ?: "")) 
+                                            } 
+                                        }
+                                        
+                                        // 3. Cookie Safety: Don't send Fasel cookies to external CDNs
+                                        val isFaselDomain = videoUrl.contains("faselhd", ignoreCase = true)
+                                        if (isFaselDomain) {
+                                            finalHeaders = baseHeaders
+                                        } else {
+                                            // Filter out cookies for external domains
+                                            finalHeaders = baseHeaders.filterKeys { key -> 
+                                                !key.equals("Cookie", true) && !key.equals("cookie", true)
+                                            }
+                                        }
+                                    }
+                                    
+                                    // 4. Explicitly ensure Referer is set
+                                    this.headers = finalHeaders + mapOf("Referer" to (referer ?: url))
                                 }
                             )
                         }
@@ -288,7 +354,8 @@ open class FaselSniffer : ExtractorApi() {
                         type = if (finalUrl.contains(".m3u8")) ExtractorLinkType.M3U8 else ExtractorLinkType.VIDEO
                     ) {
                         this.referer = referer ?: url
-                        this.headers = finalHeaders
+                        val safeHeaders = FaselHD.FaselState.headers.ifEmpty { finalHeaders }
+                        this.headers = safeHeaders + mapOf("Referer" to (referer ?: url))
                     }
                 )
             } else {
