@@ -1183,6 +1183,19 @@ class MainActivity : AppCompatActivity(), ColorPickerDialogListener, BiometricCa
         setNavigationBarColorCompat(R.attr.primaryGrayBackground)
         updateLocale()
         super.onCreate(savedInstanceState)
+
+        // Register built-in providers
+        try {
+             // FaselHD v2
+             val faselHDv2 = com.lagradost.cloudstream3.providers.fasel.FaselHDv2()
+             if (APIHolder.allProviders.none { it.name == faselHDv2.name }) {
+                 APIHolder.allProviders.add(faselHDv2)
+                 com.lagradost.cloudstream3.mvvm.logError(Exception("Registered built-in provider: ${faselHDv2.name}"))
+             }
+        } catch(e : Exception) {
+             com.lagradost.cloudstream3.mvvm.logError(e)
+        }
+
         try {
             if (isCastApiAvailable()) {
                 CastContext.getSharedInstance(this) { it.run() }
