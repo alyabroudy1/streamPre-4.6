@@ -81,6 +81,9 @@ class CloudStreamApp : Application(), SingletonImageLoader.Factory {
             exceptionHandler = it
             Thread.setDefaultUncaughtExceptionHandler(it)
         }
+        
+        // Initialize ActivityProvider for providers that need to show Dialogs
+        com.lagradost.cloudstream3.providers.arabseed.utils.ActivityProvider.init(this)
     }
 
     override fun attachBaseContext(base: Context?) {

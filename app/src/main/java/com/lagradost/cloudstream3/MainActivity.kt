@@ -1192,6 +1192,13 @@ class MainActivity : AppCompatActivity(), ColorPickerDialogListener, BiometricCa
                  APIHolder.allProviders.add(faselHDv2)
                  com.lagradost.cloudstream3.mvvm.logError(Exception("Registered built-in provider: ${faselHDv2.name}"))
              }
+             
+             // Arabseed
+             val arabseed = com.lagradost.cloudstream3.providers.arabseed.Arabseed()
+             if (APIHolder.allProviders.none { it.name == arabseed.name }) {
+                 APIHolder.allProviders.add(arabseed)
+                 com.lagradost.cloudstream3.mvvm.logError(Exception("Registered built-in provider: ${arabseed.name}"))
+             }
         } catch(e : Exception) {
              com.lagradost.cloudstream3.mvvm.logError(e)
         }
