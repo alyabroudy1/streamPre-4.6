@@ -1,345 +1,204 @@
 package com.lagradost.cloudstream3.providers.arabseed
 
 import android.content.Context
-import com.lagradost.cloudstream3.*
-import com.lagradost.cloudstream3.providers.arabseed.service.ProviderHttpService
-import com.lagradost.cloudstream3.providers.arabseed.service.ProviderSessionManager
-import com.lagradost.cloudstream3.providers.arabseed.service.ProviderLogger
-import com.lagradost.cloudstream3.providers.arabseed.service.strategy.VideoSource
 import com.lagradost.cloudstream3.providers.arabseed.utils.ActivityProvider
-import com.lagradost.cloudstream3.utils.*
-import org.jsoup.nodes.Element
-import org.jsoup.nodes.Document
+import com.lagradost.cloudstream3.AcraApplication
+import com.lagradost.cloudstream3.providers.arabseed.service.ProviderConfig
+import com.lagradost.cloudstream3.providers.arabseed.service.ProviderHttpService
 import com.lagradost.api.Log
+import com.lagradost.cloudstream3.*
+import com.lagradost.cloudstream3.utils.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
 
 /**
- * Arabseed provider integrated with the new ProviderHttpService.
- * 
- * ## Features:
- * - Automatic Cloudflare challenge solving
- * - Cookie persistence across app restarts
- * - Video sniffing with JWPlayer extraction
- * - Comprehensive logging
- * 
- * ## Built-in Provider:
- * This is a built-in provider for CloudStream.
- * The service handles all CF challenges automatically.
+ * Arabseed provider V2 - Now a thin layer using ProviderHttpService.
+ * All HTTP, cookie, CF, and parsing logic is handled by the shared infrastructure.
  */
 class Arabseed : MainAPI() {
-    override var lang = "ar"
+    
+    override var mainUrl = "https://arabseed.show"
     override var name = "Arabseed"
-    override val usesWebView = false
     override val hasMainPage = true
-    override val supportedTypes = setOf(TvType.TvSeries, TvType.Movie, TvType.AsianDrama, TvType.Anime)
+    override var lang = "ar"
+    override val hasDownloadSupport = true
+    override val supportedTypes = setOf(TvType.TvSeries, TvType.Movie, TvType.Anime, TvType.AsianDrama)
+    
+    override val mainPage = mainPageOf(
+        "/movies-1/" to "أفلام",
+//        "/series-1/" to "مسلسلات",
+//        "/anime-1/" to "أنمي",
+//        "/asian-drama/" to "دراما آسيوية"
+    )
     
     companion object {
         private const val TAG = "Arabseed"
-        private const val FALLBACK_DOMAIN = "https://arabseed.show"
-        
-        // Lazy-initialized service (needs context)
-        private var _httpService: ProviderHttpService? = null
-        
-        fun getHttpService(context: Context): ProviderHttpService {
-            return _httpService ?: ProviderHttpService.create(
-                context = context,
-                providerName = "Arabseed",
-                userAgent = ProviderSessionManager.UNIFIED_USER_AGENT,
-                fallbackDomain = FALLBACK_DOMAIN
-            ).also { _httpService = it }
-        }
+        private const val GITHUB_CONFIG = "https://raw.githubusercontent.com/alyabroudy1/omarC/main/arabseed.json"
     }
     
-    // Get service using AcraApplication context (built-in provider pattern)
-    private val httpService: ProviderHttpService
-        get() {
-            val ctx = AcraApplication.context
-                ?: throw IllegalStateException("No application context available")
-            
-            // Initialize ActivityProvider for Dialog support if not yet initialized
-            (ctx as? android.app.Application)?.let { app ->
-                ActivityProvider.init(app)
-            }
-            
-            return getHttpService(ctx)
-        }
+    private val parser = ArabseedParser()
     
-    override var mainUrl: String
-        get() = httpService.currentDomain
-        set(value) { httpService.updateDomain(value) }
-
-    
-    // ========== MAIN PAGE ==========
-    
-    override val mainPage = mainPageOf(
-        "/movies/?offset=" to "Movies",
-        "/series/?offset=" to "Series",
-    )
-
-    override suspend fun getMainPage(page: Int, request: MainPageRequest): HomePageResponse {
-        Log.d(TAG, "[getMainPage] Fetching: ${request.data}$page")
+    private val http by lazy {
+        val context = AcraApplication.context ?: throw IllegalStateException("No application context available")
+        ActivityProvider.initCompat(context)
         
-        // Initialize on first call (loads from disk, fetches GitHub for latest domain)
-        if (!httpService.isInitialized) {
-            httpService.initialize()
-        }
-        
-        val pageUrl = "$mainUrl${request.data}$page"
-        val doc = httpService.getDocument(pageUrl)
-            ?: throw ErrorLoadingException("Failed to load main page")
-        
-        val list = doc.select("ul.Blocks-UL > div")
-            .mapNotNull { element -> element.toSearchResponse() }
-        
-        return newHomePageResponse(request.name, list)
-    }
-
-    // ========== SEARCH ==========
-    
-    override suspend fun search(query: String): List<SearchResponse> {
-        val list = arrayListOf<SearchResponse>()
-        
-        // Initialize service if needed
-        if (!httpService.isInitialized) {
-            httpService.initialize()
-        }
-        
-        // Search both series and movies via POST
-        listOf("series", "movies").forEach { type ->
-            try {
-                val doc = httpService.postDocument(
-                    "$mainUrl/wp-content/themes/Elshaikh2021/Ajaxat/SearchingTwo.php",
-                    data = mapOf("search" to query, "type" to type),
-                    referer = mainUrl
-                )
-                doc?.select("ul.Blocks-UL > div")?.mapNotNull { element ->
-                    element.toSearchResponse()?.let { list.add(it) }
-                }
-            } catch (e: Exception) {
-                Log.e(TAG, "Search error for type=$type: ${e.message}")
-            }
-        }
-        return list
-    }
-
-    // ========== LOAD ==========
-    
-    override suspend fun load(url: String): LoadResponse {
-        Log.d(TAG, "[load] Loading: $url")
-        
-        val doc = httpService.getDocument(url)
-            ?: throw ErrorLoadingException("Failed to load page")
-        
-        // Improved title selector with fallback
-        var title = doc.select("div.title h1").text()
-        if (title.isBlank()) {
-            title = doc.select("h1.postTitle").text()
-        }
-        if (title.isBlank()) {
-            title = doc.select("div.h1-title h1").text()
-        }
-        // Fallback to page title (metadata) if structured selection fails
-        if (title.isBlank()) {
-            title = doc.title().replace(" - عرب سيد", "")
-                .replace("مترجم اون لاين", "")
-                .trim()
-        }
-        
-        if (title.isBlank()) {
-            ProviderLogger.e(TAG, "load", "Failed to parse title", null,
-                "url" to url,
-                "htmlStart" to doc.html().take(2000)
-            )
-            throw ErrorLoadingException("Failed to parse page content")
-        }
-
-        // Fix: Check data-src first (lazy loading), then src
-        // Include toSearchResponse selector as fallback
-        var posterImg = doc.selectFirst("div.posterDiv img") 
-            ?: doc.selectFirst("div.poster img")
-            ?: doc.selectFirst("img.poster")
-            ?: doc.selectFirst("div.single-poster img")
-            ?: doc.selectFirst("div.postDiv a div img")  // toSearchResponse selector
-            ?: doc.selectFirst("div.postDiv img")
-            ?: doc.selectFirst(".moviePoster img")
-        
-        // Extract URL from poster img
-        var posterUrl = if (posterImg != null) {
-            fixUrl(posterImg.attr("data-src").ifBlank { posterImg.attr("src") })
-        } else ""
-        
-        // Fallback: If posterUrl is still empty, find first image with valid content URL
-        if (posterUrl.isBlank()) {
-            val contentImg = doc.select("img").firstOrNull { img ->
-                val src = img.attr("data-src").ifBlank { img.attr("src") }
-                src.contains("/wp-content/uploads/") && src.length > 10
-            }
-            if (contentImg != null) {
-                posterUrl = fixUrl(contentImg.attr("data-src").ifBlank { contentImg.attr("src") })
-                Log.d(TAG, "[load] Poster found via content URL fallback: ${posterUrl.take(80)}...")
-            }
-        }
-        
-        // Debug: Log when poster is still empty after all attempts
-        if (posterUrl.isBlank()) {
-            val allImgs = doc.select("img").take(5).map { img ->
-                "src=${img.attr("src").take(50)}, data-src=${img.attr("data-src").take(50)}, class=${img.attr("class")}"
-            }
-            Log.w(TAG, "[load] Poster URL is empty! First 5 images found: $allImgs")
-            Log.w(TAG, "[load] HTML_DUMP (poster area): ${doc.select("div[class*=poster], div[class*=Poster]").html().take(1000)}")
-        } else {
-            Log.d(TAG, "[load] Poster URL found: ${posterUrl.take(80)}...")
-        }
-
-        val year = doc.select("div.singleInfo span:contains(السنة) a").text().toIntOrNull()
-        val plot = doc.select("div.singleInfo span:contains(القصة) p").text()
-            .ifBlank { doc.select("div.singleDesc p").text() }
-            .ifBlank { doc.select("div.story p").text() }
-            .ifBlank { doc.select("div.postContent p").text() }
-        val tags = doc.select("div.singleInfo span:contains(النوع) a").map { it.text() }
-        val rating = doc.select("div.singleInfo span:contains(التقييم) p").text()
-            .replace("IMDB ", "").replace("/10", "").toDoubleOrNull()?.times(1000)?.toInt()
-        
-        val isMovie = doc.select("div.seasonEpsCont").isEmpty() && 
-            !url.contains("/seasons/") && 
-            !url.contains("/series/") &&
-            !title.contains("مسلسل")
-        
-        ProviderLogger.d(TAG, "load", "Page type detection",
-            "isMovie" to isMovie,
-            "url" to url,
-            "hasSeasonEpsCont" to !doc.select("div.seasonEpsCont").isEmpty()
+        ProviderHttpService.create(
+            context = context,
+            config = ProviderConfig(
+                name = name,
+                fallbackDomain = "arabseed.show",
+                githubConfigUrl = GITHUB_CONFIG,
+                syncWorkerUrl = "https://omarstreamcloud.alyabroudy1.workers.dev",
+                skipHeadless = true
+            ),
+            parser = parser,
+            activityProvider = { ActivityProvider.currentActivity }
         )
+    }
+    
+    // ==================== MAIN PAGE ====================
+    
+    // ==================== MAIN PAGE ====================
+    
+    override suspend fun getMainPage(page: Int, request: MainPageRequest): HomePageResponse? {
+        Log.d(TAG, "[getMainPage] ${request.name} page=$page")
         
-        return if (isMovie) {
-            // New structure: generic iframe or tabs with onclick
-            var watchUrl = doc.select("iframe[name=player_iframe]").attr("src")
-            
-            // Fallback: Extract from onclick="player_iframe.location.href = '...'"
-            if (watchUrl.isBlank()) {
-                 val onClick = doc.select("ul.tabs-ul li.active").attr("onclick")
-                 watchUrl = Regex("""href\s*=\s*'([^']+)'""").find(onClick)?.groupValues?.get(1) ?: ""
-            }
-             
-            // Fallback 2: Any list item
-            if (watchUrl.isBlank()) {
-                 doc.select("ul.tabs-ul li").forEach { li ->
-                     if (watchUrl.isBlank()) {
-                         val onClick = li.attr("onclick")
-                         watchUrl = Regex("""href\s*=\s*'([^']+)'""").find(onClick)?.groupValues?.get(1) ?: ""
-                     }
-                 }
-            }
-
-            if (watchUrl.isBlank() || plot.isBlank()) {
-                 ProviderLogger.w(TAG, "load", "Missing movie data",
-                     "title" to title,
-                     "watchUrlEmpty" to watchUrl.isBlank(),
-                     "plotFound" to !plot.isBlank()
-                 )
-            }
-            
-            ProviderLogger.d(TAG, "load", "Movie parsed",
-                "title" to title,
-                "watchUrl" to watchUrl
-            )
-            
-            newMovieLoadResponse(title, url, TvType.Movie, watchUrl) {
-                this.posterUrl = posterUrl
-                this.year = year
-                this.plot = plot
-                this.tags = tags
-                this.posterHeaders = httpService.getImageHeaders()
-            }
+        val url = if (page == 1) {
+            request.data
         } else {
-            val episodes = ArrayList<Episode>()
-            
-            // 1. Parse episodes from the current page (Active Season)
-            val seasonTabs = doc.select("div.seasonDiv")
-            var activeSeasonNum = 1
-            
-            if (seasonTabs.isNotEmpty()) {
-                val activeTab = seasonTabs.find { it.hasClass("active") }
-                if (activeTab != null) {
-                   val t = activeTab.select(".title").text()
-                   activeSeasonNum = Regex("""\d+""").find(t)?.value?.toIntOrNull() ?: 1
+            "${request.data}page/$page/"
+        }
+        android.util.Log.d(TAG, "getMainPage: url: $url")
+        val items = http.getMainPage(url)
+        
+        if (items.isEmpty()) return null
+        
+        val searchResponses = items.map { item ->
+            if (item.isMovie) {
+                newMovieSearchResponse(item.title, item.url, TvType.Movie) {
+                    this.posterUrl = item.posterUrl
+                    this.posterHeaders = http.getImageHeaders()
                 }
             } else {
-                 val t = doc.select("div.seasonDiv.active .title").text()
-                 activeSeasonNum = Regex("""\d+""").find(t)?.value?.toIntOrNull() ?: 1
+                newTvSeriesSearchResponse(item.title, item.url, TvType.TvSeries) {
+                    this.posterUrl = item.posterUrl
+                    this.posterHeaders = http.getImageHeaders()
+                }
             }
-
-            // Current page episodes
-            doc.select("div.epAll a").forEach { ep ->
-                val epUrl = ep.attr("href")
-                val epTitle = ep.text()
-                val epNum = epTitle.replace("الحلقة", "").trim().toIntOrNull() ?: 1
-                
-                episodes.add(newEpisode(epUrl) {
-                    this.name = epTitle
-                    this.season = activeSeasonNum
-                    this.episode = epNum
-                })
-            }
-
-            // 2. Fetch other seasons in parallel (Like V1)
-            if (seasonTabs.isNotEmpty()) {
-                 coroutineScope {
-                     seasonTabs.filter { !it.hasClass("active") }.map { tab ->
-                         async {
-                             val t = tab.select(".title").text()
-                             val sNum = Regex("""\d+""").find(t)?.value?.toIntOrNull() ?: return@async null
-                             
-                             // Extract URL
-                             var pageUrl = Regex("""href\s*=\s*['"]([^'"]+)['"]""").find(tab.attr("onclick"))?.groupValues?.get(1)
-                             if (pageUrl != null) {
-                                 if (pageUrl.startsWith("/")) pageUrl = "$mainUrl$pageUrl"
-                                 
-                                 // Fetch page
-                                 try {
-                                     val sDoc = httpService.getDocument(pageUrl) ?: return@async null
-                                     val sEpisodes = sDoc.select("div.epAll a").map { ep ->
-                                         val epUrl = ep.attr("href")
-                                         val epTitle = ep.text()
-                                         val epNum = epTitle.replace("الحلقة", "").trim().toIntOrNull() ?: 1
-                                         
-                                         newEpisode(epUrl) {
-                                             this.name = epTitle
-                                             this.season = sNum
-                                             this.episode = epNum
-                                         }
-                                     }
-                                     return@async sEpisodes
-                                 } catch (e: Exception) {
-                                     return@async null
-                                 }
-                             }
-                             return@async null
-                         }
-                     }.awaitAll().filterNotNull().flatten().forEach { episodes.add(it) }
-                 }
-            }
-
-            return newTvSeriesLoadResponse(title, url, TvType.TvSeries, episodes.distinctBy { "${it.season}:${it.episode}" }.sortedWith(compareBy({ it.season }, { it.episode }))) {
-                this.posterUrl = posterUrl
-                this.year = year
-                this.plot = plot
-                this.tags = tags
-                this.posterHeaders = httpService.getImageHeaders()
-                
-                // Populate seasonNames from the fetched episodes
-                val sNames = episodes.mapNotNull { it.season }.distinct().sorted()
-                    .map { SeasonData(it, "الموسم $it") }
-                if (sNames.isNotEmpty()) {
-                    this.seasonNames = sNames
+        }
+        
+        return newHomePageResponse(request.name, searchResponses)
+    }
+    
+    // ==================== SEARCH ====================
+    
+    override suspend fun search(query: String): List<SearchResponse> {
+        Log.d(TAG, "[search] query=$query")
+        
+        val items = http.search(query, "/find/$query/")
+        
+        return items.map { item ->
+            if (item.isMovie) {
+                newMovieSearchResponse(item.title, item.url, TvType.Movie) {
+                    this.posterUrl = item.posterUrl
+                    this.posterHeaders = http.getImageHeaders()
+                }
+            } else {
+                // Search usually returns mixed results, if we can't be sure, default to movie or try to infer
+                // BaseParser now defaults isMovie=true for search if unclear, or logic needs to be robust
+                // For now assuming the parser logic sets isMovie correctly
+                newTvSeriesSearchResponse(item.title, item.url, TvType.TvSeries) {
+                    this.posterUrl = item.posterUrl
+                    this.posterHeaders = http.getImageHeaders()
                 }
             }
         }
     }
+    
+    // ==================== LOAD ====================
+    
+    // ==================== LOAD ====================
+    
+    override suspend fun load(url: String): LoadResponse? {
+        Log.d(TAG, "[load] $url")
+        
+        // 1. Fetch document directly (since http.load defaults to parser.parseLoadPage which returns null)
+        val doc = http.getDocument(url, checkDomainChange = true) ?: return null
+        
+        // 2. Parse into intermediate data
+        val data = parser.parseLoadPageData(doc, url) ?: return null
+        
+        // 3. Construct LoadResponse using MainAPI helpers
+        return if (data.isMovie) {
+            newMovieLoadResponse(data.title, url, TvType.Movie, data.watchUrl ?: "") {
+                this.posterUrl = data.posterUrl
+                this.year = data.year
+                this.plot = data.plot
+                this.tags = data.tags
+                // this.rating = data.rating // Deprecated
+                this.posterHeaders = http.getImageHeaders()
+            }
+        } else {
+            val episodes = data.episodes?.toMutableList() ?: mutableListOf()
+            
+            // For series, fetch other seasons in parallel if needed
+            // (We extract this logic here or keep it if parser has helper)
+            val seasonUrls = parser.extractSeasonUrls(doc)
+            if (seasonUrls.isNotEmpty()) {
+                coroutineScope {
+                    seasonUrls.map { seasonPair ->
+                        async {
+                            val seasonNum = seasonPair.first
+                            val seasonUrl = seasonPair.second
+                            try {
+                                val episodeDoc = http.getDocument(
+                                    parser.fixUrl(seasonUrl), 
+                                    checkDomainChange = false
+                                )
+                                episodeDoc?.let { parser.parseEpisodes(it, seasonNum) }
+                            } catch (e: Exception) {
+                                Log.w(TAG, "Failed to fetch season $seasonNum: ${e.message}")
+                                null
+                            }
+                        }
+                    }.awaitAll().filterNotNull().forEach { epList ->
+                        episodes.addAll(epList)
+                    }
+                }
+            }
+            
+            // Convert ParsedEpisode to Episode using MainAPI.newEpisode
+            val convertedEpisodes = episodes.distinctBy { "${it.season}:${it.episode}" }
+                .sortedWith(compareBy({ it.season }, { it.episode }))
+                .map { ep ->
+                    newEpisode(ep.url) {
+                        this.name = ep.name
+                        this.season = ep.season
+                        this.episode = ep.episode
+                    }
+                }
+                
+            val seasonNames = convertedEpisodes.mapNotNull { it.season }.distinct().sorted()
+                .map { SeasonData(it, "الموسم $it") }
 
-    // ========== LOAD LINKS (V1 Flow with VideoSniffingStrategy) ==========
+            newTvSeriesLoadResponse(data.title, url, TvType.TvSeries, convertedEpisodes) {
+                this.posterUrl = data.posterUrl
+                this.year = data.year
+                this.plot = data.plot
+                this.tags = data.tags
+                this.tags = data.tags
+                // Usage of 'rating' is deprecated. 
+                // data.rating?.let { addRating(it) } // If addRating exists, or just omit.
+                this.posterHeaders = http.getImageHeaders()
+                if (seasonNames.isNotEmpty()) {
+                    this.seasonNames = seasonNames
+                }
+            }
+        }
+    }
+    
+    // ==================== LOAD LINKS ====================
     
     override suspend fun loadLinks(
         data: String,
@@ -347,135 +206,59 @@ class Arabseed : MainAPI() {
         subtitleCallback: (SubtitleFile) -> Unit,
         callback: (ExtractorLink) -> Unit
     ): Boolean {
-        Log.i(TAG, "[loadLinks] Starting V1-style extraction for: $data")
+        Log.i(TAG, "[loadLinks] $data")
         
-        // 1. Fetch the episode/movie page
-        val doc = httpService.getDocument(data)
-        if (doc == null) {
-            Log.w(TAG, "[loadLinks] Failed to fetch page: $data")
+        // Get player URLs from the page
+        val playerUrls = http.getPlayerUrls(data)
+        Log.i(TAG, "[loadLinks] Found ${playerUrls.size} player URLs")
+        
+        if (playerUrls.isEmpty()) {
+            Log.w(TAG, "[loadLinks] No player URLs found, trying direct sniff")
+            return sniffAndCallback(data, data, callback)
+        }
+        
+        // Try each player URL
+        for ((index, playerUrl) in playerUrls.withIndex()) {
+            Log.i(TAG, "[loadLinks] Trying player #${index + 1}: ${playerUrl.take(80)}...")
+            
+            if (sniffAndCallback(playerUrl, data, callback)) {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    private suspend fun sniffAndCallback(
+        url: String,
+        referer: String,
+        callback: (ExtractorLink) -> Unit
+    ): Boolean {
+        val videos = http.sniffVideos(url)
+        
+        if (videos.isEmpty()) {
+            Log.w(TAG, "[sniffAndCallback] No videos found from: ${url.take(80)}")
             return false
         }
         
-        // 2. Extract player URLs from onclick (V1 logic)
-        val urlRegex = "'.*?'".toRegex()
-        val elements = doc.select(".signleWatch ul.tabs-ul li[onclick]")
+        Log.i(TAG, "[sniffAndCallback] Found ${videos.size} videos")
         
-        Log.i(TAG, "[loadLinks] Found ${elements.size} watch servers")
-        
-        // Log all available servers first
-        elements.forEachIndexed { index, li ->
-            val serverTitle = li.select("a").text().ifBlank { "Server ${index + 1}" }
-            val onclick = li.attr("onclick")
-            val urlMatch = urlRegex.find(onclick)?.value?.replace("'", "") ?: "unknown"
-            Log.i(TAG, "[loadLinks] Server #${index + 1}: '$serverTitle' -> ${urlMatch.take(80)}...")
-        }
-        
-        var foundVideos = false
-        var serverIndex = 0
-        
-        for (li in elements) {
-            serverIndex++
-            val serverTitle = li.select("a").text().ifBlank { "Server $serverIndex" }
-            var playerUrl: String? = null
-            val onclickAttr = li.attr("onclick")
-            val match = urlRegex.find(onclickAttr)
-            
-            if (match != null) {
-                playerUrl = match.value.replace("'", "")
-            } else {
-                playerUrl = li.attr("data-url").ifEmpty { li.attr("data-link") }
-            }
-            
-            if (!playerUrl.isNullOrEmpty() && playerUrl.contains("arabseed")) {
-                Log.i(TAG, "[loadLinks] Trying Server #$serverIndex '$serverTitle'...")
-                
-                // 3. Sniff the player URL (NOT the episode page)
-                val videos = httpService.sniffVideos(playerUrl)
-                
-                if (videos.isNotEmpty()) {
-                    Log.i(TAG, "[loadLinks] Server #$serverIndex '$serverTitle' -> Found ${videos.size} videos!")
-                    foundVideos = true
-                    
-                    videos.forEach { source ->
-                        val quality = parseQuality(source.label)
-                        callback(
-                            newExtractorLink(
-                                source = name,
-                                name = "$name - ${source.label}",
-                                url = source.url,
-                                type = if (source.url.contains(".m3u8")) ExtractorLinkType.M3U8 else ExtractorLinkType.VIDEO
-                            ) {
-                                this.referer = data
-                                this.quality = quality
-                                this.headers = source.headers + httpService.getImageHeaders()
-                            }
-                        )
-                    }
-                    break // Found videos, stop trying other servers
-                } else {
-                    Log.w(TAG, "[loadLinks] Server #$serverIndex '$serverTitle' -> No videos found")
+        videos.forEach { source ->
+            val quality = parser.parseQuality(source.label)
+            callback(
+                newExtractorLink(
+                    source = name,
+                    name = "$name - ${source.label}",
+                    url = source.url,
+                    type = if (source.url.contains(".m3u8")) ExtractorLinkType.M3U8 else ExtractorLinkType.VIDEO
+                ) {
+                    this.referer = referer
+                    this.quality = quality
+                    this.headers = source.headers + http.getImageHeaders()
                 }
-            } else {
-                Log.w(TAG, "[loadLinks] Server #$serverIndex '$serverTitle' -> Invalid URL: $playerUrl")
-            }
+            )
         }
         
-        // 4. Fallback: Direct sniff if no onclick elements found
-        if (!foundVideos && elements.isEmpty()) {
-            Log.w(TAG, "[loadLinks] No onclick elements, trying direct sniff on page")
-            val videos = httpService.sniffVideos(data)
-            videos.forEach { source ->
-                val quality = parseQuality(source.label)
-                callback(
-                    newExtractorLink(
-                        source = name,
-                        name = "$name - ${source.label}",
-                        url = source.url,
-                        type = if (source.url.contains(".m3u8")) ExtractorLinkType.M3U8 else ExtractorLinkType.VIDEO
-                    ) {
-                        this.referer = data
-                        this.quality = quality
-                        this.headers = source.headers + httpService.getImageHeaders()
-                    }
-                )
-            }
-            foundVideos = videos.isNotEmpty()
-        }
-        
-        return foundVideos
-    }
-
-    // ========== HELPERS ==========
-    
-    private fun Element.toSearchResponse(): SearchResponse? {
-        val title = select("h4").text().ifEmpty { return null }
-        val url = select("a").attr("href").ifEmpty { return null }
-        val posterUrl = select("img.imgOptimzer").attr("data-image")
-            .ifEmpty { select("div.Poster img").attr("data-src") }
-        val tvType = if (select("span.category").text().contains("مسلسلات")) TvType.TvSeries else TvType.Movie
-        
-        return newMovieSearchResponse(
-            title,
-            url,
-            tvType
-        ) {
-            this.posterUrl = posterUrl
-            this.posterHeaders = httpService.getImageHeaders()
-        }
-    }
-    
-    private fun fixUrl(url: String): String {
-        // Just return as is - don't force www. which breaks recent domains
-        return url
-    }
-    
-    private fun parseQuality(label: String): Int {
-        return when {
-            label.contains("1080") -> Qualities.P1080.value
-            label.contains("720") -> Qualities.P720.value
-            label.contains("480") -> Qualities.P480.value
-            label.contains("360") -> Qualities.P360.value
-            else -> Qualities.Unknown.value
-        }
+        return true
     }
 }

@@ -1,268 +1,599 @@
 package com.lagradost.cloudstream3.providers.arabseed.service
 
 import android.content.Context
-import com.lagradost.cloudstream3.providers.arabseed.service.strategy.VideoSource
-import com.lagradost.cloudstream3.providers.arabseed.service.ProviderLogger
-import com.lagradost.cloudstream3.providers.arabseed.service.ProviderLogger.TAG_SESSION
+import com.lagradost.cloudstream3.providers.arabseed.service.domain.DomainManager
+import com.lagradost.cloudstream3.providers.arabseed.service.http.*
+import com.lagradost.cloudstream3.providers.arabseed.service.parsing.BaseParser
+import com.lagradost.cloudstream3.providers.arabseed.service.session.SessionState
+import com.lagradost.cloudstream3.providers.arabseed.service.session.SessionStore
+import com.lagradost.cloudstream3.providers.arabseed.service.webview.ExitCondition
+import com.lagradost.cloudstream3.providers.arabseed.service.webview.WebViewEngine
+import com.lagradost.cloudstream3.providers.arabseed.service.webview.WebViewResult
+import com.lagradost.api.Log
+import com.lagradost.cloudstream3.*
+import com.lagradost.cloudstream3.app
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
+import java.net.URI
 
 /**
- * Public facade for the Provider HTTP Service.
+ * THE GATEWAY - Single entry point for all provider HTTP operations.
  * 
- * ## Purpose:
- * Provides a simple, high-level API that hides the complexity of
- * session management, strategy selection, and cookie lifecycle.
- * 
- * ## Usage:
- * ```kotlin
- * class FaselHD : MainAPI() {
- *     private val http = ProviderHttpService.create(
- *         context = PluginContext.context!!,
- *         providerName = "FaselHD",
- *         userAgent = "...",
- *         fallbackDomain = "https://www.faselhds.biz"
- *     )
- *     
- *     override suspend fun getMainPage(...) {
- *         val doc = http.getDocument("$mainUrl/all-movies")
- *         // Parse document...
- *     }
- *     
- *     override suspend fun loadLinks(...) {
- *         val videos = http.sniffVideos(playerUrl)
- *         // Create ExtractorLinks...
- *     }
- * }
- * ```
- * 
- * ## Features:
- * - Automatic CF challenge solving
- * - Cookie persistence across requests
- * - Video sniffing for player pages
- * - Comprehensive logging
+ * Architecture: Unified SessionState
+ * - SessionState is the SINGLE SOURCE OF TRUTH for UA, cookies, domain
+ * - All requests use headers derived from SessionState
+ * - WebView updates SessionState on successful CF solve
+ * - SessionStore persists state across app restarts
  */
 class ProviderHttpService private constructor(
-    private val sessionManager: ProviderSessionManager
+    private val config: ProviderConfig,
+    private val sessionStore: SessionStore,
+    private val webViewEngine: WebViewEngine,
+    private val domainManager: DomainManager,
+    private val parser: BaseParser
 ) {
+    private val TAG = "ProviderHttpService"
+    
+    /** 
+     * SINGLE SOURCE OF TRUTH - all HTTP operations read from this.
+     * Updated atomically via withCookies(), withDomain(), etc.
+     */
+    @Volatile
+    private var sessionState: SessionState = SessionState.initial(config.fallbackDomain)
+    
+    private val requestQueue = RequestQueue(
+        executeRequest = { url -> executeDirectRequest(url) },
+        solveCfAndRequest = { url -> solveCloudflareThenRequest(url) },
+        onDomainRedirect = { oldDomain, newDomain ->
+            Log.i(TAG, "RequestQueue detected redirect: $oldDomain → $newDomain")
+            updateDomain(newDomain)
+            domainManager.updateDomain(newDomain)
+        }
+    )
+    
+    val currentDomain: String
+        get() = sessionState.domain
+    
+    // ==================== INITIALIZATION ====================
+    
+    /**
+     * Initialize session from disk and fetch latest domain from GitHub.
+     * Called once before first request.
+     */
+    private suspend fun ensureInitialized() {
+        Log.i(TAG, "Using MainAPI UA: ${SessionState.DEFAULT_UA}")
+
+        // Load persisted session
+        val persisted = sessionStore.load(config.fallbackDomain)
+        if (persisted != null) {
+            sessionState = persisted
+        } else {
+            // New session with default UA
+            sessionState = SessionState.initial(config.fallbackDomain)
+        }
+        
+        // Fetch latest domain from GitHub (may update session)
+        domainManager.ensureInitialized()
+        val remoteDomain = domainManager.currentDomain
+        if (remoteDomain != sessionState.domain) {
+            Log.i(TAG, "Domain from GitHub differs: ${sessionState.domain} → $remoteDomain")
+            updateDomain(remoteDomain)
+        }
+    }
+    
+    // ==================== STATE MANAGEMENT ====================
+    
+    /**
+     * Update session with new cookies. Persists to disk.
+     */
+    @Synchronized
+    private fun updateCookies(cookies: Map<String, String>, fromWebView: Boolean) {
+        sessionState = sessionState.withCookies(cookies, fromWebView)
+        sessionStore.save(sessionState)
+        Log.d(TAG, "Updated cookies: ${cookies.keys}")
+    }
+    
+    /**
+     * Update session with new domain. Clears cookies. Persists to disk.
+     */
+    @Synchronized
+    fun updateDomain(newDomain: String) {
+        if (newDomain == sessionState.domain) return
+        sessionState = sessionState.withDomain(newDomain)
+        sessionStore.save(sessionState)
+        Log.i(TAG, "Updated domain: $newDomain (cookies cleared)")
+    }
+    
+    /**
+     * Invalidate current session. Clears cookies. Persists to disk.
+     */
+    @Synchronized
+    fun invalidateSession(reason: String) {
+        sessionState = sessionState.invalidate()
+        sessionStore.save(sessionState)
+        Log.w(TAG, "Session invalidated: $reason")
+    }
+    
+    // ==================== PUBLIC API: High-level ====================
+    
+    /**
+     * Get main page content, parsed into intermediate items.
+     */
+    suspend fun getMainPage(path: String): List<BaseParser.ParsedSearchItem> {
+        ensureInitialized()
+        
+        val url = buildUrl(path)
+        val doc = getDocument(url, checkDomainChange = true)
+        
+        return doc?.let { parser.parseMainPage(it) } ?: emptyList()
+    }
+    
+    /**
+     * Search for content, parsed into intermediate items.
+     */
+    suspend fun search(query: String, searchPath: String = "/search/"): List<BaseParser.ParsedSearchItem> {
+        ensureInitialized()
+        
+        val url = buildUrl("$searchPath$query")
+        val doc = getDocument(url, checkDomainChange = true)
+        
+        return doc?.let { parser.parseSearch(it) } ?: emptyList()
+    }
+    
+    /**
+     * Load content detail page.
+     */
+    suspend fun load(url: String): LoadResponse? {
+        ensureInitialized()
+        
+        val doc = getDocument(url, checkDomainChange = true)
+        return doc?.let { parser.parseLoadPage(it, url) }
+    }
+    
+    /**
+     * Get episodes for a series (intermediate items).
+     */
+    suspend fun getEpisodes(url: String, seasonNum: Int?): List<BaseParser.ParsedEpisode> {
+        val doc = getDocument(url, checkDomainChange = false)
+        return doc?.let { parser.parseEpisodes(it, seasonNum) } ?: emptyList()
+    }
+    
+    /**
+     * Extract player URLs from a page.
+     */
+    suspend fun getPlayerUrls(url: String): List<String> {
+        val doc = getDocument(url, checkDomainChange = false)
+        return doc?.let { parser.extractPlayerUrls(it) } ?: emptyList()
+    }
+    
+    /**
+     * Sniff videos from a player URL.
+     * Uses WebView to detect video sources.
+     */
+    suspend fun sniffVideos(url: String): List<VideoSource> {
+        Log.d(TAG, "Sniffing videos from: $url")
+        
+        val result = webViewEngine.runSession(
+            url = url,
+            mode = WebViewEngine.Mode.HEADLESS,
+            userAgent = sessionState.userAgent,
+            exitCondition = ExitCondition.PageLoaded,
+            timeout = 30_000L
+        )
+        
+        return when (result) {
+            is WebViewResult.Success -> {
+                extractVideoSources(result.html)
+            }
+            is WebViewResult.Timeout -> {
+                if (CloudflareDetector.isCloudflareChallenge(result.partialHtml)) {
+                    Log.i(TAG, "CF detected during video sniff, trying FULLSCREEN")
+                    
+                    invalidateSession("CF during video sniff")
+                    
+                    val retryResult = webViewEngine.runSession(
+                        url = url,
+                        mode = WebViewEngine.Mode.FULLSCREEN,
+                        userAgent = sessionState.userAgent,
+                        exitCondition = ExitCondition.PageLoaded,
+                        timeout = 120_000L
+                    )
+                    
+                    if (retryResult is WebViewResult.Success) {
+                        // Update cookies from WebView
+                        updateCookies(retryResult.cookies, fromWebView = true)
+                        extractVideoSources(retryResult.html)
+                    } else {
+                        emptyList()
+                    }
+                } else {
+                    emptyList()
+                }
+            }
+            else -> emptyList()
+        }
+    }
+    
+    /**
+     * Extract video sources from HTML using common patterns.
+     */
+    private fun extractVideoSources(html: String): List<VideoSource> {
+        val sources = mutableListOf<VideoSource>()
+        
+        // JWPlayer pattern: file: "url"
+        val jwplayerRegex = """file:\s*["']([^"']+)["']""".toRegex()
+        jwplayerRegex.findAll(html).forEach { match ->
+            val url = match.groupValues[1]
+            if (url.contains(".m3u8") || url.contains(".mp4")) {
+                sources.add(VideoSource(url, extractLabel(url), emptyMap()))
+            }
+        }
+        
+        // sources: [...] pattern
+        val sourcesArrayRegex = """sources:\s*\[(.*?)\]""".toRegex(RegexOption.DOT_MATCHES_ALL)
+        sourcesArrayRegex.findAll(html).forEach { match ->
+            val sourcesJson = match.groupValues[1]
+            val fileRegex = """["']?file["']?\s*:\s*["']([^"']+)["']""".toRegex()
+            val labelRegex = """["']?label["']?\s*:\s*["']([^"']+)["']""".toRegex()
+            
+            fileRegex.findAll(sourcesJson).forEach { fileMatch ->
+                val url = fileMatch.groupValues[1]
+                val label = labelRegex.find(sourcesJson)?.groupValues?.get(1) ?: extractLabel(url)
+                
+                if (url.contains(".m3u8") || url.contains(".mp4")) {
+                    sources.add(VideoSource(url, label, emptyMap()))
+                }
+            }
+        }
+        
+        Log.d(TAG, "Extracted ${sources.size} video sources")
+        return sources.distinctBy { it.url }
+    }
+    
+    private fun extractLabel(url: String): String {
+        return when {
+            url.contains("1080") -> "1080p"
+            url.contains("720") -> "720p"
+            url.contains("480") -> "480p"
+            url.contains("360") -> "360p"
+            else -> "Auto"
+        }
+    }
+    
+    // ==================== PUBLIC API: Low-level ====================
+    
+    /**
+     * Get raw HTML content (queued).
+     */
+    suspend fun get(url: String): String? {
+        val result = requestQueue.enqueue(url)
+        return result.html
+    }
+    
+    /**
+     * Get parsed Document (queued).
+     */
+    suspend fun getDocument(url: String, checkDomainChange: Boolean = false): Document? {
+        android.util.Log.d(TAG, "getDocument: url: $url")
+        val result = requestQueue.enqueue(url)
+        
+        if (result.success && checkDomainChange) {
+            checkAndUpdateDomain(url, result.finalUrl)
+        }
+        
+        // CF BYPASS / 403 HANDLING
+        // If DirectHttp is blocked (403/Access Denied), retry with WebView.
+        // This is critical when OkHttp TLS fingerprint is blocked despite valid cookies.
+        val doc = result.html?.let { Jsoup.parse(it) }
+        
+        if (doc == null || result.responseCode == 403 || doc.select("title").text().contains("403 Forbidden") || doc.select("title").text().contains("Access denied")) {
+            Log.w(TAG, "DirectHttp blocked (403/Access Denied). Retrying with WebView: $url")
+            val webResult = webViewEngine.runSession(
+                url = url,
+                mode = WebViewEngine.Mode.HEADLESS, // Try headless first
+                userAgent = sessionState.userAgent,
+                exitCondition = ExitCondition.PageLoaded,
+                timeout = 60_000L
+            )
+            
+            if (webResult is WebViewResult.Success) {
+                Log.i(TAG, "WebView fallback SUCCESS for $url")
+                // Update cookies just in case
+                updateCookies(webResult.cookies, fromWebView = true)
+                return org.jsoup.Jsoup.parse(webResult.html, url)
+            } else {
+                Log.e(TAG, "WebView fallback FAILED for $url")
+                // Fallback to fullscreen if headless failed? 
+                // For now return original error doc or null to avoid infinite loop if WebView also fails
+            }
+        }
+        
+        return doc
+    }
+    
+    /**
+     * Get headers for loading images.
+     */
+    fun getImageHeaders(): Map<String, String> {
+        return sessionState.buildHeaders()
+    }
+    
+    // ==================== INTERNAL: Request execution ====================
+    
+    /**
+     * Execute a direct HTTP request using current SessionState.
+     */
+    /**
+     * Execute a direct HTTP request using current SessionState.
+     * Uses custom OkHttpClient to enforce HTTP/1.1 (FaselHD strategy).
+     */
+    internal suspend fun executeDirectRequest(url: String): RequestResult {
+        return try {
+            val targetUrl = rewriteUrlIfNeeded(url)
+            val headers = sessionState.buildHeaders()
+            
+            // UA VERIFICATION: Log to ensure consistency between WebView and OkHttp
+            Log.d(TAG, "Requesting: $targetUrl")
+            Log.d(TAG, "UA being used: ${sessionState.userAgent.take(60)}...")
+            Log.d(TAG, "Cookies: ${sessionState.cookies.keys}")
+            
+            // FORCE HTTP/1.1 - Fix for Cloudflare 403 Loop (Matches FaselHD)
+            // Cloudflare often fingerprints HTTP/2 requests from OkHttp differently than WebView.
+            val directClient = app.baseClient.newBuilder()
+                .protocols(listOf(okhttp3.Protocol.HTTP_1_1))
+                .build()
+
+            val headerBuilder = okhttp3.Headers.Builder()
+            headers.forEach { (k, v) -> headerBuilder.add(k, v) }
+
+            val okRequest = okhttp3.Request.Builder()
+                .url(targetUrl)
+                .headers(headerBuilder.build())
+                .get()
+                .build()
+            
+            // Execute using the custom client
+            val response = directClient.newCall(okRequest).execute()
+            val code = response.code
+            val html = response.body?.string() ?: ""
+            val finalUrl = response.request.url.toString()
+            
+            // Parse new cookies from response
+            val newCookies = mutableMapOf<String, String>()
+            response.headers("Set-Cookie").forEach { setCookie ->
+                val parts = setCookie.split(";").firstOrNull()?.split("=", limit = 2)
+                if (parts != null && parts.size == 2) {
+                    newCookies[parts[0].trim()] = parts[1].trim()
+                }
+            }
+            if (newCookies.isNotEmpty()) {
+                updateCookies(newCookies, fromWebView = false)
+            }
+            
+            response.close()
+            
+            Log.d(TAG, "Response: $code | Final URL: $finalUrl")
+            
+            when {
+                // Arabseed sometimes returns 403 with valid content
+                (code == 403 && (html.contains("ArabSeed") || html.contains("عرب سيد"))) -> {
+                    Log.i(TAG, "403 with valid content - treating as success")
+                    RequestResult.success(html, 200, finalUrl)
+                }
+                CloudflareDetector.isBlocked(code, html) -> {
+                    Log.w(TAG, "Cloudflare blocked: $code")
+                    RequestResult.cloudflareBlocked(code, finalUrl)
+                }
+                response.isSuccessful -> {
+                    RequestResult.success(html, code, finalUrl)
+                }
+                else -> {
+                    Log.e(TAG, "HTTP Failure: $code")
+                    RequestResult.failure("HTTP $code", code)
+                }
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Direct request failed: ${e.message}")
+            RequestResult.failure(e)
+        }
+    }
+    
+    /**
+     * Solve CF challenge using WebView and update SessionState.
+     */
+    internal suspend fun solveCloudflareThenRequest(url: String): RequestResult {
+        val targetUrl = rewriteUrlIfNeeded(url)
+        
+        // Invalidate current session before WebView attempt
+        invalidateSession("Preparing for CF solve")
+        
+        // Clear system cookies too
+        clearSystemCookies(targetUrl)
+        
+        var result: WebViewResult
+        var skippedHeadless = false
+        
+        if (config.skipHeadless) {
+            Log.i(TAG, "Skipping HEADLESS, going FULLSCREEN for: $targetUrl")
+            skippedHeadless = true
+            result = webViewEngine.runSession(
+                url = targetUrl,
+                mode = WebViewEngine.Mode.FULLSCREEN,
+                userAgent = sessionState.userAgent,
+                exitCondition = ExitCondition.PageLoaded,
+                timeout = 120_000L
+            )
+        } else {
+            Log.i(TAG, "Attempting HEADLESS CF solve for: $targetUrl")
+            result = webViewEngine.runSession(
+                url = targetUrl,
+                mode = WebViewEngine.Mode.HEADLESS,
+                userAgent = sessionState.userAgent,
+                exitCondition = ExitCondition.PageLoaded,
+                timeout = 30_000L
+            )
+        }
+        
+        when (result) {
+            is WebViewResult.Success -> {
+                val mode = if (skippedHeadless) "FULLSCREEN" else "HEADLESS"
+                Log.i(TAG, "CF solve SUCCESS ($mode)")
+                
+                // UPDATE SESSION STATE with cookies from WebView
+                updateCookies(result.cookies, fromWebView = true)
+                
+                // Check for domain change
+                checkAndUpdateDomain(targetUrl, result.finalUrl)
+                
+                return RequestResult.success(result.html, 200, result.finalUrl)
+            }
+            is WebViewResult.Timeout -> {
+                if (CloudflareDetector.isCloudflareChallenge(result.partialHtml) && !skippedHeadless) {
+                    Log.i(TAG, "HEADLESS timeout, CF detected, trying FULLSCREEN")
+                    
+                    result = webViewEngine.runSession(
+                        url = targetUrl,
+                        mode = WebViewEngine.Mode.FULLSCREEN,
+                        userAgent = sessionState.userAgent,
+                        exitCondition = ExitCondition.PageLoaded,
+                        timeout = 120_000L
+                    )
+                    
+                    return when (result) {
+                        is WebViewResult.Success -> {
+                            Log.i(TAG, "FULLSCREEN solve SUCCESS")
+                            updateCookies(result.cookies, fromWebView = true)
+                            checkAndUpdateDomain(targetUrl, result.finalUrl)
+                            RequestResult.success(result.html, 200, result.finalUrl)
+                        }
+                        else -> {
+                            Log.e(TAG, "FULLSCREEN solve FAILED")
+                            RequestResult.failure("CF bypass failed")
+                        }
+                    }
+                } else {
+                    Log.w(TAG, "WebView timeout, no CF detected or already FULLSCREEN")
+                    return RequestResult.failure("Request timeout")
+                }
+            }
+            is WebViewResult.Error -> {
+                Log.e(TAG, "WebView error: ${result.reason}")
+                return RequestResult.failure(result.reason)
+            }
+        }
+    }
+    
+    // ==================== HELPERS ====================
+    
+    private fun buildUrl(path: String): String {
+        val normalizedPath = if (path.startsWith("/")) path else "/$path"
+        return "https://${sessionState.domain}$normalizedPath"
+    }
+    
+    private fun rewriteUrlIfNeeded(url: String): String {
+        val urlDomain = extractDomain(url)
+        val currentDomain = sessionState.domain
+        
+        return if (urlDomain.isNotBlank() && currentDomain.isNotBlank() && urlDomain != currentDomain) {
+            val rewritten = url.replace(urlDomain, currentDomain)
+            Log.d(TAG, "Rewrote URL: $urlDomain → $currentDomain")
+            rewritten
+        } else {
+            url
+        }
+    }
+    
+    private fun checkAndUpdateDomain(requestUrl: String, finalUrl: String?) {
+        if (finalUrl == null) return
+        
+        try {
+            val requestHost = extractDomain(requestUrl)
+            val finalHost = extractDomain(finalUrl)
+            
+            if (requestHost != finalHost && finalHost.isNotBlank()) {
+                Log.i(TAG, "Domain redirect: $requestHost → $finalHost")
+                updateDomain(finalHost)
+                domainManager.syncToRemote()
+            }
+        } catch (e: Exception) {
+            Log.w(TAG, "Failed to check domain: ${e.message}")
+        }
+    }
+    
+    private fun clearSystemCookies(url: String) {
+        try {
+            val cookieManager = android.webkit.CookieManager.getInstance()
+            val cookies = cookieManager.getCookie(url)
+            if (cookies != null) {
+                cookies.split(";").forEach { cookie ->
+                    val name = cookie.split("=").firstOrNull()?.trim()
+                    if (!name.isNullOrBlank()) {
+                        cookieManager.setCookie(url, "$name=; Max-Age=0; Path=/")
+                    }
+                }
+                cookieManager.flush()
+            }
+        } catch (e: Exception) {
+            Log.w(TAG, "Failed to clear system cookies: ${e.message}")
+        }
+    }
+    
+    private fun extractDomain(url: String): String {
+        return try {
+            URI(url).host?.removePrefix("www.") ?: ""
+        } catch (e: Exception) {
+            ""
+        }
+    }
+    
+    // ==================== FACTORY ====================
     
     companion object {
+        private val instances = mutableMapOf<String, ProviderHttpService>()
+        
         /**
-         * Creates a new ProviderHttpService instance.
-         * 
-         * @param context Android context
-         * @param providerName Provider identifier (used for prefs keys)
-         * @param userAgent Static User-Agent (CRITICAL: must match across components)
-         * @param fallbackDomain Default domain if no config available
+         * Create or get existing service instance.
          */
         fun create(
             context: Context,
-            providerName: String,
-            userAgent: String,
-            fallbackDomain: String
+            config: ProviderConfig,
+            parser: BaseParser,
+            activityProvider: () -> android.app.Activity?
         ): ProviderHttpService {
-            ProviderLogger.i(TAG_SESSION, "create", "Creating ProviderHttpService",
-                "provider" to providerName,
-                "fallbackDomain" to fallbackDomain
-            )
-            
-            val sessionManager = ProviderSessionManager(
-                context = context,
-                providerName = providerName,
-                rawUserAgent = userAgent,
-                fallbackDomain = fallbackDomain
-            )
-            
-            return ProviderHttpService(sessionManager)
-        }
-    }
-    
-    // ========== PROPERTIES ==========
-    
-    /**
-     * Current provider domain.
-     */
-    val currentDomain: String
-        get() = sessionManager.currentDomain
-    
-    /**
-     * The static User-Agent used by this service.
-     */
-    val userAgent: String?
-        get() = sessionManager.userAgent
-    
-    /**
-     * Whether the service has been initialized.
-     */
-    val isInitialized: Boolean
-        get() = sessionManager.isInitialized
-    
-    // ========== INITIALIZATION ==========
-    
-    /**
-     * Initialize the service.
-     * Call this ONCE when the provider first loads (e.g., in getMainPage).
-     * 
-     * Flow:
-     * 1. Load persisted state from disk
-     * 2. Fetch latest domain from GitHub
-     * 3. Update state if domain changed
-     */
-    suspend fun initialize() {
-        sessionManager.initialize()
-    }
-    
-    // ========== PUBLIC API ==========
-    
-    /**
-     * Makes an HTTP GET request and returns the HTML content.
-     * Handles CF challenges automatically.
-     * 
-     * @param url The URL to request
-     * @return HTML content as String, or null on failure
-     */
-    suspend fun get(url: String): String? {
-        val response = sessionManager.request(url)
-        return if (response.success) response.html else null
-    }
-    
-    /**
-     * Makes an HTTP GET request and returns a parsed Jsoup Document.
-     * Handles CF challenges automatically.
-     * 
-     * @param url The URL to request
-     * @return Parsed Document, or null on failure
-     */
-    suspend fun getDocument(url: String): Document? {
-        val html = get(url) ?: return null
-        return try {
-            Jsoup.parse(html, url)
-        } catch (e: Exception) {
-            ProviderLogger.e(TAG_SESSION, "getDocument", "Failed to parse HTML", e,
-                "url" to url.take(80)
-            )
-            null
-        }
-    }
-    
-    /**
-     * Makes an HTTP POST request with form data and returns the HTML content.
-     * Uses the service's cookies and headers for authentication.
-     * 
-     * Note: This uses CloudStream's app.post() with our cookies.
-     * If the endpoint is CF-protected and cookies are stale, the request may fail.
-     * In that case, call getDocument() on a GET endpoint first to refresh cookies.
-     * 
-     * @param url The URL to POST to
-     * @param data Form data as key-value pairs
-     * @param referer Optional referer header (defaults to currentDomain)
-     * @return HTML content as String, or null on failure
-     */
-    suspend fun post(url: String, data: Map<String, String>, referer: String? = null): String? {
-        return try {
-            val headers = getImageHeaders().toMutableMap()
-            headers["Referer"] = referer ?: currentDomain
-            
-            val response = com.lagradost.cloudstream3.app.post(
-                url,
-                data = data,
-                headers = headers
-            )
-            
-            if (response.isSuccessful) {
-                response.text
-            } else {
-                ProviderLogger.w(TAG_SESSION, "post", "POST request failed",
-                    "url" to url.take(80),
-                    "code" to response.code
+            return instances.getOrPut(config.name) {
+                val sessionStore = SessionStore(context, config.name)
+                
+                val domainManager = DomainManager(
+                    context = context,
+                    providerName = config.name,
+                    fallbackDomain = config.fallbackDomain,
+                    githubConfigUrl = config.githubConfigUrl,
+                    syncWorkerUrl = config.syncWorkerUrl
                 )
-                null
+                
+                val webViewEngine = WebViewEngine(
+                    activityProvider = activityProvider
+                )
+                
+                ProviderHttpService(
+                    config = config,
+                    sessionStore = sessionStore,
+                    webViewEngine = webViewEngine,
+                    domainManager = domainManager,
+                    parser = parser
+                )
             }
-        } catch (e: Exception) {
-            ProviderLogger.e(TAG_SESSION, "post", "POST request error", e,
-                "url" to url.take(80)
-            )
-            null
         }
-    }
-    
-    /**
-     * Makes an HTTP POST request and returns a parsed Jsoup Document.
-     * Uses the service's cookies and headers for authentication.
-     * 
-     * @param url The URL to POST to
-     * @param data Form data as key-value pairs
-     * @param referer Optional referer header (defaults to currentDomain)
-     * @return Parsed Document, or null on failure
-     */
-    suspend fun postDocument(url: String, data: Map<String, String>, referer: String? = null): Document? {
-        val html = post(url, data, referer) ?: return null
-        return try {
-            Jsoup.parse(html, url)
-        } catch (e: Exception) {
-            ProviderLogger.e(TAG_SESSION, "postDocument", "Failed to parse HTML", e,
-                "url" to url.take(80)
-            )
-            null
-        }
-    }
-    
-    /**
-     * Sniffs video URLs from a player page.
-     * Uses WebView with video monitoring and JWPlayer extraction.
-     * 
-     * @param url The player page URL
-     * @return List of captured video sources
-     */
-    suspend fun sniffVideos(url: String): List<VideoSource> {
-        return sessionManager.sniffVideos(url)
-    }
-    
-    /**
-     * Updates the current domain.
-     * Call this when domain changes are detected (e.g., from redirect or config).
-     * 
-     * @param domain New domain URL
-     */
-    fun updateDomain(domain: String) {
-        sessionManager.updateDomain(domain)
-    }
-    
-    /**
-     * Gets headers for image requests (e.g., posterHeaders).
-     * Includes User-Agent, cookies, and referer.
-     * 
-     * @return Headers map suitable for image loading
-     */
-    fun getImageHeaders(): Map<String, String> {
-        return sessionManager.getImageHeaders()
-    }
-    
-    /**
-     * Checks if there's a valid session (fresh cookies).
-     * 
-     * @return true if cookies are valid and not expired
-     */
-    fun hasValidSession(): Boolean {
-        return sessionManager.hasValidSession()
-    }
-    
-    /**
-     * Forces session invalidation.
-     * Use when you detect issues and want to force a fresh CF solve.
-     * 
-     * @param reason Description for logging
-     */
-    fun invalidateSession(reason: String) {
-        sessionManager.invalidateSession(reason)
-    }
-    
-    /**
-     * Gets debug info about current session state.
-     * Useful for logging and troubleshooting.
-     */
-    fun getDebugInfo(): String {
-        val cookieInfo = sessionManager.cookieManager.getDebugInfo(currentDomain)
-        return "Provider: ${sessionManager.providerName}, Domain: $currentDomain, $cookieInfo"
     }
 }
+
+/**
+ * Configuration for a provider.
+ */
+data class ProviderConfig(
+    val name: String,
+    val fallbackDomain: String,
+    val githubConfigUrl: String,
+    val syncWorkerUrl: String? = null,
+    val skipHeadless: Boolean = false
+)
