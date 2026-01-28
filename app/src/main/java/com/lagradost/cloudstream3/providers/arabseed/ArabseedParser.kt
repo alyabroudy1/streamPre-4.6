@@ -38,14 +38,28 @@ class ArabseedParser : BaseParser() {
     override fun parseMainPage(doc: Document): List<ParsedSearchItem> {
         val url = doc.location()
         // Direct selection of items based on user report + fallbacks
-        val items = doc.select("div.item__contents, div.MovieBlock, div.poster__single").mapNotNull { element ->
+        // Debug specific selectors
+        Log.d(TAG, "DEBUG: div.series__box count: ${doc.select("div.series__box").size}")
+        Log.d(TAG, "DEBUG: div.MovieBlock count: ${doc.select("div.MovieBlock").size}")
+        Log.d(TAG, "DEBUG: ul.Blocks-UL > div count: ${doc.select("ul.Blocks-UL > div").size}")
+
+        val items = doc.select("div.item__contents, div.MovieBlock, div.poster__single, ul.Blocks-UL > div, div.Blocks-UL > div, div.BlockItem, div.series__box").mapNotNull { element ->
             try {
                 val title = extractTitle(element)
-                val url = extractUrl(element) ?: return@mapNotNull null
+                val url = extractUrl(element)
                 val poster = extractPoster(element)
                 val isMovie = isMovie(element)
                 
-                if (title.isBlank()) return@mapNotNull null
+                if (url == null) {
+                    Log.w(TAG, "Skipping item: URL null. Element: ${element.tagName()}.${element.className()}")
+                    Log.w(TAG, "HTML of skipped item: ${element.outerHtml()}")
+                    return@mapNotNull null
+                }
+                
+                if (title.isBlank()) {
+                    Log.w(TAG, "Skipping item: Title blank. URL: $url")
+                    return@mapNotNull null
+                }
                 
                 ParsedSearchItem(
                     title = title,
@@ -54,6 +68,7 @@ class ArabseedParser : BaseParser() {
                     isMovie = isMovie
                 )
             } catch (e: Exception) {
+                Log.e(TAG, "Error parsing item: ${e.message}")
                 null
             }
         }
@@ -81,8 +96,8 @@ class ArabseedParser : BaseParser() {
             val divs = doc.select("div").take(20).map { "${it.tagName()}.${it.className()}" }
             Log.e(TAG, "DEBUG STRUCTURE: Found divs: $divs")
             
-            // Log first 1000 chars of body
-            Log.e(TAG, "DEBUG BODY START: ${doc.body().html().take(1000)}")
+            // Log full HTML as requested
+            Log.e(TAG, "FULL HTML DUMP: ${doc.html()}")
         }
         return baseItems
     }
@@ -92,6 +107,7 @@ class ArabseedParser : BaseParser() {
             .ifEmpty { element.select("h4").text() }
             .ifEmpty { element.select("h3").text() }
             .ifEmpty { element.select("div.title").text() }
+            .ifEmpty { element.select("div.title___").text() }
             .ifEmpty { element.selectFirst("a")?.attr("title") ?: "" }
     }
     
@@ -99,6 +115,7 @@ class ArabseedParser : BaseParser() {
         val img = element.selectFirst("div.post__image img")
             ?: element.selectFirst("img.imgOptimzer")
             ?: element.selectFirst("div.Poster img")
+            ?: element.selectFirst("div.image__poster img")
             ?: element.selectFirst("img")
         
         return img?.attr("data-src")
@@ -108,8 +125,11 @@ class ArabseedParser : BaseParser() {
     }
     
     override fun extractUrl(element: Element): String? {
-        return element.selectFirst("a.movie__block")?.attr("href")
-            ?.ifBlank { element.selectFirst("a")?.attr("href") }?.ifBlank { null }
+        val url = element.select("a.movie__block").attr("href")
+            .ifBlank { element.select("a[href]").attr("href") }
+            .ifBlank { element.attr("href") }
+            
+        return url.ifBlank { null }
     }
     
     override fun isMovie(element: Element): Boolean {

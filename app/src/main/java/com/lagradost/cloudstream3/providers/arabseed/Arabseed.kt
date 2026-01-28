@@ -27,7 +27,7 @@ class Arabseed : MainAPI() {
     
     override val mainPage = mainPageOf(
         "/movies-1/" to "أفلام",
-//        "/series-1/" to "مسلسلات",
+        "/series-1/" to "مسلسلات",
 //        "/anime-1/" to "أنمي",
 //        "/asian-drama/" to "دراما آسيوية"
     )
