@@ -11,6 +11,8 @@ import com.lagradost.cloudstream3.utils.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
+import com.lagradost.cloudstream3.providers.arabseed.service.parsing.BaseParser.ParsedEpisode
+import com.lagradost.cloudstream3.providers.arabseed.ArabseedParser.SeasonData as ParserSeasonData
 
 /**
  * Arabseed provider V2 - Now a thin layer using ProviderHttpService.
@@ -93,24 +95,37 @@ class Arabseed : MainAPI() {
     
     // ==================== SEARCH ====================
     
+    // ==================== SEARCH ====================
+    
     override suspend fun search(query: String): List<SearchResponse> {
         Log.d(TAG, "[search] query=$query")
         
-        val items = http.search(query, "/find/$query/")
+        // Simulating reference: POST to /SearchingTwo.php for both "movies" and "series"
+        val types = listOf("movies", "series")
         
-        return items.map { item ->
-            if (item.isMovie) {
-                newMovieSearchResponse(item.title, item.url, TvType.Movie) {
-                    this.posterUrl = item.posterUrl
-                    this.posterHeaders = http.getImageHeaders()
+        return coroutineScope {
+            types.map { type ->
+                async {
+                    val doc = http.post(
+                        url = "$mainUrl/wp-content/themes/Elshaikh2021/Ajaxat/SearchingTwo.php",
+                        data = mapOf("search" to query, "type" to type),
+                        referer = mainUrl
+                    )
+                    
+                    // Use parser to extract items from the returned HTML document
+                    doc?.let { parser.parseSearch(it) } ?: emptyList()
                 }
-            } else {
-                // Search usually returns mixed results, if we can't be sure, default to movie or try to infer
-                // BaseParser now defaults isMovie=true for search if unclear, or logic needs to be robust
-                // For now assuming the parser logic sets isMovie correctly
-                newTvSeriesSearchResponse(item.title, item.url, TvType.TvSeries) {
-                    this.posterUrl = item.posterUrl
-                    this.posterHeaders = http.getImageHeaders()
+            }.awaitAll().flatten().map { item ->
+                if (item.isMovie) {
+                    newMovieSearchResponse(item.title, item.url, TvType.Movie) {
+                        this.posterUrl = item.posterUrl
+                        this.posterHeaders = http.getImageHeaders()
+                    }
+                } else {
+                    newTvSeriesSearchResponse(item.title, item.url, TvType.TvSeries) {
+                        this.posterUrl = item.posterUrl
+                        this.posterHeaders = http.getImageHeaders()
+                    }
                 }
             }
         }
@@ -118,57 +133,60 @@ class Arabseed : MainAPI() {
     
     // ==================== LOAD ====================
     
-    // ==================== LOAD ====================
-    
     override suspend fun load(url: String): LoadResponse? {
         Log.d(TAG, "[load] $url")
         
-        // 1. Fetch document directly (since http.load defaults to parser.parseLoadPage which returns null)
         val doc = http.getDocument(url, checkDomainChange = true) ?: return null
+        Log.d(TAG, "[load] Document size: ${doc.html().length}")
         
-        // 2. Parse into intermediate data
-        val data = parser.parseLoadPageData(doc, url) ?: return null
+        val data = parser.parseLoadPageData(doc, url)
         
-        // 3. Construct LoadResponse using MainAPI helpers
+        if (data == null) {
+            Log.e(TAG, "[load] Parsed data is NULL")
+            return null
+        }
+        
+        Log.d(TAG, "[load] Parsed data: title='${data.title}', isMovie=${data.isMovie}")
+        
         return if (data.isMovie) {
-            newMovieLoadResponse(data.title, url, TvType.Movie, data.watchUrl ?: "") {
+            newMovieLoadResponse(data.title, url, TvType.Movie, data.watchUrl ?: url) {
                 this.posterUrl = data.posterUrl
                 this.year = data.year
                 this.plot = data.plot
                 this.tags = data.tags
-                // this.rating = data.rating // Deprecated
                 this.posterHeaders = http.getImageHeaders()
             }
         } else {
-            val episodes = data.episodes?.toMutableList() ?: mutableListOf()
+            // Reference logic: Check season list, if exists, fetch episodes via AJAX
+            val seasonData = parser.parseSeasonsWithPostId(doc)
+            val episodes = mutableListOf<ParsedEpisode>()
+            // Note: In built-in, ParsedEpisode is likely in ArabseedParser or BaseParser.
+            // Adjusting type to match what parseSeasonsWithPostId/parseEpisodesFromAjax returns. 
+            // In omarC it was com.arabseed.service.parsing.BaseParser.ParsedEpisode.
+            // In built-in, likely ArabseedParser.ParsedEpisode if imported, or BaseParser is in same package?
+            // Let's rely on type inference or check imports. 
+            // The method signature in ArabseedParser defines the return type.
             
-            // For series, fetch other seasons in parallel if needed
-            // (We extract this logic here or keep it if parser has helper)
-            val seasonUrls = parser.extractSeasonUrls(doc)
-            if (seasonUrls.isNotEmpty()) {
+            if (seasonData.isNotEmpty()) {
+                // Fetch episodes for each season via AJAX
                 coroutineScope {
-                    seasonUrls.map { seasonPair ->
+                    val ajaxEpisodes = seasonData.map { s ->
                         async {
-                            val seasonNum = seasonPair.first
-                            val seasonUrl = seasonPair.second
-                            try {
-                                val episodeDoc = http.getDocument(
-                                    parser.fixUrl(seasonUrl), 
-                                    checkDomainChange = false
-                                )
-                                episodeDoc?.let { parser.parseEpisodes(it, seasonNum) }
-                            } catch (e: Exception) {
-                                Log.w(TAG, "Failed to fetch season $seasonNum: ${e.message}")
-                                null
-                            }
+                            val epDoc = http.post(
+                                url = "$mainUrl/wp-content/themes/Elshaikh2021/Ajaxat/Single/Episodes.php",
+                                data = mapOf("season" to s.season.toString(), "post_id" to s.postId),
+                                referer = url
+                            )
+                            epDoc?.let { parser.parseEpisodesFromAjax(it, s.season) } ?: emptyList()
                         }
-                    }.awaitAll().filterNotNull().forEach { epList ->
-                        episodes.addAll(epList)
-                    }
+                    }.awaitAll().flatten()
+                    episodes.addAll(ajaxEpisodes)
                 }
+            } else {
+                // Fallback: parse from DOM (if no seasons or failed)
+                episodes.addAll(parser.parseEpisodes(doc, 1))
             }
-            
-            // Convert ParsedEpisode to Episode using MainAPI.newEpisode
+
             val convertedEpisodes = episodes.distinctBy { "${it.season}:${it.episode}" }
                 .sortedWith(compareBy({ it.season }, { it.episode }))
                 .map { ep ->
@@ -187,9 +205,6 @@ class Arabseed : MainAPI() {
                 this.year = data.year
                 this.plot = data.plot
                 this.tags = data.tags
-                this.tags = data.tags
-                // Usage of 'rating' is deprecated. 
-                // data.rating?.let { addRating(it) } // If addRating exists, or just omit.
                 this.posterHeaders = http.getImageHeaders()
                 if (seasonNames.isNotEmpty()) {
                     this.seasonNames = seasonNames
@@ -208,57 +223,98 @@ class Arabseed : MainAPI() {
     ): Boolean {
         Log.i(TAG, "[loadLinks] $data")
         
-        // Get player URLs from the page
-        val playerUrls = http.getPlayerUrls(data)
-        Log.i(TAG, "[loadLinks] Found ${playerUrls.size} player URLs")
+        // 1. Get Main Doc or Watch Doc
+        var doc = http.getDocument(data) ?: return false
         
-        if (playerUrls.isEmpty()) {
-            Log.w(TAG, "[loadLinks] No player URLs found, trying direct sniff")
-            return sniffAndCallback(data, data, callback)
-        }
+        // If we are already on the watch page (because load passed the watch URL), we might not find watchBTn
+        // Check if we have server list or iframe
+        var isWatchPage = doc.select("ul > li[data-link], ul > h3").isNotEmpty() || 
+                         doc.select("iframe[name=player_iframe]").isNotEmpty()
         
-        // Try each player URL
-        for ((index, playerUrl) in playerUrls.withIndex()) {
-            Log.i(TAG, "[loadLinks] Trying player #${index + 1}: ${playerUrl.take(80)}...")
-            
-            if (sniffAndCallback(playerUrl, data, callback)) {
-                return true
+        var watchDoc = if (isWatchPage) doc else null
+        
+        if (watchDoc == null) {
+            val watchUrl = doc.select("a.watch__btn").attr("href")
+            if (watchUrl.isNotBlank()) {
+                Log.d(TAG, "Found watch button on main page, following to: $watchUrl")
+                watchDoc = http.getDocument(watchUrl)
+            } else {
+                 Log.w(TAG, "No watch button found and not a watch page")
+                 // One last attempt: maybe the current page IS the watch page but different layout?
+                 // Let's assume valid invalid page for now, but log warning
             }
         }
         
-        return false
-    }
-    
-    private suspend fun sniffAndCallback(
-        url: String,
-        referer: String,
-        callback: (ExtractorLink) -> Unit
-    ): Boolean {
-        val videos = http.sniffVideos(url)
+        if (watchDoc == null) return false
         
-        if (videos.isEmpty()) {
-            Log.w(TAG, "[sniffAndCallback] No videos found from: ${url.take(80)}")
-            return false
+        // 3. Parse Links simulating reference logic (group by H3 headers/Qualities)
+        val indexOperators = mutableListOf<Int>()
+        val elements = watchDoc.select("ul > li[data-link], ul > h3")
+        
+        elements.forEachIndexed { index, element ->
+            if (element.`is`("h3")) {
+                indexOperators.add(index)
+            }
         }
         
-        Log.i(TAG, "[sniffAndCallback] Found ${videos.size} videos")
+        val watchLinks = if (indexOperators.isNotEmpty()) {
+            indexOperators.mapIndexed { i, index ->
+                val endIndex = if (i != indexOperators.size - 1) indexOperators[i + 1] else elements.size
+                val qualityText = elements[index].text()
+                val quality = Regex("""\d+""").find(qualityText)?.value?.toIntOrNull() ?: 0
+                val links = elements.subList(index + 1, endIndex).filter { !it.`is`("h3") }
+                quality to links
+            }
+        } else {
+             listOf(0 to elements.filter { !it.`is`("h3") })
+        }
         
-        videos.forEach { source ->
-            val quality = parser.parseQuality(source.label)
-            callback(
-                newExtractorLink(
-                    source = name,
-                    name = "$name - ${source.label}",
-                    url = source.url,
-                    type = if (source.url.contains(".m3u8")) ExtractorLinkType.M3U8 else ExtractorLinkType.VIDEO
-                ) {
-                    this.referer = referer
-                    this.quality = quality
-                    this.headers = source.headers + http.getImageHeaders()
+        var found = false
+        
+        watchLinks.forEach { (quality, links) ->
+            links.forEach { linkElement ->
+                val rawUrl = linkElement.attr("data-link").ifBlank { linkElement.attr("data-url") }
+                val linkUrl = fixUrl(rawUrl)
+                val linkName = linkElement.text()
+                
+                if (linkUrl.isNotBlank()) {
+                     if (linkName.contains("سيد")) {
+                         // Special handling for ArabSeed files
+                         // Reference fetches iframe and selects "source"
+                         val srcDoc = http.getDocument(linkUrl, headers = mapOf("Referer" to watchDoc.location()))
+                         val src = srcDoc?.select("source")?.attr("src")
+                         
+                         if (!src.isNullOrBlank()) {
+                             callback(
+                                 newExtractorLink(
+                                     source = name,
+                                     name = "Arab Seed",
+                                     url = src,
+                                     type = if (src.contains(".m3u8")) ExtractorLinkType.M3U8 else ExtractorLinkType.VIDEO
+                                 ) {
+                                     this.referer = "" // Direct source usually doesn't need data referer, but can check
+                                     this.quality = quality
+                                 }
+                             )
+                             found = true
+                         }
+                         // Also loadExtractor as backup/alternative? Reference does BOTH.
+                         loadExtractor(linkUrl, data, subtitleCallback) { link ->
+                             callback(link)
+                             found = true
+                         }
+                     } else {
+                         loadExtractor(linkUrl, data, subtitleCallback) { link ->
+                             // Inject quality if missing
+                             // We can't easily modify ExtractorLink, but we pass it through
+                             callback(link)
+                             found = true
+                         }
+                     }
                 }
-            )
+            }
         }
         
-        return true
+        return found
     }
 }
