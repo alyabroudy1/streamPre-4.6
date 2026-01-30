@@ -5,6 +5,8 @@ import com.lagradost.cloudstream3.providers.arabseed.service.parsing.BaseParser.
 import com.lagradost.api.Log
 import com.lagradost.cloudstream3.*
 import com.lagradost.cloudstream3.utils.*
+import org.json.JSONObject
+import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 
@@ -163,7 +165,8 @@ class ArabseedParser : BaseParser() {
         val rating: Int?,
         val isMovie: Boolean,
         val watchUrl: String?, // For movies
-        val episodes: List<ParsedEpisode>? // For series
+        val episodes: List<ParsedEpisode>?, // For series
+        val csrfToken: String? = null // New CSRF token for AJAX
     )
     
     // Implemented to satisfy BaseParser, but unused by this provider implementation
@@ -252,7 +255,9 @@ class ArabseedParser : BaseParser() {
         
         val isMovie = !hasEpisodes && !isSeriesUrl && !isSeriesTitle
             
-        Log.d(TAG, "[parseLoadPageData] Extracted: title='$title', year=$year, plotLength=${plot.length}, hasEpisodes=$hasEpisodes, isSeriesUrl=$isSeriesUrl, isSeriesTitle=$isSeriesTitle, isMovie=$isMovie")
+        val csrfToken = parseCsrfToken(doc)
+        
+        Log.d(TAG, "[parseLoadPageData] Extracted: title='$title', year=$year, plotLength=${plot.length}, hasEpisodes=$hasEpisodes, isSeriesUrl=$isSeriesUrl, isSeriesTitle=$isSeriesTitle, isMovie=$isMovie, csrfToken=${if(csrfToken!=null) "FOUND" else "NULL"}")
         
         return if (isMovie) {
             val watchUrl = extractMovieWatchUrl(doc)
@@ -272,7 +277,8 @@ class ArabseedParser : BaseParser() {
                 rating = rating,
                 isMovie = true,
                 watchUrl = watchUrl,
-                episodes = null
+                episodes = null,
+                csrfToken = csrfToken
             )
         } else {
             val episodes = parseEpisodes(doc, null)
@@ -292,7 +298,8 @@ class ArabseedParser : BaseParser() {
                 rating = rating,
                 isMovie = false,
                 watchUrl = null,
-                episodes = episodes
+                episodes = episodes,
+                csrfToken = csrfToken
             )
         }
     }
@@ -463,26 +470,38 @@ class ArabseedParser : BaseParser() {
                  val t = li.text()
                  val sNum = parseSeasonNumber(t)
                  urls.add(Pair(sNum, pageUrl))
+            } else {
+                // Fallback: Construct URL from data-term (Shortlink strategy)
+                val termId = li.attr("data-term")
+                if (termId.isNotBlank()) {
+                    val t = li.text()
+                    val sNum = parseSeasonNumber(t)
+                    // Try ?p=ID first (Post ID)
+                    val shortUrl = "$mainUrl/?p=$termId"
+                    Log.d(TAG, "Constructed shortlink for Season $sNum: $shortUrl")
+                    urls.add(Pair(sNum, shortUrl))
+                }
             }
         }
         
-        if (urls.isNotEmpty()) return urls
-        
-        // Fallback to old logic
-        val seasonTabs = doc.select("div.seasonDiv, div.seasons--list")
-        return seasonTabs.filter { !it.hasClass("active") }.mapNotNull { tab ->
-            val t = tab.select(".title").text()
-            val sNum = Regex("""\d+""").find(t)?.value?.toIntOrNull() ?: return@mapNotNull null
-            
-            val pageUrl = Regex("""href\s*=\s*['"]([^'"]+)['"]""")
-                .find(tab.attr("onclick"))?.groupValues?.get(1)
-            
-            if (pageUrl != null) {
-                Pair(sNum, pageUrl)
-            } else null
+        if (urls.isNotEmpty()) {
+            Log.d(TAG, "Extracted ${urls.size} seasons: ${urls.joinToString { "S${it.first}" }}")
+            return urls
         }
         
-        Log.d(TAG, "Extracted ${urls.size} seasons: ${urls.joinToString { "S${it.first}" }}")
+        // Debug: Dump HTML if no seasons found
+        Log.w(TAG, "[extractSeasonUrls] No seasons found! Dumping container HTML...")
+        val container = doc.selectFirst("div#seasons__list, div.list__sub__cats")
+        if (container != null) {
+            Log.w(TAG, "HTML: ${container.outerHtml().take(4000)}")
+            // Also log children to see structure
+            container.children().forEach { child ->
+                Log.w(TAG, "Child: ${child.tagName()}.${child.className()} -> ${child.text()}")
+            }
+        } else {
+            Log.w(TAG, "Season container (div#seasons__list or div.list__sub__cats) NOT FOUND")
+        }
+        
         return urls
     }
     
@@ -513,17 +532,39 @@ class ArabseedParser : BaseParser() {
         return urls
     }
     
-    fun parseEpisodesFromAjax(doc: Document, seasonNum: Int): List<ParsedEpisode> {
-        return doc.select("a").mapNotNull { ep ->
+    fun parseEpisodesFromAjax(json: String, seasonNum: Int): List<ParsedEpisode> {
+        var htmlContent = ""
+        
+        try {
+            val jsonObject = JSONObject(json)
+            htmlContent = jsonObject.getString("html")
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to parse JSON using JSONObject: ${e.message}")
+            // Fallback will fail as we don't have doc anymore, but let's try assuming json IS html if JSON fails?
+            // Actually, if it fails, it might be raw HTML if server changed behavior.
+            // But relying on Jsoup.parse(json) is risky if it was JSON.
+            // Let's assume blank htmlContent implies failure.
+        }
+        
+        Log.d(TAG, "[parseEpisodesFromAjax] HTML extracted length=${htmlContent.length}")
+        
+        val effectiveDoc = if (htmlContent.isNotBlank()) {
+             Jsoup.parse(htmlContent)
+        } else {
+             Jsoup.parse(json)
+        }
+        
+        return effectiveDoc.select("li a").mapNotNull { ep ->
             val epUrl = ep.attr("href")
-            val epTitle = ep.text()
+            val epName = ep.text().trim()
             if (epUrl.isBlank()) return@mapNotNull null
             
-            val epNum = epTitle.replace("الحلقة", "").trim().toIntOrNull() ?: 0
+            val numFromB = ep.select("b").text().trim().toIntOrNull()
+            val epNum = numFromB ?: Regex("""\d+""").find(epName.replace("الحلقة", ""))?.value?.toIntOrNull() ?: 0
             
             ParsedEpisode(
-                url = epUrl,
-                name = epTitle,
+                url = fixUrl(epUrl),
+                name = epName,
                 season = seasonNum,
                 episode = epNum
             )
@@ -570,5 +611,29 @@ class ArabseedParser : BaseParser() {
             label.contains("360") -> Qualities.P360.value
             else -> Qualities.Unknown.value
         }
+    }
+    fun parseCsrfToken(doc: Document): String? {
+        val html = doc.html()
+        
+        // Pattern 1: main__obj = { ..., 'csrf__token': "..." }
+        var token = Regex("""'csrf__token'\s*:\s*["']([^"']+)["']""").find(html)?.groupValues?.get(1)
+        if (!token.isNullOrBlank()) return token
+
+        // Pattern 2: var csrf_token = "..."
+        token = Regex("""var\s+csrf_token\s*=\s*['"]([^'"]+)['"]""").find(html)?.groupValues?.get(1)
+        if (!token.isNullOrBlank()) return token
+        
+        // Pattern 3: csrf_token: "..."
+        token = Regex("""csrf_token\s*:\s*['"]([^'"]+)['"]""").find(html)?.groupValues?.get(1)
+        if (!token.isNullOrBlank()) return token
+
+        // Try meta tag
+        token = doc.select("meta[name='csrf-token']").attr("content")
+        if (token.isNotBlank()) return token
+        
+        // Try finding it in hidden inputs
+        token = doc.select("input[name='csrf_token']").attr("value")
+        
+        return token.ifBlank { null }
     }
 }

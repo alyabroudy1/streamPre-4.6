@@ -107,7 +107,7 @@ class Arabseed : MainAPI() {
             types.map { type ->
                 async {
                     val doc = http.post(
-                        url = "$mainUrl/wp-content/themes/Elshaikh2021/Ajaxat/SearchingTwo.php",
+                        url = "/wp-content/themes/Elshaikh2021/Ajaxat/SearchingTwo.php",
                         data = mapOf("search" to query, "type" to type),
                         referer = mainUrl
                     )
@@ -165,30 +165,48 @@ class Arabseed : MainAPI() {
             // In built-in, likely ArabseedParser.ParsedEpisode if imported, or BaseParser is in same package?
             // 1. Always parse episodes from the current DOM (Active Season)
             val domEpisodes = parser.parseEpisodes(doc, null)
+            Log.d(TAG, "[load] DOM episodes found: ${domEpisodes.size}")
             episodes.addAll(domEpisodes)
 
-            // 2. Fetch other seasons via AJAX if available
-            val seasonData = parser.parseSeasonsWithPostId(doc)
+            // 2. Fetch other seasons (AJAX Style)
+            val seasonDataList = parser.parseSeasonsWithPostId(doc)
+            Log.d(TAG, "[load] Season Data found: ${seasonDataList.size} -> $seasonDataList")
             
-            if (seasonData.isNotEmpty()) {
+            if (seasonDataList.isNotEmpty()) {
                 coroutineScope {
-                    val ajaxEpisodes = seasonData.mapNotNull { s ->
-                        // Optimize: Don't fetch the active season again if we already have it from DOM
-                        // We need to know which season is active. 
-                        // parser.parseEpisodes returns episodes with a season number.
-                        // Let's just fetch all to be safe, or filter.
-                        // For now, fetch all to ensure we have complete lists, but maybe skipping the one that matches domEpisodes season?
-                        // Safe approach: Fetch all, then distinct.
+                    val otherEpisodes = seasonDataList.map { (seasonNum, postId) ->
                         async {
-                            val epDoc = http.post(
-                                url = "$mainUrl/wp-content/themes/Elshaikh2021/Ajaxat/Single/Episodes.php",
-                                data = mapOf("season" to s.season.toString(), "post_id" to s.postId),
-                                referer = url
-                            )
-                            epDoc?.let { parser.parseEpisodesFromAjax(it, s.season) } ?: emptyList()
+                            try {
+                                if (seasonNum == domEpisodes.firstOrNull()?.season) return@async emptyList()
+
+                                val payload = mapOf(
+                                    "season_id" to postId,
+                                    "csrf_token" to (data.csrfToken ?: "")
+                                )
+                                Log.d(TAG, "[load] Fetching season $seasonNum (ID: $postId) via AJAX. Payload: $payload")
+                                val jsonString = http.postText(
+                                    url = "/season__episodes/",
+                                    data = payload,
+                                    headers = mapOf("X-Requested-With" to "XMLHttpRequest"),
+                                    referer = url
+                                )
+                                
+                                if (jsonString != null) {
+                                    Log.d(TAG, "[load] AJAX JSON (S$seasonNum): ${jsonString.take(1000)}")
+                                    val sEps = parser.parseEpisodesFromAjax(jsonString, seasonNum)
+                                    Log.d(TAG, "[load] Season $seasonNum fetched: ${sEps.size} episodes. First 3: ${sEps.take(3)}")
+                                    sEps
+                                } else {
+                                    Log.w(TAG, "[load] Failed to fetch season $seasonNum (null response)")
+                                    emptyList()
+                                }
+                            } catch (e: Exception) {
+                                Log.e(TAG, "Failed to fetch season $seasonNum: ${e.message}")
+                                emptyList<ParsedEpisode>()
+                            }
                         }
                     }.awaitAll().flatten()
-                    episodes.addAll(ajaxEpisodes)
+                    episodes.addAll(otherEpisodes)
                 }
             }
 
@@ -204,6 +222,9 @@ class Arabseed : MainAPI() {
                 
             val seasonNames = convertedEpisodes.mapNotNull { it.season }.distinct().sorted()
                 .map { SeasonData(it, "الموسم $it") }
+
+            Log.d(TAG, "[load] Final episodes count: ${convertedEpisodes.size}")
+            Log.d(TAG, "[load] Final seasons: ${seasonNames.map { it.name }}")
 
             newTvSeriesLoadResponse(data.title, url, TvType.TvSeries, convertedEpisodes) {
                 this.posterUrl = data.posterUrl

@@ -321,12 +321,13 @@ class ProviderHttpService private constructor(
     /**
      * Execute POST request and return Document.
      */
-    suspend fun post(url: String, data: Map<String, String>, referer: String? = null): Document? {
+    suspend fun post(url: String, data: Map<String, String>, referer: String? = null, headers: Map<String, String> = emptyMap()): Document? {
         val finalUrl = buildUrl(url)
-        val headers = sessionState.buildHeaders().toMutableMap()
+        val requestHeaders = sessionState.buildHeaders().toMutableMap()
         if (referer != null) {
-            headers["Referer"] = referer
+            requestHeaders["Referer"] = referer
         }
+        headers.forEach { (k, v) -> requestHeaders[k] = v }
 
         val result = requestQueue.enqueueAction(finalUrl) {
              try {
@@ -335,7 +336,7 @@ class ProviderHttpService private constructor(
                  }.build()
 
                  val okHeaders = okhttp3.Headers.Builder().apply {
-                     headers.forEach { (k, v) -> add(k, v) }
+                     requestHeaders.forEach { (k, v) -> add(k, v) }
                  }.build()
 
                  val okRequest = okhttp3.Request.Builder()
@@ -357,6 +358,48 @@ class ProviderHttpService private constructor(
         }
         
         return result.html?.let { Jsoup.parse(it, finalUrl) }
+    }
+
+    /**
+     * Execute POST request and return raw response String.
+     */
+    suspend fun postText(url: String, data: Map<String, String>, referer: String? = null, headers: Map<String, String> = emptyMap()): String? {
+        val finalUrl = buildUrl(url)
+        val requestHeaders = sessionState.buildHeaders().toMutableMap()
+        if (referer != null) {
+            requestHeaders["Referer"] = referer
+        }
+        headers.forEach { (k, v) -> requestHeaders[k] = v }
+
+        val result = requestQueue.enqueueAction(finalUrl) {
+             try {
+                 val formBody = okhttp3.FormBody.Builder().apply {
+                     data.forEach { (k, v) -> add(k, v) }
+                 }.build()
+
+                 val okHeaders = okhttp3.Headers.Builder().apply {
+                     requestHeaders.forEach { (k, v) -> add(k, v) }
+                 }.build()
+
+                 val okRequest = okhttp3.Request.Builder()
+                     .url(finalUrl)
+                     .headers(okHeaders)
+                     .post(formBody)
+                     .build()
+
+                 val response = app.baseClient.newCall(okRequest).execute()
+                 val code = response.code
+                 val html = response.body?.string() ?: ""
+                 val finalReqUrl = response.request.url.toString()
+                 response.close()
+
+                 RequestResult.success(html, code, finalReqUrl)
+             } catch (e: Exception) {
+                 RequestResult.failure(e)
+             }
+        }
+        
+        return result.html
     }
     
     // ==================== INTERNAL: Request execution ====================
