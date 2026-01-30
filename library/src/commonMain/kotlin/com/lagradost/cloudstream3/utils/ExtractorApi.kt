@@ -10,6 +10,7 @@ import com.lagradost.cloudstream3.extractors.AStreamHub
 import com.lagradost.cloudstream3.extractors.Acefile
 import com.lagradost.cloudstream3.extractors.Ahvsh
 import com.lagradost.cloudstream3.extractors.Aico
+import com.lagradost.cloudstream3.extractors.ArabseedLazyExtractor
 import com.lagradost.cloudstream3.extractors.AsianLoad
 import com.lagradost.cloudstream3.extractors.Asnwish
 import com.lagradost.cloudstream3.extractors.Awish
@@ -1237,6 +1238,7 @@ val extractorApis: MutableList<ExtractorApi> = arrayListOf(
     Up4Stream(),
     Up4FunTop(),
     GUpload(),
+    ArabseedLazyExtractor(),
 )
 
 

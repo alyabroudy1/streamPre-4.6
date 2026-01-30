@@ -571,6 +571,146 @@ class ArabseedParser : BaseParser() {
         }
     }
     
+    // ==================== QUALITY EXTRACTION (NEW) ====================
+    
+    fun extractPostId(doc: Document): String {
+        // 1. Try hidden input
+        var postId = doc.select("input[name='post_id'], input#post_id").attr("value")
+        
+        // 2. Try shortlink (e.g. <link rel='shortlink' href='https://asd.pics/?p=832749' />)
+        if (postId.isBlank()) {
+            val shortlink = doc.select("link[rel='shortlink']").attr("href")
+            postId = Regex("""\?p=(\d+)""").find(shortlink)?.groupValues?.get(1) ?: ""
+        }
+        
+        // 3. Try global Javascript variable
+        if (postId.isBlank()) {
+            postId = Regex("""var\s+post_id\s*=\s*(\d+)""").find(doc.html())?.groupValues?.get(1) ?: ""
+        }
+        
+        // 4. Try from report/comment form or data-id attributes
+        if (postId.isBlank()) {
+            postId = doc.select("div#report-video input[name='post_id']").attr("value")
+        }
+        
+        if (postId.isBlank()) {
+             postId = doc.select("*[data-post-id]").attr("data-post-id")
+        }
+        
+        if (postId.isBlank()) {
+             postId = doc.select("*[data-id]").firstOrNull { it.attr("data-id").matches(Regex("""\d+""")) }?.attr("data-id") ?: ""
+        }
+        
+        // 5. Try Body Class (WordPress standard: postid-12345)
+        if (postId.isBlank()) {
+            val bodyClasses = doc.body().className()
+            postId = Regex("""postid-(\d+)""").find(bodyClasses)?.groupValues?.get(1) ?: ""
+        }
+        
+        // 6. Try parsing from ajax calls in script
+        if (postId.isBlank()) {
+            postId = Regex("""post_id\s*:\s*(\d+)""").find(doc.html())?.groupValues?.get(1) ?: ""
+            if (postId.isBlank()) {
+                 postId = Regex("""post_id["']\s*:\s*["']?(\d+)""").find(doc.html())?.groupValues?.get(1) ?: ""
+            }
+        }
+        
+        if (postId.isBlank()) {
+            Log.e(TAG, "[extractPostId] Failed to extract Post ID! Dumping HTML (first 100k chars)...")
+            Log.e(TAG, doc.html().take(100000))
+        } else {
+            Log.d(TAG, "[extractPostId] Found Post ID: $postId")
+        }
+        
+        return postId
+    }
+
+    data class QualityData(val quality: Int, val title: String)
+    
+    fun extractQualities(doc: Document): List<QualityData> {
+        val qualities = mutableListOf<QualityData>()
+        
+        // Selector provided by user: <ul class="qualities__list"> 
+        // <li class="active" data-title="سيرفرات المشاهدة 480p" data-quality="480"> ... </li>
+        
+        doc.select("ul.qualities__list li").forEach { li ->
+            val q = li.attr("data-quality").toIntOrNull() ?: 0
+            val title = li.attr("data-title")
+            
+            if (q > 0) {
+                qualities.add(QualityData(q, title))
+            }
+        }
+        
+        return qualities.sortedByDescending { it.quality }
+    }
+    
+    fun parseQualityListFromAjax(json: String): List<String> {
+        // The AJAX response for /get__quality__servers/ returns HTML string inside JSON
+        // {"type":"success", "html":"<ul class=\"tabs-ul\">...</ul>"}
+        
+        var htmlContent = ""
+        try {
+            val jsonObject = JSONObject(json)
+            // Sometimes it returns "html" key directly
+            if (jsonObject.has("html")) {
+                htmlContent = jsonObject.getString("html")
+            }
+        } catch (e: Exception) {
+             // Maybe it's raw HTML?
+             htmlContent = json
+        }
+        
+        if (htmlContent.isBlank()) return emptyList()
+        
+        // Parse the HTML to find player links or list items
+        val doc = Jsoup.parse(htmlContent)
+        return extractPlayerUrls(doc)
+    }
+
+    data class ServerData(
+        val postId: String,
+        val quality: Int,
+        val serverId: String,
+        val title: String
+    )
+
+    fun extractVisibleServers(doc: Document): List<ServerData> {
+        val servers = mutableListOf<ServerData>()
+        // Select logic based on user provided HTML:
+        // <li data-post="832749" data-server="1" data-qu="720" class="active"><span>سيرفر 1</span></li>
+        
+        doc.select("li[data-server]").forEach { li ->
+            val postId = li.attr("data-post")
+            val serverId = li.attr("data-server")
+            val quality = li.attr("data-qu").toIntOrNull() ?: 0
+            val title = li.select("span").text()
+            
+            if (serverId.isNotBlank() && quality > 0) {
+                servers.add(ServerData(postId, quality, serverId, title))
+            }
+        }
+        return servers
+    }
+
+    fun parseServerListFromAjax(json: String): List<ServerData> {
+        // {"type":"success", "html":"<li ...>...</li>"}
+        var htmlContent = ""
+        try {
+            val jsonObject = JSONObject(json)
+            if (jsonObject.has("html")) {
+                htmlContent = jsonObject.getString("html")
+            }
+        } catch (e: Exception) {
+             htmlContent = json
+        }
+        
+        if (htmlContent.isBlank()) return emptyList()
+        
+        // Use the same logic as visible extracting but on parsed HTML fragment
+        return extractVisibleServers(Jsoup.parse(htmlContent))
+    }
+    
     // ==================== SEASONS (AJAX SUPPORT) ====================
     
     data class SeasonData(val season: Int, val postId: String)

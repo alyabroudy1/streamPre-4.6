@@ -13,6 +13,8 @@ import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
 import com.lagradost.cloudstream3.providers.arabseed.service.parsing.BaseParser.ParsedEpisode
 import com.lagradost.cloudstream3.providers.arabseed.ArabseedParser.SeasonData as ParserSeasonData
+import okhttp3.Interceptor
+import com.lagradost.cloudstream3.utils.loadExtractor
 
 /**
  * Arabseed provider V2 - Now a thin layer using ProviderHttpService.
@@ -275,7 +277,19 @@ class Arabseed : MainAPI() {
         
         if (watchDoc == null) return false
         
-        // 3. Parse Links simulating reference logic (group by H3 headers/Qualities)
+        // 3. Dynamic Quality Extraction
+        // Extract available qualities from tabs
+        val availableQualities = parser.extractQualities(watchDoc)
+        val postId = parser.extractPostId(watchDoc)
+        val csrfToken = parser.parseCsrfToken(doc) ?: "" // Need token for AJAX
+        
+        Log.d(TAG, "[loadLinks] Found qualities: ${availableQualities.map { it.quality }}")
+        Log.d(TAG, "[loadLinks] PostID: $postId, CSRF: ${if(csrfToken.isNotBlank()) "FOUND" else "MISSING"}")
+        
+        val linksToProcess = mutableListOf<Pair<Int, String>>()
+        
+        // Add links from current page (usually the active quality)
+        // Parse Links simulating reference logic (group by H3 headers/Qualities)
         val indexOperators = mutableListOf<Int>()
         val elements = watchDoc.select("ul > li[data-link], ul > h3")
         
@@ -286,74 +300,129 @@ class Arabseed : MainAPI() {
         }
         
         val watchLinks = if (indexOperators.isNotEmpty()) {
-            indexOperators.mapIndexed { i, index ->
-                val endIndex = if (i != indexOperators.size - 1) indexOperators[i + 1] else elements.size
+            indexOperators.map { index ->
+                val endIndex = elements.drop(index + 1).indexOfFirst { it.`is`("h3") }.let { if (it == -1) elements.size else it + index + 1 }
                 val qualityText = elements[index].text()
                 val quality = Regex("""\d+""").find(qualityText)?.value?.toIntOrNull() ?: 0
                 val links = elements.subList(index + 1, endIndex).filter { !it.`is`("h3") }
                 quality to links
             }
         } else {
-             listOf(0 to elements.filter { !it.`is`("h3") })
+             // Fallback: use active quality from tabs if available
+             val activeQuality = availableQualities.find { watchDoc.select("ul.qualities__list li[data-quality='${it.quality}']").hasClass("active") }?.quality ?: 0
+             listOf(activeQuality to elements.filter { !it.`is`("h3") })
         }
         
-        var found = false
-        
-        watchLinks.forEach { (quality, links) ->
-            links.forEach { linkElement ->
-                val rawUrl = linkElement.attr("data-link").ifBlank { linkElement.attr("data-url") }
-                val linkUrl = fixUrl(rawUrl)
-                val linkName = linkElement.text()
-                
-                if (linkUrl.isNotBlank()) {
-                     var effectiveUrl = linkUrl
-                     if (linkUrl.contains("play.php") && linkUrl.contains("url=")) {
-                         val base64Url = linkUrl.substringAfter("url=").substringBefore("&")
-                         try {
-                              val decoded = String(android.util.Base64.decode(base64Url, android.util.Base64.DEFAULT))
-                              Log.d(TAG, "Decoded play.php URL: $linkUrl -> $decoded")
-                              effectiveUrl = decoded
-                         } catch (e: Exception) {
-                              Log.w(TAG, "Failed to decode play.php URL: ${e.message}")
-                         }
-                     }
-                     if (linkName.contains("سيد")) {
-                         // Special handling for ArabSeed files
-                         // Reference fetches iframe and selects "source"
-                         val srcDoc = http.getDocument(effectiveUrl, headers = mapOf("Referer" to watchDoc.location()))
-                         val src = srcDoc?.select("source")?.attr("src")
-                         
-                         if (!src.isNullOrBlank()) {
-                             callback(
-                                 newExtractorLink(
-                                     source = name,
-                                     name = "Arab Seed",
-                                     url = src,
-                                     type = if (src.contains(".m3u8")) ExtractorLinkType.M3U8 else ExtractorLinkType.VIDEO
-                                 ) {
-                                     this.referer = "" // Direct source usually doesn't need data referer, but can check
-                                     this.quality = quality
-                                 }
-                             )
-                             found = true
-                         }
-                         // Also loadExtractor as backup/alternative? Reference does BOTH.
-                         loadExtractor(effectiveUrl, data, subtitleCallback) { link ->
-                             callback(link)
-                             found = true
-                         }
-                     } else {
-                         loadExtractor(effectiveUrl, data, subtitleCallback) { link ->
-                             // Inject quality if missing
-                             // We can't easily modify ExtractorLink, but we pass it through
-                             callback(link)
-                             found = true
-                         }
-                     }
+        // Add current page links to processing list
+        watchLinks.forEach { (quality, elements) ->
+            elements.forEach { element ->
+                val rawUrl = element.attr("data-link").ifBlank { element.attr("data-url") }
+                if (rawUrl.isNotBlank()) {
+                    linksToProcess.add(quality to rawUrl)
                 }
             }
         }
+
+        var found = false
+        if (postId.isNotBlank() && csrfToken.isNotBlank()) {
+            val servers = mutableListOf<com.lagradost.cloudstream3.providers.arabseed.ArabseedParser.ServerData>()
+            
+            // 1. Extract Visible Servers
+            servers.addAll(parser.extractVisibleServers(watchDoc))
+            Log.d(TAG, "[loadLinks] Visible servers: ${servers.size}")
+
+            // 2. Add placeholder logic for missing qualities (Lazy fallback)
+            // Instead of fetching via AJAX, we assume at least one server exists for each quality (server=0)
+            val processedQualities = servers.map { it.quality }.toSet()
+            val qualitiesToGenerate = availableQualities.filter { it.quality !in processedQualities }
+            
+            if (qualitiesToGenerate.isNotEmpty()) {
+                Log.d(TAG, "[loadLinks] Generating placeholder links for: ${qualitiesToGenerate.map { it.quality }}")
+                qualitiesToGenerate.forEach { qData ->
+                     servers.add(com.lagradost.cloudstream3.providers.arabseed.ArabseedParser.ServerData(
+                         title = "Server 1",
+                         quality = qData.quality,
+                         postId = postId,
+                         serverId = "0" // Assume index 0 exists
+                     ))
+                }
+            }
+
+            
+            // 3. Emit Lazy Links for All Servers
+            servers.forEach { server ->
+                // Construct Virtual URL
+                // Encode referer to pass it safely
+                val encodedReferer = java.net.URLEncoder.encode(watchDoc.location(), "UTF-8")
+                // Use the current domain from watchDoc location to avoid cross-domain cookie issues
+                val currentBaseUrl = try {
+                    val uri = java.net.URI(watchDoc.location())
+                    "${uri.scheme}://${uri.host}"
+                } catch (e: Exception) {
+                    mainUrl
+                }
+                
+                val virtualUrl = "$currentBaseUrl/get__watch__server/?post_id=${server.postId}&quality=${server.quality}&server=${server.serverId}&csrf_token=$csrfToken&referer=$encodedReferer"
+                
+                callback(
+                    newExtractorLink(
+                        source = name,
+                        name = "${server.title} (${server.quality}p)",
+                        url = virtualUrl,
+                        type = ExtractorLinkType.VIDEO // We resolve type later
+                    ) {
+                        this.quality = server.quality
+                    }
+                )
+            }
+            
+            if (servers.isNotEmpty()) found = true
+        } else {
+             Log.w(TAG, "[loadLinks] PostID or CSRF missing, skipping dynamic extraction.")
+        }
         
         return found
+    }
+    
+    override fun getVideoInterceptor(extractorLink: ExtractorLink): okhttp3.Interceptor? {
+        if (extractorLink.url.contains("/get__watch__server/")) {
+            return okhttp3.Interceptor { chain ->
+                val request = chain.request()
+                val url = request.url.toString()
+                
+                var resolvedLink: ExtractorLink? = null
+                
+                try {
+                kotlinx.coroutines.runBlocking {
+                     // Pass a lambda to use the Provider's HTTP service (handles cookies, headers, CF)
+                     val extractor = com.lagradost.cloudstream3.extractors.ArabseedLazyExtractor { url, data, referer ->
+                         http.postText(
+                             url, 
+                             data, 
+                             referer = referer,
+                             headers = mapOf("X-Requested-With" to "XMLHttpRequest")
+                         )
+                     }
+                     extractor.getUrl(url, null, {}) { link ->
+                         resolvedLink = link
+                     }
+                }
+                } catch(e: Exception) {
+                    Log.e(TAG, "[getVideoInterceptor] Lazy resolution failed: ${e.message}")
+                }
+                
+                resolvedLink?.let { link ->
+                     Log.d(TAG, "[getVideoInterceptor] Resolved to: ${link.url}")
+                     val builder = request.newBuilder().url(link.url)
+                     if (link.referer.isNotBlank()) {
+                         builder.header("Referer", link.referer)
+                     }
+                     return@Interceptor chain.proceed(builder.build())
+                }
+                
+                chain.proceed(request)
+            }
+        }
+        return null
     }
 }
