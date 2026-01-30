@@ -445,14 +445,25 @@ class ProviderHttpService private constructor(
             
             // Parse new cookies from response
             val newCookies = mutableMapOf<String, String>()
-            response.headers("Set-Cookie").forEach { setCookie ->
-                val parts = setCookie.split(";").firstOrNull()?.split("=", limit = 2)
-                if (parts != null && parts.size == 2) {
-                    newCookies[parts[0].trim()] = parts[1].trim()
+            
+            // Only update cookies if we are on the provider domain or a trusted domain
+            // This prevents external embeds (like reviewrate.net) from overwriting/clearing our session cookies
+            val responseDomain = extractDomain(finalUrl)
+            val isProviderDomain = responseDomain.contains(sessionState.domain) || 
+                                  config.trustedDomains.any { responseDomain.contains(it) }
+                                  
+            if (isProviderDomain) {
+                response.headers("Set-Cookie").forEach { setCookie ->
+                    val parts = setCookie.split(";").firstOrNull()?.split("=", limit = 2)
+                    if (parts != null && parts.size == 2) {
+                        newCookies[parts[0].trim()] = parts[1].trim()
+                    }
                 }
-            }
-            if (newCookies.isNotEmpty()) {
-                updateCookies(newCookies, fromWebView = false)
+                if (newCookies.isNotEmpty()) {
+                    updateCookies(newCookies, fromWebView = false)
+                }
+            } else {
+                Log.d(TAG, "Ignored cookies from external domain: $responseDomain")
             }
             
             response.close()
@@ -460,8 +471,8 @@ class ProviderHttpService private constructor(
             Log.d(TAG, "Response: $code | Final URL: $finalUrl")
             
             when {
-                // Arabseed sometimes returns 403 with valid content
-                (code == 403 && (html.contains("ArabSeed") || html.contains("عرب سيد"))) -> {
+                // Provider-specific 403 handling (e.g. Arabseed returning 403 with valid content)
+                (code == 403 && config.validateWithContent.any { html.contains(it) }) -> {
                     Log.i(TAG, "403 with valid content - treating as success")
                     RequestResult.success(html, 200, finalUrl)
                 }
@@ -579,7 +590,15 @@ class ProviderHttpService private constructor(
         val urlDomain = extractDomain(url)
         val currentDomain = sessionState.domain
         
-        return if (urlDomain.isNotBlank() && currentDomain.isNotBlank() && urlDomain != currentDomain) {
+        // Only rewrite if:
+        // 1. Domains differ
+        // 2. The URL domain is in the trusted domains list (e.g. "arabseed", "asd")
+        // This prevents rewriting external domains like reviewrate.net
+        
+        val isTrusted = config.trustedDomains.any { urlDomain.contains(it) }
+        val isDifference = urlDomain.isNotBlank() && currentDomain.isNotBlank() && urlDomain != currentDomain
+        
+        return if (isDifference && isTrusted) {
             val rewritten = url.replace(urlDomain, currentDomain)
             Log.d(TAG, "Rewrote URL: $urlDomain → $currentDomain")
             rewritten
@@ -680,5 +699,9 @@ data class ProviderConfig(
     val fallbackDomain: String,
     val githubConfigUrl: String,
     val syncWorkerUrl: String? = null,
-    val skipHeadless: Boolean = false
+    val skipHeadless: Boolean = false,
+    val userAgent: String = SessionState.DEFAULT_UA,
+    // Generic configuration for provider behavior
+    val trustedDomains: List<String> = emptyList(),
+    val validateWithContent: List<String> = emptyList()
 )

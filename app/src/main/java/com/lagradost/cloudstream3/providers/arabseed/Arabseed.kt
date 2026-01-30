@@ -52,7 +52,9 @@ class Arabseed : MainAPI() {
                 fallbackDomain = "arabseed.show",
                 githubConfigUrl = GITHUB_CONFIG,
                 syncWorkerUrl = "https://omarstreamcloud.alyabroudy1.workers.dev",
-                skipHeadless = true
+                skipHeadless = true,
+                trustedDomains = listOf("arabseed", "asd"),
+                validateWithContent = listOf("ArabSeed", "عرب سيد")
             ),
             parser = parser,
             activityProvider = { ActivityProvider.currentActivity }
@@ -304,10 +306,21 @@ class Arabseed : MainAPI() {
                 val linkName = linkElement.text()
                 
                 if (linkUrl.isNotBlank()) {
+                     var effectiveUrl = linkUrl
+                     if (linkUrl.contains("play.php") && linkUrl.contains("url=")) {
+                         val base64Url = linkUrl.substringAfter("url=").substringBefore("&")
+                         try {
+                              val decoded = String(android.util.Base64.decode(base64Url, android.util.Base64.DEFAULT))
+                              Log.d(TAG, "Decoded play.php URL: $linkUrl -> $decoded")
+                              effectiveUrl = decoded
+                         } catch (e: Exception) {
+                              Log.w(TAG, "Failed to decode play.php URL: ${e.message}")
+                         }
+                     }
                      if (linkName.contains("سيد")) {
                          // Special handling for ArabSeed files
                          // Reference fetches iframe and selects "source"
-                         val srcDoc = http.getDocument(linkUrl, headers = mapOf("Referer" to watchDoc.location()))
+                         val srcDoc = http.getDocument(effectiveUrl, headers = mapOf("Referer" to watchDoc.location()))
                          val src = srcDoc?.select("source")?.attr("src")
                          
                          if (!src.isNullOrBlank()) {
@@ -325,12 +338,12 @@ class Arabseed : MainAPI() {
                              found = true
                          }
                          // Also loadExtractor as backup/alternative? Reference does BOTH.
-                         loadExtractor(linkUrl, data, subtitleCallback) { link ->
+                         loadExtractor(effectiveUrl, data, subtitleCallback) { link ->
                              callback(link)
                              found = true
                          }
                      } else {
-                         loadExtractor(linkUrl, data, subtitleCallback) { link ->
+                         loadExtractor(effectiveUrl, data, subtitleCallback) { link ->
                              // Inject quality if missing
                              // We can't easily modify ExtractorLink, but we pass it through
                              callback(link)
