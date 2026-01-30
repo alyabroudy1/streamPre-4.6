@@ -199,7 +199,12 @@ class ArabseedParser : BaseParser() {
         val posterUrl = extractPosterFromLoadPage(doc)
         
         // Metadata
+        // Metadata
         var year = doc.select("div.singleInfo span:contains(السنة) a").text().toIntOrNull()
+        if (year == null) {
+            // New info__area selector
+            year = doc.select("div.info__area li:has(span:contains(سنة العرض)) ul.tags__list a").text().toIntOrNull()
+        }
         if (year == null) {
             year = Regex("""\d{4}""").find(title)?.value?.toIntOrNull()
         }
@@ -218,19 +223,36 @@ class ArabseedParser : BaseParser() {
             plot = doc.select("meta[name='description']").attr("content")
         }
 
-        val tags = doc.select("div.singleInfo span:contains(النوع) a").map { it.text() }
+        var tags = doc.select("div.singleInfo span:contains(النوع) a").map { it.text() }
+        if (tags.isEmpty()) {
+            // New info__area selector
+            tags = doc.select("div.info__area li:has(span:contains(نوع العرض)) ul.tags__list a").map { it.text() }
+        }
+        
+        // Country
+        val country = doc.select("div.info__area li:has(span:contains(بلد العرض)) ul.tags__list a").text()
+        if (country.isNotBlank()) {
+            tags = tags + country
+        }
+
         val rating = doc.select("div.singleInfo span:contains(التقييم) p").text()
             .replace("IMDB ", "").replace("/10", "")
             .toDoubleOrNull()?.times(1000)?.toInt()
         
         // Type detection
-        val isMovie = doc.select("div.seasonEpsCont").isEmpty() &&
-            !url.contains("/seasons/") &&
-            !url.contains("/series/") &&
-            !url.contains("/category/") &&
-            !title.contains("مسلسل")
+        val hasEpisodes = doc.select("div.epAll, div.episodes-list, ul.episodes, div.seasonDiv, div.seasonEpsCont, div.seasons--list, a.episode__item, div.series-episodes, div#seasons__list, div.list__sub__cats, div.epi__num, ul.episodes__list").isNotEmpty()
+        
+        val seriesKeywords = listOf("انمي", "مسلسل", "موسم", "برنامج", "سلسلة")
+        val isSeriesTitle = seriesKeywords.any { title.contains(it, ignoreCase = true) }
+        
+        val isSeriesUrl = url.contains("/seasons/") || 
+                         url.contains("/series/") || 
+                         url.contains("/selary") ||
+                         url.contains("/anime/")
+        
+        val isMovie = !hasEpisodes && !isSeriesUrl && !isSeriesTitle
             
-        Log.d(TAG, "[parseLoadPageData] Extracted: title='$title', year=$year, plotLength=${plot.length}, poster='$posterUrl'")
+        Log.d(TAG, "[parseLoadPageData] Extracted: title='$title', year=$year, plotLength=${plot.length}, hasEpisodes=$hasEpisodes, isSeriesUrl=$isSeriesUrl, isSeriesTitle=$isSeriesTitle, isMovie=$isMovie")
         
         return if (isMovie) {
             val watchUrl = extractMovieWatchUrl(doc)
@@ -336,6 +358,7 @@ class ArabseedParser : BaseParser() {
             }
         }
         
+        Log.d(TAG, "Final extracted movie watch URL: '$watchUrl'")
         return watchUrl
     }
     
@@ -345,34 +368,57 @@ class ArabseedParser : BaseParser() {
         val episodes = mutableListOf<ParsedEpisode>()
         
         // Detect active season
-        val seasonTabs = doc.select("div.seasonDiv")
         var activeSeasonNum = 1
+        // Check for the specific ID provided by user or class fallback
+        val seasonList = doc.selectFirst("div#seasons__list, div.list__sub__cats")
         
-        if (seasonTabs.isNotEmpty()) {
-            val activeTab = seasonTabs.find { it.hasClass("active") }
-            if (activeTab != null) {
-                val t = activeTab.select(".title").text()
-                activeSeasonNum = Regex("""\d+""").find(t)?.value?.toIntOrNull() ?: 1
+        if (seasonList != null) {
+            val selected = seasonList.selectFirst("li.selected")
+            if (selected != null) {
+                // Extract number from "الموسم الثالث" etc
+                val t = selected.text()
+                activeSeasonNum = parseSeasonNumber(t)
             }
         } else {
-            val t = doc.select("div.seasonDiv.active .title").text()
-            activeSeasonNum = Regex("""\d+""").find(t)?.value?.toIntOrNull() ?: 1
+            // Fallback to old selectors
+            val seasonTabs = doc.select("div.seasonDiv, div.seasons--list")
+            if (seasonTabs.isNotEmpty()) {
+                val activeTab = seasonTabs.find { it.hasClass("active") }
+                if (activeTab != null) {
+                    activeSeasonNum = Regex("""\d+""").find(activeTab.text())?.value?.toIntOrNull() ?: 1
+                }
+            } else {
+                 val t = doc.select("div.seasonDiv.active .title").text()
+                 activeSeasonNum = Regex("""\d+""").find(t)?.value?.toIntOrNull() ?: 1
+            }
         }
         
-        // Parse episodes from current page (try multiple selectors)
-        var epElements = doc.select("div.epAll a")
+        // Parse episodes with new selector
+        // User provided: <ul class="episodes__list boxs__wrapper ..."> <li> <a> ...
+        // Also try finding by inner content "div.epi__num" which seems unique to episodes
+        // using :has() is cleaner than detecting parents
+        var epElements = doc.select("ul.episodes__list li a, a:has(div.epi__num)")
+        
         if (epElements.isEmpty()) {
-            epElements = doc.select("div.episodes-list a, ul.episodes li a")
+            // retain old selectors as fallback
+             epElements = doc.select("div.epAll a, div.episodes-list a, ul.episodes li a, a.episode__item, div.series-episodes a")
         }
         
         epElements.forEach { ep ->
             val epUrl = ep.attr("href")
-            val epTitle = ep.text()
-            val epNum = epTitle.replace("الحلقة", "").trim().toIntOrNull() ?: 1
+            val epName = ep.text()
+            
+            // User snippet shows: <div class="epi__num"> الحلقة <b>12</b> </div>
+            val numText = ep.select("div.epi__num b").text()
+            val epNum = if (numText.isNotEmpty()) {
+                numText.trim().toIntOrNull() ?: 0
+            } else {
+                epName.replace("الحلقة", "").trim().toIntOrNull() ?: 0
+            }
             
             episodes.add(ParsedEpisode(
                 url = epUrl,
-                name = epTitle,
+                name = epName,
                 season = seasonNum ?: activeSeasonNum,
                 episode = epNum
             ))
@@ -381,13 +427,49 @@ class ArabseedParser : BaseParser() {
         return episodes.distinctBy { "${it.season}:${it.episode}" }
             .sortedWith(compareBy({ it.season }, { it.episode }))
     }
+
+    private fun parseSeasonNumber(text: String): Int {
+        if (text.contains("الأول")) return 1
+        if (text.contains("الثاني")) return 2
+        if (text.contains("الثالث")) return 3
+        if (text.contains("الرابع")) return 4
+        if (text.contains("الخامس")) return 5
+        if (text.contains("السادس")) return 6
+        if (text.contains("السابع")) return 7
+        if (text.contains("الثامن")) return 8
+        if (text.contains("التاسع")) return 9
+        if (text.contains("العاشر")) return 10
+        return Regex("""\d+""").find(text)?.value?.toIntOrNull() ?: 1
+    }
     
     /**
      * Extract season URLs for parallel fetching.
      */
     fun extractSeasonUrls(doc: Document): List<Pair<Int, String>> {
-        val seasonTabs = doc.select("div.seasonDiv")
+        val urls = mutableListOf<Pair<Int, String>>()
         
+        // New selector from user
+        doc.select("div#seasons__list ul li, div.list__sub__cats ul li").forEach { li ->
+            if (li.hasClass("selected")) return@forEach
+            
+            // Try to find a link inside
+            var pageUrl = li.select("a").attr("href")
+            if (pageUrl.isBlank()) {
+                // Check onclick
+                pageUrl = Regex("""href\s*=\s*['"]([^'"]+)['"]""").find(li.attr("onclick"))?.groupValues?.get(1) ?: ""
+            }
+            
+            if (pageUrl.isNotBlank()) {
+                 val t = li.text()
+                 val sNum = parseSeasonNumber(t)
+                 urls.add(Pair(sNum, pageUrl))
+            }
+        }
+        
+        if (urls.isNotEmpty()) return urls
+        
+        // Fallback to old logic
+        val seasonTabs = doc.select("div.seasonDiv, div.seasons--list")
         return seasonTabs.filter { !it.hasClass("active") }.mapNotNull { tab ->
             val t = tab.select(".title").text()
             val sNum = Regex("""\d+""").find(t)?.value?.toIntOrNull() ?: return@mapNotNull null
@@ -399,6 +481,9 @@ class ArabseedParser : BaseParser() {
                 Pair(sNum, pageUrl)
             } else null
         }
+        
+        Log.d(TAG, "Extracted ${urls.size} seasons: ${urls.joinToString { "S${it.first}" }}")
+        return urls
     }
     
     // ==================== VIDEO EXTRACTION ====================
@@ -424,6 +509,7 @@ class ArabseedParser : BaseParser() {
             }
         }
         
+        Log.d(TAG, "Extracted ${urls.size} player URLs: $urls")
         return urls
     }
     
@@ -449,13 +535,29 @@ class ArabseedParser : BaseParser() {
     data class SeasonData(val season: Int, val postId: String)
     
     fun parseSeasonsWithPostId(doc: Document): List<SeasonData> {
-        return doc.select("div.SeasonsListHolder ul > li").mapNotNull { li ->
+        val list = mutableListOf<SeasonData>()
+        
+        // Old selector
+        doc.select("div.SeasonsListHolder ul > li").forEach { li ->
             val season = li.attr("data-season").toIntOrNull()
             val postId = li.attr("data-id")
             if (season != null && postId.isNotBlank()) {
-                SeasonData(season, postId)
-            } else null
+                list.add(SeasonData(season, postId))
+            }
         }
+        
+        // New selector
+        if (list.isEmpty()) {
+            doc.select("div#seasons__list ul li, div.list__sub__cats ul li").forEach { li ->
+                val termId = li.attr("data-term")
+                if (termId.isNotBlank()) {
+                    val sNum = parseSeasonNumber(li.text())
+                    list.add(SeasonData(sNum, termId))
+                }
+            }
+        }
+        
+        return list.distinctBy { it.season }
     }
     
     // ==================== QUALITY PARSING ====================

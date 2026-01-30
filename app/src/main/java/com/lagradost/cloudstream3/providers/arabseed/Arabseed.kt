@@ -158,19 +158,27 @@ class Arabseed : MainAPI() {
             }
         } else {
             // Reference logic: Check season list, if exists, fetch episodes via AJAX
-            val seasonData = parser.parseSeasonsWithPostId(doc)
             val episodes = mutableListOf<ParsedEpisode>()
             // Note: In built-in, ParsedEpisode is likely in ArabseedParser or BaseParser.
             // Adjusting type to match what parseSeasonsWithPostId/parseEpisodesFromAjax returns. 
             // In omarC it was com.arabseed.service.parsing.BaseParser.ParsedEpisode.
             // In built-in, likely ArabseedParser.ParsedEpisode if imported, or BaseParser is in same package?
-            // Let's rely on type inference or check imports. 
-            // The method signature in ArabseedParser defines the return type.
+            // 1. Always parse episodes from the current DOM (Active Season)
+            val domEpisodes = parser.parseEpisodes(doc, null)
+            episodes.addAll(domEpisodes)
+
+            // 2. Fetch other seasons via AJAX if available
+            val seasonData = parser.parseSeasonsWithPostId(doc)
             
             if (seasonData.isNotEmpty()) {
-                // Fetch episodes for each season via AJAX
                 coroutineScope {
-                    val ajaxEpisodes = seasonData.map { s ->
+                    val ajaxEpisodes = seasonData.mapNotNull { s ->
+                        // Optimize: Don't fetch the active season again if we already have it from DOM
+                        // We need to know which season is active. 
+                        // parser.parseEpisodes returns episodes with a season number.
+                        // Let's just fetch all to be safe, or filter.
+                        // For now, fetch all to ensure we have complete lists, but maybe skipping the one that matches domEpisodes season?
+                        // Safe approach: Fetch all, then distinct.
                         async {
                             val epDoc = http.post(
                                 url = "$mainUrl/wp-content/themes/Elshaikh2021/Ajaxat/Single/Episodes.php",
@@ -182,9 +190,6 @@ class Arabseed : MainAPI() {
                     }.awaitAll().flatten()
                     episodes.addAll(ajaxEpisodes)
                 }
-            } else {
-                // Fallback: parse from DOM (if no seasons or failed)
-                episodes.addAll(parser.parseEpisodes(doc, 1))
             }
 
             val convertedEpisodes = episodes.distinctBy { "${it.season}:${it.episode}" }
