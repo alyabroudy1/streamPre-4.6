@@ -692,6 +692,45 @@ class ArabseedParser : BaseParser() {
         }
         return servers
     }
+    
+    fun extractDirectEmbeds(doc: Document): List<String> {
+        // Broaden selector to find ANY video iframe, filtering out known ads/socials
+        return doc.select("iframe[src]").mapNotNull { 
+            var src = it.attr("src")
+            if (src.isBlank()) return@mapNotNull null
+            
+            // Handle /play.php?url=BASE64
+            if (src.contains("url=")) {
+                val param = src.substringAfter("url=").substringBefore("&")
+                try {
+                    val decoded = String(android.util.Base64.decode(param, android.util.Base64.DEFAULT))
+                    if (decoded.startsWith("http")) {
+                        src = decoded
+                    }
+                } catch (e: Exception) {
+                    // Failed to decode, keep original
+                }
+            }
+            
+            // Fix relative URLs
+            if (src.startsWith("/")) {
+                 // Try to resolve against doc base URI, or just assume https: + domain if we knew it to be safe
+                 // But doc.baseUri might be empty if not set.
+                 // safe approach: if it starts with /, append to current host?
+                 // For now, let's try to trust the decoded one first.
+                 // If it's still relative play.php, we might need the main domain.
+                 // But typically the decoded param IS absolute.
+            }
+            // If we decoded it, it's likely absolute now.
+            
+            if (src.isNotBlank() && 
+                !src.contains("facebook") && 
+                !src.contains("twitter") && 
+                !src.contains("instagram") && 
+                !src.contains("google")
+            ) src else null
+        }
+    }
 
     fun parseServerListFromAjax(json: String): List<ServerData> {
         // {"type":"success", "html":"<li ...>...</li>"}

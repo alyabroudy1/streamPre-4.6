@@ -41,28 +41,45 @@ class DomainManager(
         if (isInitialized) return
         
         // Load persisted first (fast)
-        currentDomain = prefs.getString("domain", fallbackDomain) ?: fallbackDomain
-        Log.d(TAG, "Loaded persisted domain: $currentDomain")
+        val persisted = prefs.getString("domain", null)
+        if (persisted != null) {
+             currentDomain = persisted
+             Log.i(TAG, "🟢 [Lifecycle] Loaded PERSISTED domain from disk: $currentDomain")
+        } else {
+             currentDomain = fallbackDomain
+             Log.i(TAG, "🟡 [Lifecycle] No persisted domain found, using FALLBACK: $currentDomain")
+        }
         
         // Fetch from GitHub (BLOCKING, with timeout)
+        Log.d(TAG, "🔵 [Lifecycle] Starting GitHub fetch from: $githubConfigUrl")
         try {
             withTimeout(5000L) {
                 val response = app.get(githubConfigUrl)
+                Log.d(TAG, "🔵 [Lifecycle] GitHub response code: ${response.code}")
+                
                 if (response.isSuccessful) {
-                    val config = JSONObject(response.text)
+                    val responseText = response.text
+                    Log.d(TAG, "🔵 [Lifecycle] GitHub raw response: $responseText")
+                    
+                    val config = JSONObject(responseText)
                     val remoteDomain = config.optString("domain", "")
+                    Log.i(TAG, "🔵 [Lifecycle] Parsed remote domain: '$remoteDomain'")
                     
                     if (remoteDomain.isNotBlank() && remoteDomain != currentDomain) {
-                        Log.i(TAG, "Domain updated from GitHub: $currentDomain → $remoteDomain")
+                        Log.w(TAG, "⚠️ [Lifecycle] Domain CHANGE detected: $currentDomain → $remoteDomain")
                         // Note: Cookie clearing is handled by ProviderHttpService.updateDomain()
                         updateDomain(remoteDomain)
+                    } else {
+                        Log.i(TAG, "🟢 [Lifecycle] Domain is up to date (or remote is empty). Keeping: $currentDomain")
                     }
+                } else {
+                    Log.e(TAG, "🔴 [Lifecycle] GitHub fetch FAILED. Code: ${response.code}")
                 }
             }
         } catch (e: TimeoutCancellationException) {
-            Log.w(TAG, "GitHub config fetch timed out, using persisted: $currentDomain")
+            Log.w(TAG, "🟠 [Lifecycle] GitHub config fetch TIMED OUT (5s), keeping: $currentDomain")
         } catch (e: Exception) {
-            Log.w(TAG, "GitHub config fetch failed: ${e.message}, using persisted: $currentDomain")
+            Log.e(TAG, "🔴 [Lifecycle] GitHub config fetch ERROR: ${e.message}\n${e.stackTraceToString()}")
         }
         
         isInitialized = true
