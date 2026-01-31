@@ -105,22 +105,41 @@ class Arabseed : MainAPI() {
     // ==================== SEARCH ====================
     
     override suspend fun search(query: String): List<SearchResponse> {
-        Log.d(TAG, "[search] query=$query")
+        Log.d(TAG, "[search] Query: '$query'")
+        http.ensureInitialized()
         
-        // Simulating reference: POST to /SearchingTwo.php for both "movies" and "series"
+        // Sync mainUrl with the active session domain (from headers)
+        http.getImageHeaders()["Referer"]?.let { referer ->
+            this.mainUrl = referer.trimEnd('/')
+        }
+        val activeUrl = this.mainUrl
+        Log.d(TAG, "[search] Active Domain: $activeUrl")
+        
+        // Simulating reference: GET to /find/?word=...&type=... for both "movies" and "series"
         val types = listOf("movies", "series")
         
         return coroutineScope {
             types.map { type ->
                 async {
-                    val doc = http.post(
-                        url = "/wp-content/themes/Elshaikh2021/Ajaxat/SearchingTwo.php",
-                        data = mapOf("search" to query, "type" to type),
-                        referer = mainUrl
+                    val searchUrl = "$activeUrl/find/?word=$query&type=$type"
+                    Log.d(TAG, "[search] GET $searchUrl")
+                    
+                    val doc = http.getDocument(
+                        url = searchUrl,
+                        headers = mapOf("Referer" to mainUrl)
                     )
                     
-                    // Use parser to extract items from the returned HTML document
-                    doc?.let { parser.parseSearch(it) } ?: emptyList()
+                    if (doc != null) {
+                        val html = doc.html()
+                        Log.d(TAG, "[search] Response HTML for $type (Size: ${html.length}):\n${html.take(2000)}...") // Log first 2000 chars
+                        
+                        val items = parser.parseSearch(doc)
+                        Log.d(TAG, "[search] Parsed ${items.size} items for type '$type'")
+                        items
+                    } else {
+                        Log.e(TAG, "[search] Failed to get document for type '$type'")
+                        emptyList()
+                    }
                 }
             }.awaitAll().flatten().map { item ->
                 if (item.isMovie) {
