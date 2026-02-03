@@ -3,6 +3,7 @@ package com.arabseed
 import com.lagradost.api.Log
 import com.lagradost.cloudstream3.*
 import com.arabseed.service.ProviderConfig
+import com.arabseed.service.ProviderHttpService
 import com.arabseed.service.parsing.ParserInterface.ParsedEpisode
 import com.arabseed.utils.ActivityProvider
 import com.arabseed.utils.PluginContext
@@ -39,7 +40,7 @@ class ArabseedV2 : MainAPI() {
 
     private val httpService by lazy {
         // Ensure context is available
-        val context = PluginContext.context ?: com.lagradost.cloudstream3.app.applicationContext
+        val context = PluginContext.context ?: (com.lagradost.cloudstream3.app as android.content.Context)
         
         ProviderHttpService.create(
             context = context,

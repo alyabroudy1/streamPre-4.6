@@ -5,6 +5,6 @@ package com.arabseed.service
  */
 data class VideoSource(
     val url: String,
-    val label: String,
-    val headers: Map<String, String>
+    val quality: String,
+    val headers: Map<String, String> = emptyMap()
 )

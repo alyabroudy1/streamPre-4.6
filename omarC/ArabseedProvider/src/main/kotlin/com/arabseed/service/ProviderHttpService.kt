@@ -16,7 +16,7 @@ import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import java.net.URI
 
-data class VideoSource(val url: String, val quality: String, val headers: Map<String, String> = emptyMap())
+
 
 /**
  * THE GATEWAY - Single entry point for all provider HTTP operations.
