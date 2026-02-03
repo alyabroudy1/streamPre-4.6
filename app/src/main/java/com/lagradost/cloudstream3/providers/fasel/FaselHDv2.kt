@@ -36,7 +36,7 @@ class FaselHDv2 : MainAPI() {
     
     companion object {
         private const val TAG = "FaselHDv2"
-        private const val FALLBACK_DOMAIN = "https://www.faselhds.biz"
+        private const val FALLBACK_DOMAIN = "https://web1316x.faselhdx.xyz"
         
         // Lazy-initialized service (needs context)
         private var _httpService: ProviderHttpService? = null

@@ -1193,12 +1193,26 @@ class MainActivity : AppCompatActivity(), ColorPickerDialogListener, BiometricCa
                  com.lagradost.cloudstream3.mvvm.logError(Exception("Registered built-in provider: ${faselHDv2.name}"))
              }
              
-             // Arabseed
-             val arabseed = com.lagradost.cloudstream3.providers.arabseed.Arabseed()
-             if (APIHolder.allProviders.none { it.name == arabseed.name }) {
-                 APIHolder.allProviders.add(arabseed)
-                 com.lagradost.cloudstream3.mvvm.logError(Exception("Registered built-in provider: ${arabseed.name}"))
-             }
+//             // Arabseed
+//             val arabseed = com.lagradost.cloudstream3.providers.arabseed.Arabseed()
+//             if (APIHolder.allProviders.none { it.name == arabseed.name }) {
+//                 APIHolder.allProviders.add(arabseed)
+//                 com.lagradost.cloudstream3.mvvm.logError(Exception("Registered built-in provider: ${arabseed.name}"))
+//             }
+
+            // ArabseedV4
+            val arabseedv4 = com.lagradost.cloudstream3.providers.arabseedV4.ArabseedV4()
+            if (APIHolder.allProviders.none { it.name == arabseedv4.name }) {
+                APIHolder.allProviders.add(arabseedv4)
+                com.lagradost.cloudstream3.mvvm.logError(Exception("Registered built-in provider: ${arabseedv4.name}"))
+            }
+
+            // YoutubeProvider
+            val youtubeProvider = com.lagradost.cloudstream3.providers.youtube.YoutubeProvider()
+            if (APIHolder.allProviders.none { it.name == youtubeProvider.name }) {
+                APIHolder.allProviders.add(youtubeProvider)
+                com.lagradost.cloudstream3.mvvm.logError(Exception("Registered built-in provider: ${youtubeProvider.name}"))
+            }
         } catch(e : Exception) {
              com.lagradost.cloudstream3.mvvm.logError(e)
         }
