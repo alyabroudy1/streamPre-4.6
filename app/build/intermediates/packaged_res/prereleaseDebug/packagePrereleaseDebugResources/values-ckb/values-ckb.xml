@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_add_to_bookmarks">دۆخی تەماشاکردن دابنێ</string>
+    <string name="action_remove_from_bookmarks">لابردن</string>
+    <string formatted="true" name="app_dub_sub_episode_text_format">%1$sئەڵقەى%2$d</string>
+    <string name="app_dubbed_text">دۆبلاژ</string>
+    <string name="app_name">کلاود ستریم</string>
+    <string name="app_subbed_text">ژێرنووس</string>
+    <string name="begin_speaking">دەست بکە بە قسەکردن…</string>
+    <string name="browser">براوزەر</string>
+    <string formatted="true" name="cast_format">تیم:%s</string>
+    <string name="deselect_all">هەمووی لابدە</string>
+    <string name="download">داونلۆد</string>
+    <string name="download_canceled">داونلۆد هەڵوەشایەوە</string>
+    <string name="download_done">داونلۆد تەواو بووە</string>
+    <string name="download_failed">داونلۆدکردن شکستی هێنا</string>
+    <string name="download_paused">دابەزاندن وەستاوە</string>
+    <string name="download_started">داگرتن دەستی پێکرد</string>
+    <string name="download_storage_text">کۆگای ناوخۆیی</string>
+    <string formatted="true" name="download_time_left_hour_min_sec_format">%1$dh %2$dm %3$ds</string>
+    <string formatted="true" name="download_time_left_min_sec_format">%1$dm %2$ds</string>
+    <string formatted="true" name="download_time_left_sec_format">%1$ds</string>
+    <string name="downloaded">دابەزێنراوە</string>
+    <string name="downloading">دادەبەزێندرێت</string>
+    <string name="downloads_delete_select">ئەو شتانە هەڵبژێرە کە دەتەوێت بیسڕیتەوە</string>
+    <string name="downloads_empty">لە ئێستادا هیچ داونلۆدێک نییە.</string>
+    <string formatted="true" name="duration_format">min%d</string>
+    <string name="episode_more_options_des">هەڵبژاردنی زیاتر</string>
+    <string name="episode_poster_img_des">پۆستەری ئەڵقە</string>
+    <string name="error_bookmarks_text">ئاماژەکان</string>
+    <string formatted="true" name="filler">فیلەر</string>
+    <string name="filter_bookmarks">فلتەرکردنی ئاماژەکان</string>
+    <string name="go_back">گەڕانەوە بۆ دواوە</string>
+    <string name="go_back_img_des">گەڕانەوە</string>
+    <string name="home_change_provider_img_des">گۆڕینی دابینکەر</string>
+    <string name="home_expanded_hide">شاردنەوە</string>
+    <string name="home_info">زانیاری</string>
+    <string name="home_main_poster_img_des">پۆستەری سەرەکی</string>
+    <string name="home_more_info">زانیاری زیاتر</string>
+    <string name="home_next_random_img_des">داهاتوو بە هەڕەمەکی</string>
+    <string formatted="true" name="new_update_format">نوێکاری نوێ دۆزرایەوە!\n%1$s->%2$s</string>
+    <string name="next_episode">ئەڵقەی داهاتوو</string>
+    <string formatted="true" name="next_episode_format">ئەڵقەی %d لە</string>
+    <string formatted="true" name="next_episode_time_day_format">%1$dd %2$dh %3$dm</string>
+    <string formatted="true" name="next_episode_time_hour_format">%1$dh %2$dm</string>
+    <string formatted="true" name="next_episode_time_min_format">%dm</string>
+    <string formatted="true" name="next_season_episode_format">وەرزی %1$d ئەڵقەی %2$d لە</string>
+    <string name="no_data">هیچ داتایەک نییە</string>
+    <string name="offline_file">بەردەستە بۆ سەیرکردنی ئۆفلاین</string>
+    <string name="open_local_video">ڤیدیۆی ناوخۆیی بکەرەوە</string>
+    <string name="pick_source">سەرچاوەکان</string>
+    <string name="pick_subtitle">ژێرنووسەکان</string>
+    <string name="play_from_beginning_img_des">لە سەرەتاوە دەست پێ بکە</string>
+    <string name="play_torrent_button">تۆرێنت ستریم بکە</string>
+    <string formatted="true" name="player_speed_text_format">خێرای(x%.2f)</string>
+    <string name="popup_delete_file">سڕینەوەی فایل</string>
+    <string name="popup_pause_download">وەستاندنی دابەزاندن</string>
+    <string name="popup_resume_download">دووبارە دەستپێکردنەوەی دابەزاندن</string>
+    <string name="preview_background_img_des">پێشبینی پاشبنەما</string>
+    <string formatted="true" name="rated_format">هەڵسەنگاندن:%.1f</string>
+    <string name="reload_error">دووبارە هەوڵبدە پەیوەندی…</string>
+    <string name="result_open_in_browser">بکەرەوە لە براوزەر</string>
+    <string name="result_poster_img_des">پۆستەر</string>
+    <string name="result_share">شەیر</string>
+    <string name="result_tags">ژانرەکان</string>
+    <string name="search_hint">گەڕان…</string>
+    <string formatted="true" name="search_hint_site">بگەڕێ بۆ%s…</string>
+    <string name="search_poster_img_des">پۆستەر</string>
+    <string name="select_all">هەموو هەڵبژێرە</string>
+    <string name="sort_apply">جێبەجێکردن</string>
+    <string name="sort_close">داخستن</string>
+    <string name="sort_copy">کۆپی</string>
+    <string name="sort_save">سەیڤ</string>
+    <string name="speech_recognition_unavailable">ناسینەوەی قسەکردن بەردەست نییە</string>
+    <string name="title_downloads">داونڵۆد</string>
+    <string name="title_home">سەرەکی</string>
+    <string name="title_search">گەڕان</string>
+    <string name="title_settings">ڕێکخستن</string>
+    <string name="torrent_info">ئەم ڤیدیۆیە تۆرێنتە، ئەمەش مانای ئەوەیە کە دەتوانرێت شوێنپێی چالاکیی ڤیدیۆکەت بگرێت.\nپێش ئەوەی بەردەوام بیت دڵنیابە لە تۆرێنتینگ تێدەگەیت.</string>
+    <string name="type_completed">تەواو بووە</string>
+    <string name="type_dropped">دابەزیووە</string>
+    <string name="type_plan_to_watch">پلان بۆ سەیرکردن</string>
+    <string name="type_re_watching">دووبارە سەیرکردنەوە</string>
+    <string name="type_watching">تەماشاکردن</string>
+    <string name="update_started">نوێکردنەوە دەستی پێکرد</string>
+</resources>

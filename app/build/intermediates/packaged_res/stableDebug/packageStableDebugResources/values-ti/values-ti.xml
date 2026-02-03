@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string formatted="true" name="app_dub_sub_episode_text_format">%1$s ክፋል %2$d</string>
+    <string formatted="true" name="cast_format">ተዋሳእቲ፡ %s</string>
+    <string formatted="true" name="next_episode_format">ክፋል %d በ ላይ ይወጣል</string>
+</resources>

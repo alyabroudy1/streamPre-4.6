@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="account">konto</string>
+    <string name="action_remove_from_bookmarks">Forigi</string>
+    <string name="action_remove_watching">Forigi</string>
+    <string name="all_languages_preference">Ĉiuj lingvoj</string>
+    <string formatted="true" name="app_dub_sub_episode_text_format">%1$s Ep %2$d</string>
+    <string name="app_name">CloudStream</string>
+    <string name="asian_drama">Aziaj dramoj</string>
+    <string name="asian_drama_singular">Azia dramo</string>
+    <string name="browser">Retumilo</string>
+    <string formatted="true" name="cast_format">Rolantaro: %s</string>
+    <string name="category_account">Kontoj</string>
+    <string name="download">Elŝuti</string>
+    <string name="download_canceled">Elŝuto Nuligite</string>
+    <string name="download_done">Elŝuto Farite</string>
+    <string name="download_failed">Elŝuto Malsukcesite</string>
+    <string name="download_paused">Elŝuto Paŭzite</string>
+    <string name="download_started">Elŝuto Komencite</string>
+    <string name="downloaded">Elŝutite</string>
+    <string name="downloading">Elŝutante</string>
+    <string formatted="true" name="duration_format">%d min</string>
+    <string name="episode">Epizodo</string>
+    <string name="episode_more_options_des">Pli da Opcioj</string>
+    <string name="episode_poster_img_des">Epizoda Afiŝo</string>
+    <string name="episode_short">E</string>
+    <string name="episodes">Epizodoj</string>
+    <string name="error_loading_links_toast">Eraro okazis dum la Ŝarĝado de Ligiloj</string>
+    <string name="example_email">saluton@mondo.com</string>
+    <string name="example_ip">127.0.0.1</string>
+    <string name="example_lang_name">Lingvokodo (eo)</string>
+    <string name="example_password">pasvorto123</string>
+    <string name="example_site_name">MiaRetejo</string>
+    <string name="example_site_url">ekzemplo.com</string>
+    <string name="example_username">MiaSalutNomo</string>
+    <string name="extension_authors">Aŭtoroj</string>
+    <string name="extension_description">Priskribo</string>
+    <string name="extension_language">Lingvo</string>
+    <string name="extension_size">Grando</string>
+    <string name="extension_status">Stato</string>
+    <string name="extension_version">Versio</string>
+    <string formatted="true" name="filler">Speciala epizodo</string>
+    <string name="github">GitHub</string>
+    <string name="go_back">Reen</string>
+    <string name="go_back_30">−30</string>
+    <string name="go_back_img_des">Reen</string>
+    <string name="go_forward_30">+30</string>
+    <string name="history">Historio</string>
+    <string name="home_change_provider_img_des">Ŝanĝi Provizanton</string>
+    <string name="home_info">Informoj</string>
+    <string name="home_main_poster_img_des">Ĉefa Afiŝo</string>
+    <string name="home_next_random_img_des">Sekva Hazarda</string>
+    <string name="home_play">Spekti</string>
+    <string name="loading">Ŝarĝante…</string>
+    <string name="login">Saluti</string>
+    <string name="logout">Adiaŭi</string>
+    <string name="movies">Filmoj</string>
+    <string name="movies_singular">Filmo</string>
+    <string formatted="true" name="new_update_format">Nova ĝisdatigo trovita!
+\n%1$s -> %2$s</string>
+    <string name="next_episode">Sekva epizodo</string>
+    <string formatted="true" name="next_episode_format">Epizodo %d estos publikigita en</string>
+    <string formatted="true" name="next_episode_time_day_format">%1$dt %2$dh %3$dm</string>
+    <string formatted="true" name="next_episode_time_hour_format">%1$dh %2$dm</string>
+    <string formatted="true" name="next_episode_time_min_format">%dm</string>
+    <string name="no">Ne</string>
+    <string name="no_data">Neniuj Datumoj</string>
+    <string name="none">Nenio</string>
+    <string name="others">Aliaj</string>
+    <string name="pick_source">Fontoj</string>
+    <string name="pick_subtitle">Subtekstoj</string>
+    <string name="play_episode">Ludi Epizodon</string>
+    <string name="play_livestream_button">Ludi tuj-elsendfluon</string>
+    <string name="play_movie_button">Spekti filmon</string>
+    <string name="play_torrent_button">Elsendflui Torenton</string>
+    <string name="play_trailer_button">Ludi Antaŭfilmon</string>
+    <string name="play_with_app_name">Ludi per CloudStream</string>
+    <string formatted="true" name="player_speed_text_format">Rapido (%.2fx)</string>
+    <string name="preview_background_img_des">Antaŭrigardi Fono</string>
+    <string name="quality_blueray">Blu-radia</string>
+    <string formatted="true" name="rated_format">Rangita: %.1f</string>
+    <string name="reload_error">Reprovi konekton…</string>
+    <string name="result_open_in_browser">Malfermi en Retumilo</string>
+    <string name="result_poster_img_des">Afiŝo</string>
+    <string name="result_share">Kunhavigi</string>
+    <string name="result_tags">Ĝenroj</string>
+    <string name="search">Serĉi</string>
+    <string name="search_hint">Serĉi…</string>
+    <string formatted="true" name="search_hint_site">Serĉi %s…</string>
+    <string name="search_poster_img_des">Afiŝo</string>
+    <string name="season">Sezono</string>
+    <string name="season_short">S</string>
+    <string name="settings_info">Informoj</string>
+    <string name="show_title">Titolo</string>
+    <string name="skip_loading">Preterpasi la ŝarĝado</string>
+    <string name="sort_apply">Efektivigi</string>
+    <string name="sort_clear">Forviŝi</string>
+    <string name="sort_close">Fermi</string>
+    <string name="sort_copy">Kopii</string>
+    <string name="sort_save">Konservi</string>
+    <string name="source_error">Fonta eraro</string>
+    <string name="status">Stato</string>
+    <string name="stream">Elsendfluo</string>
+    <string name="subs_auto_select_language">Aŭtomate elekti lingvon</string>
+    <string name="subs_download_languages">Elŝuti lingvojn</string>
+    <string name="subs_font">Tiparo</string>
+    <string name="subs_font_size">Tipara grando</string>
+    <string name="subs_text_color">Teksta koloro</string>
+    <string name="subs_window_color">Fenestra koloro</string>
+    <string formatted="true" name="sync_score_format">%d / 10</string>
+    <string name="sync_total_episodes_none">/??</string>
+    <string formatted="true" name="sync_total_episodes_some">/%d</string>
+    <string name="title">Titolo</string>
+    <string name="title_downloads">Elŝutoj</string>
+    <string name="title_home">Hejmo</string>
+    <string name="title_search">Serĉi</string>
+    <string name="title_settings">Agordoj</string>
+    <string name="tv_series">Televidaj serioj</string>
+    <string name="tv_series_singular">Serio</string>
+    <string name="type_completed">Kompletigita</string>
+    <string name="type_dropped">Forlasita</string>
+    <string name="type_on_hold">En paŭzo</string>
+    <string name="type_plan_to_watch">Plani Spekti</string>
+    <string name="type_re_watching">Re-spektante</string>
+    <string name="type_watching">Spektante</string>
+    <string name="update_started">Ĝisdatigo Komencite</string>
+    <string name="video_source">Fonto</string>
+    <string name="year">Jaro</string>
+    <string name="yes">Jes</string>
+</resources>

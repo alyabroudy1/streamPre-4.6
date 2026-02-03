@@ -1,0 +1,11 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/mohammad/AndroidStudioProjects/cloudstream-pre-release/library/src/androidMain/AndroidManifest.xml:2:1-13
+INJECTED from /Users/mohammad/AndroidStudioProjects/cloudstream-pre-release/library/src/androidMain/AndroidManifest.xml:2:1-13
+	package
+		INJECTED from /Users/mohammad/AndroidStudioProjects/cloudstream-pre-release/library/src/androidMain/AndroidManifest.xml
+uses-sdk
+INJECTED from /Users/mohammad/AndroidStudioProjects/cloudstream-pre-release/library/src/androidMain/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/mohammad/AndroidStudioProjects/cloudstream-pre-release/library/src/androidMain/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/mohammad/AndroidStudioProjects/cloudstream-pre-release/library/src/androidMain/AndroidManifest.xml

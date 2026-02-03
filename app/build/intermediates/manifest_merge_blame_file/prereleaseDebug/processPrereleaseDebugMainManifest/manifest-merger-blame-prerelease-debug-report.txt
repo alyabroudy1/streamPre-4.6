@@ -1,0 +1,876 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.lagradost.cloudstream3.prerelease.debug"
+4    android:versionCode="29502068"
+5    android:versionName="4.6.1-PRE" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+9        android:targetSdkVersion="36" />
+10
+11    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- I dont remember, probs has to do with downloads -->
+11-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:5:5-79
+11-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:5:22-76
+12    <uses-permission android:name="android.permission.INTERNET" /> <!-- unless you only use cs3 as a player for downloaded stuff, you need this -->
+12-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:6:5-67
+12-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:6:22-64
+13    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- Downloads -->
+13-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:7:5-80
+13-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:7:22-77
+14    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- Downloads on low api devices -->
+14-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:8:5-81
+14-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:8:22-78
+15    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" /> <!-- Plugin API -->
+15-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:9:5-111
+15-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:9:22-79
+16    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" /> <!-- Used for player vertical slide -->
+16-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:10:5-80
+16-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:10:22-77
+17    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" /> <!-- Used for app update -->
+17-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:11:5-83
+17-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:11:22-80
+18    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" /> <!-- Used for app notifications on Android 13+ -->
+18-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:12:5-77
+18-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:12:22-74
+19    <uses-permission android:name="com.android.providers.tv.permission.WRITE_EPG_DATA" /> <!-- Used for Android TV watch next -->
+19-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:13:5-90
+19-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:13:22-87
+20    <uses-permission android:name="android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION" /> <!-- Used for updates without prompt -->
+20-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:14:5-94
+20-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:14:22-91
+21    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- Used for update service -->
+21-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:15:5-77
+21-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:15:22-74
+22    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+22-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:16:5-87
+22-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:16:22-84
+23    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+23-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:17:5-72
+23-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:17:22-69
+24    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" /> <!-- We can use this directly as CS3 is not on Play Store -->
+24-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:18:5-95
+24-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:18:22-92
+25    <uses-permission android:name="com.android.providers.tv.permission.READ_EPG_DATA" /> <!-- We can use to read the tv channel list -->
+25-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:19:5-89
+25-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:19:22-86
+26    <!-- Required for OpenInAppAction and getting arbitrary Aniyomi packages -->
+27    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+27-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:21:5-23:53
+27-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:22:9-61
+28
+29    <!-- Fixes android tv fuckery -->
+30    <uses-feature
+30-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:26:5-28:36
+31        android:name="android.hardware.touchscreen"
+31-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:27:9-52
+32        android:required="false" />
+32-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:28:9-33
+33    <uses-feature
+33-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:29:5-31:36
+34        android:name="android.software.leanback"
+34-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:30:9-49
+35        android:required="false" />
+35-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:31:9-33
+36
+37    <!-- suppress DeprecatedClassUsageInspection -->
+38    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+38-->[androidx.biometric:biometric:1.4.0-alpha04] /Users/mohammad/.gradle/caches/9.2.1/transforms/260ced2708c06eec3271d8310006eecd/transformed/biometric-1.4.0-alpha04/AndroidManifest.xml:25:5-74
+38-->[androidx.biometric:biometric:1.4.0-alpha04] /Users/mohammad/.gradle/caches/9.2.1/transforms/260ced2708c06eec3271d8310006eecd/transformed/biometric-1.4.0-alpha04/AndroidManifest.xml:25:22-71
+39
+40    <queries>
+40-->[com.google.android.gms:play-services-cast-framework:21.5.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/8fd8587659ce94a137400718baec86af/transformed/play-services-cast-framework-21.5.0/AndroidManifest.xml:10:5-12:15
+41        <package android:name="com.google.android.gms.policy_cast_dynamite" />
+41-->[com.google.android.gms:play-services-cast-framework:21.5.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/8fd8587659ce94a137400718baec86af/transformed/play-services-cast-framework-21.5.0/AndroidManifest.xml:11:9-79
+41-->[com.google.android.gms:play-services-cast-framework:21.5.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/8fd8587659ce94a137400718baec86af/transformed/play-services-cast-framework-21.5.0/AndroidManifest.xml:11:18-76
+42    </queries>
+43
+44    <uses-permission android:name="android.permission.WAKE_LOCK" />
+44-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:23:5-68
+44-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:23:22-65
+45    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+45-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:25:5-81
+45-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:25:22-78
+46
+47    <permission
+47-->[androidx.core:core:1.17.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/7bfd461c5e4b2acefbd3e1b58827a840/transformed/core-1.17.0/AndroidManifest.xml:22:5-24:47
+48        android:name="com.lagradost.cloudstream3.prerelease.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+48-->[androidx.core:core:1.17.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/7bfd461c5e4b2acefbd3e1b58827a840/transformed/core-1.17.0/AndroidManifest.xml:23:9-81
+49        android:protectionLevel="signature" />
+49-->[androidx.core:core:1.17.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/7bfd461c5e4b2acefbd3e1b58827a840/transformed/core-1.17.0/AndroidManifest.xml:24:9-44
+50
+51    <uses-permission android:name="com.lagradost.cloudstream3.prerelease.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+51-->[androidx.core:core:1.17.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/7bfd461c5e4b2acefbd3e1b58827a840/transformed/core-1.17.0/AndroidManifest.xml:26:5-97
+51-->[androidx.core:core:1.17.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/7bfd461c5e4b2acefbd3e1b58827a840/transformed/core-1.17.0/AndroidManifest.xml:26:22-94
+52    <uses-permission android:name="android.permission.REORDER_TASKS" /> <!-- Without the large heap Exoplayer buffering gets reset due to OOM. -->
+52-->[androidx.test:core:1.7.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/687b193b4f316c205f367d37bb95e23e/transformed/core-1.7.0/AndroidManifest.xml:24:5-72
+52-->[androidx.test:core:1.7.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/687b193b4f316c205f367d37bb95e23e/transformed/core-1.7.0/AndroidManifest.xml:24:22-69
+53    <!-- TODO https://stackoverflow.com/questions/41799732/chromecast-button-not-visible-in-android -->
+54    <application
+55        android:name="com.lagradost.cloudstream3.CloudStreamApp"
+55-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:36:9-39
+56        android:allowBackup="true"
+56-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:37:9-35
+57        android:appCategory="video"
+57-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:38:9-36
+58        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+58-->[androidx.core:core:1.17.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/7bfd461c5e4b2acefbd3e1b58827a840/transformed/core-1.17.0/AndroidManifest.xml:28:18-86
+59        android:banner="@mipmap/ic_banner"
+59-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:39:9-43
+60        android:dataExtractionRules="@xml/data_extraction_rules"
+60-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:41:9-65
+61        android:debuggable="true"
+62        android:extractNativeLibs="true"
+63        android:fullBackupContent="@xml/backup_descriptor"
+63-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:40:9-59
+64        android:icon="@mipmap/ic_launcher"
+64-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:42:9-43
+65        android:label="@string/app_name"
+65-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:43:9-41
+66        android:largeHeap="true"
+66-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:44:9-33
+67        android:pageSizeCompat="enabled"
+67-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:45:9-41
+68        android:roundIcon="@mipmap/ic_launcher_round"
+68-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:46:9-54
+69        android:supportsRtl="true"
+69-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:47:9-35
+70        android:testOnly="true"
+71        android:theme="@style/AppTheme"
+71-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:48:9-40
+72        android:usesCleartextTraffic="true" >
+72-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:49:9-44
+73        <meta-data
+73-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:52:9-54:84
+74            android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME"
+74-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:53:13-93
+75            android:value="com.lagradost.cloudstream3.utils.CastOptionsProvider" />
+75-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:54:13-81
+76
+77        <profileable android:shell="true" />
+77-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:56:9-58:35
+77-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:57:13-33
+78
+79        <activity
+79-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:60:9-106:20
+80            android:name="com.lagradost.cloudstream3.ui.player.DownloadedPlayerActivity"
+80-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:61:13-63
+81            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|keyboard|keyboardHidden|navigation"
+81-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:62:13-126
+82            android:exported="true"
+82-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:63:13-36
+83            android:launchMode="singleTask"
+83-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:68:13-44
+84            android:resizeableActivity="true"
+84-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:64:13-46
+85            android:screenOrientation="userLandscape"
+85-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:65:13-54
+86            android:supportsPictureInPicture="true"
+86-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:66:13-52
+87            android:taskAffinity="com.lagradost.cloudstream3.downloadedplayer" >
+87-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:67:13-79
+88            <intent-filter>
+88-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:70:13-77:29
+89                <action android:name="android.intent.action.VIEW" />
+89-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:71:17-69
+89-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:71:25-66
+90
+91                <category android:name="android.intent.category.DEFAULT" />
+91-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:73:17-76
+91-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:73:27-73
+92
+93                <data android:scheme="content" />
+93-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:75:17-50
+93-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:75:23-47
+94                <data android:mimeType="video/*" />
+94-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:75:17-50
+94-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:76:23-49
+95            </intent-filter>
+96
+97            <!-- I dont think this label can be translated, but idk -->
+98            <intent-filter android:label="@string/play_with_app_name" >
+98-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:80:13-86:29
+98-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:80:28-70
+99                <action android:name="android.intent.action.SEND" />
+99-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:81:17-69
+99-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:81:25-66
+100
+101                <category android:name="android.intent.category.DEFAULT" />
+101-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:73:17-76
+101-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:73:27-73
+102
+103                <data android:mimeType="*/*" />
+103-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:75:17-50
+103-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:76:23-49
+104            </intent-filter>
+105            <intent-filter>
+105-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:87:13-96:29
+106                <action android:name="android.intent.action.VIEW" />
+106-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:71:17-69
+106-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:71:25-66
+107                <action android:name="android.intent.action.SEND" />
+107-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:81:17-69
+107-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:81:25-66
+108                <action android:name="android.intent.action.OPEN_DOCUMENT" />
+108-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:90:17-78
+108-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:90:25-75
+109
+110                <category android:name="android.intent.category.DEFAULT" />
+110-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:73:17-76
+110-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:73:27-73
+111                <category android:name="android.intent.category.BROWSABLE" />
+111-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:93:17-78
+111-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:93:27-75
+112
+113                <data android:scheme="magnet" />
+113-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:75:17-50
+113-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:75:23-47
+114            </intent-filter>
+115            <!--
+116            <intent-filter tools:ignore="AppLinkUrlError">
+117                <action android:name="android.intent.action.VIEW" />
+118                <action android:name="android.intent.action.SEND" />
+119                <action android:name="android.intent.action.OPEN_DOCUMENT" />
+120
+121                <category android:name="android.intent.category.DEFAULT" />
+122
+123                <data android:mimeType="application/x-bittorrent" />
+124            </intent-filter>
+125            -->
+126        </activity>
+127        <!--
+128        android:launchMode="singleTask"
+129        is a bit experimental, it makes loading repositories from browser still stay on the same page
+130        no idea about side effects
+131        -->
+132        <activity
+132-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:112:9-187:20
+133            android:name="com.lagradost.cloudstream3.MainActivity"
+133-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:113:13-41
+134            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|keyboard|keyboardHidden|navigation|uiMode"
+134-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:114:13-133
+135            android:exported="true"
+135-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:115:13-36
+136            android:launchMode="singleTask"
+136-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:116:13-44
+137            android:resizeableActivity="true"
+137-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:117:13-46
+138            android:supportsPictureInPicture="true" >
+138-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:118:13-52
+139
+140            <!-- cloudstreamplayer://encodedUrl?name=Dune -->
+141            <intent-filter>
+141-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:121:13-128:29
+142                <action android:name="android.intent.action.VIEW" />
+142-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:71:17-69
+142-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:71:25-66
+143
+144                <category android:name="android.intent.category.DEFAULT" />
+144-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:73:17-76
+144-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:73:27-73
+145                <category android:name="android.intent.category.BROWSABLE" />
+145-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:93:17-78
+145-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:93:27-75
+146
+147                <data android:scheme="cloudstreamplayer" />
+147-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:75:17-50
+147-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:75:23-47
+148            </intent-filter>
+149            <intent-filter>
+149-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:129:13-136:29
+150                <action android:name="android.intent.action.VIEW" />
+150-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:71:17-69
+150-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:71:25-66
+151
+152                <category android:name="android.intent.category.DEFAULT" />
+152-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:73:17-76
+152-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:73:27-73
+153                <category android:name="android.intent.category.BROWSABLE" />
+153-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:93:17-78
+153-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:93:27-75
+154
+155                <data android:scheme="cloudstreamapp" />
+155-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:75:17-50
+155-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:75:23-47
+156            </intent-filter>
+157            <intent-filter>
+157-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:137:13-144:29
+158                <action android:name="android.intent.action.VIEW" />
+158-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:71:17-69
+158-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:71:25-66
+159
+160                <category android:name="android.intent.category.DEFAULT" />
+160-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:73:17-76
+160-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:73:27-73
+161                <category android:name="android.intent.category.BROWSABLE" />
+161-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:93:17-78
+161-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:93:27-75
+162
+163                <data android:scheme="cloudstreamrepo" />
+163-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:75:17-50
+163-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:75:23-47
+164            </intent-filter>
+165            <intent-filter>
+165-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:145:13-152:29
+166                <action android:name="android.intent.action.VIEW" />
+166-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:71:17-69
+166-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:71:25-66
+167
+168                <category android:name="android.intent.category.DEFAULT" />
+168-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:73:17-76
+168-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:73:27-73
+169                <category android:name="android.intent.category.BROWSABLE" />
+169-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:93:17-78
+169-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:93:27-75
+170
+171                <data android:scheme="csshare" />
+171-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:75:17-50
+171-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:75:23-47
+172            </intent-filter>
+173            <!-- Allow searching with intents: cloudstreamsearch://Your%20Name -->
+174            <intent-filter>
+174-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:154:13-161:29
+175                <action android:name="android.intent.action.VIEW" />
+175-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:71:17-69
+175-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:71:25-66
+176
+177                <category android:name="android.intent.category.DEFAULT" />
+177-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:73:17-76
+177-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:73:27-73
+178                <category android:name="android.intent.category.BROWSABLE" />
+178-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:93:17-78
+178-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:93:27-75
+179
+180                <data android:scheme="cloudstreamsearch" />
+180-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:75:17-50
+180-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:75:23-47
+181            </intent-filter>
+182
+183            <!--
+184            Allow opening from continue watching with intents: cloudstreamsearch://1234
+185            Used on Android TV Watch Next
+186            -->
+187            <intent-filter>
+187-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:167:13-174:29
+188                <action android:name="android.intent.action.VIEW" />
+188-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:71:17-69
+188-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:71:25-66
+189
+190                <category android:name="android.intent.category.DEFAULT" />
+190-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:73:17-76
+190-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:73:27-73
+191                <category android:name="android.intent.category.BROWSABLE" />
+191-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:93:17-78
+191-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:93:27-75
+192
+193                <data android:scheme="cloudstreamcontinuewatching" />
+193-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:75:17-50
+193-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:75:23-47
+194            </intent-filter>
+195            <intent-filter>
+195-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:176:13-186:29
+196                <action android:name="android.intent.action.VIEW" />
+196-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:71:17-69
+196-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:71:25-66
+197
+198                <category android:name="android.intent.category.DEFAULT" />
+198-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:73:17-76
+198-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:73:27-73
+199                <category android:name="android.intent.category.BROWSABLE" />
+199-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:93:17-78
+199-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:93:27-75
+200
+201                <data
+201-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:75:17-50
+202                    android:host="cs.repo"
+202-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:183:21-43
+203                    android:pathPrefix="/"
+203-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:184:21-43
+204                    android:scheme="https" />
+204-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:75:23-47
+205            </intent-filter>
+206        </activity>
+207        <activity
+207-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:189:9-202:20
+208            android:name="com.lagradost.cloudstream3.ui.account.AccountSelectActivity"
+208-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:190:13-61
+209            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|keyboard|keyboardHidden"
+209-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:191:13-115
+210            android:exported="true" >
+210-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:192:13-36
+211            <intent-filter android:exported="true" >
+211-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:193:13-197:29
+211-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:193:28-51
+212                <action android:name="android.intent.action.MAIN" />
+212-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:194:17-69
+212-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:194:25-66
+213
+214                <category android:name="android.intent.category.LAUNCHER" />
+214-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:195:17-77
+214-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:195:27-74
+215                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+215-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:196:17-86
+215-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:196:27-83
+216            </intent-filter>
+217            <intent-filter>
+217-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:198:13-201:29
+218                <action android:name="android.intent.action.VIEW" />
+218-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:71:17-69
+218-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:71:25-66
+219
+220                <category android:name="android.intent.category.DEFAULT" />
+220-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:73:17-76
+220-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:73:27-73
+221            </intent-filter>
+222        </activity>
+223
+224        <receiver
+224-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:204:9-211:20
+225            android:name="com.lagradost.cloudstream3.receivers.VideoDownloadRestartReceiver"
+225-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:205:13-67
+226            android:enabled="false"
+226-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:206:13-36
+227            android:exported="false" >
+227-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:207:13-37
+228            <intent-filter android:exported="false" >
+228-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:208:13-210:29
+228-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:208:28-52
+229                <action android:name="restart_service" />
+229-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:209:17-58
+229-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:209:25-55
+230            </intent-filter>
+231        </receiver>
+232
+233        <service
+233-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:213:9-217:40
+234            android:name="com.lagradost.cloudstream3.services.VideoDownloadService"
+234-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:214:13-58
+235            android:enabled="true"
+235-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:215:13-35
+236            android:exported="false"
+236-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:217:13-37
+237            android:foregroundServiceType="dataSync" />
+237-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:216:13-53
+238
+239        <!-- Necessary for WorkManager services: https://stackoverflow.com/a/77186316 -->
+240        <service
+240-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:220:9-223:34
+241            android:name="androidx.work.impl.foreground.SystemForegroundService"
+241-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:221:13-81
+242            android:directBootAware="false"
+242-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:55:13-44
+243            android:enabled="@bool/enable_system_foreground_service_default"
+243-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:56:13-77
+244            android:exported="false"
+244-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:57:13-37
+245            android:foregroundServiceType="dataSync" />
+245-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:222:13-53
+246
+247        <activity
+247-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:225:9-227:40
+248            android:name="com.lagradost.cloudstream3.ui.ControllerActivity"
+248-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:226:13-50
+249            android:exported="false" />
+249-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:227:13-37
+250
+251        <service
+251-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:231:9-234:40
+252            android:name="com.lagradost.cloudstream3.services.PackageInstallerService"
+252-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:232:13-61
+253            android:exported="false"
+253-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:234:13-37
+254            android:foregroundServiceType="dataSync" />
+254-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:233:13-53
+255
+256        <provider
+257            android:name="androidx.core.content.FileProvider"
+257-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:237:13-62
+258            android:authorities="com.lagradost.cloudstream3.prerelease.debug.provider"
+258-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:238:13-60
+259            android:enabled="true"
+259-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:239:13-35
+260            android:exported="false"
+260-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:240:13-37
+261            android:grantUriPermissions="true" >
+261-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:241:13-47
+262            <meta-data
+262-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:242:13-244:58
+263                android:name="android.support.FILE_PROVIDER_PATHS"
+263-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:243:17-67
+264                android:resource="@xml/provider_paths" />
+264-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:244:17-55
+265        </provider>
+266
+267        <receiver
+267-->[com.google.android.gms:play-services-cast-framework:21.5.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/8fd8587659ce94a137400718baec86af/transformed/play-services-cast-framework-21.5.0/AndroidManifest.xml:15:9-125
+268            android:name="com.google.android.gms.cast.framework.media.MediaIntentReceiver"
+268-->[com.google.android.gms:play-services-cast-framework:21.5.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/8fd8587659ce94a137400718baec86af/transformed/play-services-cast-framework-21.5.0/AndroidManifest.xml:15:19-97
+269            android:exported="false" />
+269-->[com.google.android.gms:play-services-cast-framework:21.5.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/8fd8587659ce94a137400718baec86af/transformed/play-services-cast-framework-21.5.0/AndroidManifest.xml:15:98-122
+270
+271        <service
+271-->[com.google.android.gms:play-services-cast-framework:21.5.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/8fd8587659ce94a137400718baec86af/transformed/play-services-cast-framework-21.5.0/AndroidManifest.xml:17:9-118
+272            android:name="com.google.android.gms.cast.framework.ReconnectionService"
+272-->[com.google.android.gms:play-services-cast-framework:21.5.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/8fd8587659ce94a137400718baec86af/transformed/play-services-cast-framework-21.5.0/AndroidManifest.xml:17:18-90
+273            android:exported="false" />
+273-->[com.google.android.gms:play-services-cast-framework:21.5.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/8fd8587659ce94a137400718baec86af/transformed/play-services-cast-framework-21.5.0/AndroidManifest.xml:17:91-115
+274
+275        <activity
+275-->[com.google.android.gms:play-services-base:18.5.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/a33e65ff4b2a50df0688acdc5da82cbd/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:9-173
+276            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+276-->[com.google.android.gms:play-services-base:18.5.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/a33e65ff4b2a50df0688acdc5da82cbd/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:19-85
+277            android:exported="false"
+277-->[com.google.android.gms:play-services-base:18.5.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/a33e65ff4b2a50df0688acdc5da82cbd/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:146-170
+278            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+278-->[com.google.android.gms:play-services-base:18.5.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/a33e65ff4b2a50df0688acdc5da82cbd/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:86-145
+279
+280        <meta-data
+280-->[com.google.android.gms:play-services-basement:18.4.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/2e5e70d9596558db9cdb8d99661290a9/transformed/play-services-basement-18.4.0/AndroidManifest.xml:6:9-122
+281            android:name="com.google.android.gms.version"
+281-->[com.google.android.gms:play-services-basement:18.4.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/2e5e70d9596558db9cdb8d99661290a9/transformed/play-services-basement-18.4.0/AndroidManifest.xml:6:20-65
+282            android:value="@integer/google_play_services_version" />
+282-->[com.google.android.gms:play-services-basement:18.4.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/2e5e70d9596558db9cdb8d99661290a9/transformed/play-services-basement-18.4.0/AndroidManifest.xml:6:66-119
+283
+284        <provider
+284-->[androidx.emoji2:emoji2:1.3.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/8919958f1e2eeb2898c3ff6587a1e199/transformed/emoji2-1.3.0/AndroidManifest.xml:24:9-32:20
+285            android:name="androidx.startup.InitializationProvider"
+285-->[androidx.emoji2:emoji2:1.3.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/8919958f1e2eeb2898c3ff6587a1e199/transformed/emoji2-1.3.0/AndroidManifest.xml:25:13-67
+286            android:authorities="com.lagradost.cloudstream3.prerelease.debug.androidx-startup"
+286-->[androidx.emoji2:emoji2:1.3.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/8919958f1e2eeb2898c3ff6587a1e199/transformed/emoji2-1.3.0/AndroidManifest.xml:26:13-68
+287            android:exported="false" >
+287-->[androidx.emoji2:emoji2:1.3.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/8919958f1e2eeb2898c3ff6587a1e199/transformed/emoji2-1.3.0/AndroidManifest.xml:27:13-37
+288            <meta-data
+288-->[androidx.emoji2:emoji2:1.3.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/8919958f1e2eeb2898c3ff6587a1e199/transformed/emoji2-1.3.0/AndroidManifest.xml:29:13-31:52
+289                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+289-->[androidx.emoji2:emoji2:1.3.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/8919958f1e2eeb2898c3ff6587a1e199/transformed/emoji2-1.3.0/AndroidManifest.xml:30:17-75
+290                android:value="androidx.startup" />
+290-->[androidx.emoji2:emoji2:1.3.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/8919958f1e2eeb2898c3ff6587a1e199/transformed/emoji2-1.3.0/AndroidManifest.xml:31:17-49
+291            <meta-data
+291-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:34:13-36:52
+292                android:name="androidx.work.WorkManagerInitializer"
+292-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:35:17-68
+293                android:value="androidx.startup" />
+293-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:36:17-49
+294            <meta-data
+294-->[androidx.lifecycle:lifecycle-process:2.9.4] /Users/mohammad/.gradle/caches/9.2.1/transforms/8907c85aacf6423322151187b92cf56c/transformed/lifecycle-process-2.9.4/AndroidManifest.xml:29:13-31:52
+295                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+295-->[androidx.lifecycle:lifecycle-process:2.9.4] /Users/mohammad/.gradle/caches/9.2.1/transforms/8907c85aacf6423322151187b92cf56c/transformed/lifecycle-process-2.9.4/AndroidManifest.xml:30:17-78
+296                android:value="androidx.startup" />
+296-->[androidx.lifecycle:lifecycle-process:2.9.4] /Users/mohammad/.gradle/caches/9.2.1/transforms/8907c85aacf6423322151187b92cf56c/transformed/lifecycle-process-2.9.4/AndroidManifest.xml:31:17-49
+297            <meta-data
+297-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/mohammad/.gradle/caches/9.2.1/transforms/38317a9aa4637f371e1f6a63cfe0b207/transformed/profileinstaller-1.4.1/AndroidManifest.xml:29:13-31:52
+298                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+298-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/mohammad/.gradle/caches/9.2.1/transforms/38317a9aa4637f371e1f6a63cfe0b207/transformed/profileinstaller-1.4.1/AndroidManifest.xml:30:17-85
+299                android:value="androidx.startup" />
+299-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/mohammad/.gradle/caches/9.2.1/transforms/38317a9aa4637f371e1f6a63cfe0b207/transformed/profileinstaller-1.4.1/AndroidManifest.xml:31:17-49
+300        </provider>
+301
+302        <service
+302-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:39:9-45:35
+303            android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"
+303-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:40:13-88
+304            android:directBootAware="false"
+304-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:41:13-44
+305            android:enabled="@bool/enable_system_alarm_service_default"
+305-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:42:13-72
+306            android:exported="false" />
+306-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:43:13-37
+307        <service
+307-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:46:9-52:35
+308            android:name="androidx.work.impl.background.systemjob.SystemJobService"
+308-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:47:13-84
+309            android:directBootAware="false"
+309-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:48:13-44
+310            android:enabled="@bool/enable_system_job_service_default"
+310-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:49:13-70
+311            android:exported="true"
+311-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:50:13-36
+312            android:permission="android.permission.BIND_JOB_SERVICE" />
+312-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:51:13-69
+313
+314        <receiver
+314-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:61:9-66:35
+315            android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"
+315-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:62:13-88
+316            android:directBootAware="false"
+316-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:63:13-44
+317            android:enabled="true"
+317-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:64:13-35
+318            android:exported="false" />
+318-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:65:13-37
+319        <receiver
+319-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:67:9-77:20
+320            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy"
+320-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:68:13-106
+321            android:directBootAware="false"
+321-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:69:13-44
+322            android:enabled="false"
+322-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:70:13-36
+323            android:exported="false" >
+323-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:71:13-37
+324            <intent-filter>
+324-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:73:13-76:29
+325                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+325-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:74:17-87
+325-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:74:25-84
+326                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+326-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:75:17-90
+326-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:75:25-87
+327            </intent-filter>
+328        </receiver>
+329        <receiver
+329-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:78:9-88:20
+330            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy"
+330-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:79:13-104
+331            android:directBootAware="false"
+331-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:80:13-44
+332            android:enabled="false"
+332-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:81:13-36
+333            android:exported="false" >
+333-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:82:13-37
+334            <intent-filter>
+334-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:84:13-87:29
+335                <action android:name="android.intent.action.BATTERY_OKAY" />
+335-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:85:17-77
+335-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:85:25-74
+336                <action android:name="android.intent.action.BATTERY_LOW" />
+336-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:86:17-76
+336-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:86:25-73
+337            </intent-filter>
+338        </receiver>
+339        <receiver
+339-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:89:9-99:20
+340            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy"
+340-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:90:13-104
+341            android:directBootAware="false"
+341-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:91:13-44
+342            android:enabled="false"
+342-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:92:13-36
+343            android:exported="false" >
+343-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:93:13-37
+344            <intent-filter>
+344-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:95:13-98:29
+345                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
+345-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:96:17-83
+345-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:96:25-80
+346                <action android:name="android.intent.action.DEVICE_STORAGE_OK" />
+346-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:97:17-82
+346-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:97:25-79
+347            </intent-filter>
+348        </receiver>
+349        <receiver
+349-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:100:9-109:20
+350            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy"
+350-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:101:13-103
+351            android:directBootAware="false"
+351-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:102:13-44
+352            android:enabled="false"
+352-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:103:13-36
+353            android:exported="false" >
+353-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:104:13-37
+354            <intent-filter>
+354-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:106:13-108:29
+355                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+355-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:107:17-79
+355-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:107:25-76
+356            </intent-filter>
+357        </receiver>
+358        <receiver
+358-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:110:9-121:20
+359            android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver"
+359-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:111:13-88
+360            android:directBootAware="false"
+360-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:112:13-44
+361            android:enabled="false"
+361-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:113:13-36
+362            android:exported="false" >
+362-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:114:13-37
+363            <intent-filter>
+363-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:116:13-120:29
+364                <action android:name="android.intent.action.BOOT_COMPLETED" />
+364-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:117:17-79
+364-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:117:25-76
+365                <action android:name="android.intent.action.TIME_SET" />
+365-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:118:17-73
+365-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:118:25-70
+366                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+366-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:119:17-81
+366-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:119:25-78
+367            </intent-filter>
+368        </receiver>
+369        <receiver
+369-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:122:9-131:20
+370            android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver"
+370-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:123:13-99
+371            android:directBootAware="false"
+371-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:124:13-44
+372            android:enabled="@bool/enable_system_alarm_service_default"
+372-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:125:13-72
+373            android:exported="false" >
+373-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:126:13-37
+374            <intent-filter>
+374-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:128:13-130:29
+375                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies" />
+375-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:129:17-98
+375-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:129:25-95
+376            </intent-filter>
+377        </receiver>
+378        <receiver
+378-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:132:9-142:20
+379            android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver"
+379-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:133:13-78
+380            android:directBootAware="false"
+380-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:134:13-44
+381            android:enabled="true"
+381-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:135:13-35
+382            android:exported="true"
+382-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:136:13-36
+383            android:permission="android.permission.DUMP" >
+383-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:137:13-57
+384            <intent-filter>
+384-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:139:13-141:29
+385                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS" />
+385-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:140:17-88
+385-->[androidx.work:work-runtime:2.10.5] /Users/mohammad/.gradle/caches/9.2.1/transforms/8ec06156ca4009e25a79c459cb577f69/transformed/work-runtime-2.10.5/AndroidManifest.xml:140:25-85
+386            </intent-filter>
+387        </receiver>
+388
+389        <uses-library
+389-->[androidx.window:window:1.0.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/9a694b3b3dfa3119dcf35b26afab8676/transformed/window-1.0.0/AndroidManifest.xml:25:9-27:40
+390            android:name="androidx.window.extensions"
+390-->[androidx.window:window:1.0.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/9a694b3b3dfa3119dcf35b26afab8676/transformed/window-1.0.0/AndroidManifest.xml:26:13-54
+391            android:required="false" />
+391-->[androidx.window:window:1.0.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/9a694b3b3dfa3119dcf35b26afab8676/transformed/window-1.0.0/AndroidManifest.xml:27:13-37
+392        <uses-library
+392-->[androidx.window:window:1.0.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/9a694b3b3dfa3119dcf35b26afab8676/transformed/window-1.0.0/AndroidManifest.xml:28:9-30:40
+393            android:name="androidx.window.sidecar"
+393-->[androidx.window:window:1.0.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/9a694b3b3dfa3119dcf35b26afab8676/transformed/window-1.0.0/AndroidManifest.xml:29:13-51
+394            android:required="false" />
+394-->[androidx.window:window:1.0.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/9a694b3b3dfa3119dcf35b26afab8676/transformed/window-1.0.0/AndroidManifest.xml:30:13-37
+395
+396        <activity
+396-->[androidx.test:core:1.7.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/687b193b4f316c205f367d37bb95e23e/transformed/core-1.7.0/AndroidManifest.xml:27:9-34:20
+397            android:name="androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity"
+397-->[androidx.test:core:1.7.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/687b193b4f316c205f367d37bb95e23e/transformed/core-1.7.0/AndroidManifest.xml:28:13-99
+398            android:exported="true"
+398-->[androidx.test:core:1.7.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/687b193b4f316c205f367d37bb95e23e/transformed/core-1.7.0/AndroidManifest.xml:29:13-36
+399            android:theme="@style/WhiteBackgroundTheme" >
+399-->[androidx.test:core:1.7.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/687b193b4f316c205f367d37bb95e23e/transformed/core-1.7.0/AndroidManifest.xml:30:13-56
+400            <intent-filter android:priority="-100" >
+400-->[androidx.test:core:1.7.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/687b193b4f316c205f367d37bb95e23e/transformed/core-1.7.0/AndroidManifest.xml:31:13-33:29
+400-->[androidx.test:core:1.7.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/687b193b4f316c205f367d37bb95e23e/transformed/core-1.7.0/AndroidManifest.xml:31:28-51
+401                <category android:name="android.intent.category.LAUNCHER" />
+401-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:195:17-77
+401-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:195:27-74
+402            </intent-filter>
+403        </activity>
+404        <activity
+404-->[androidx.test:core:1.7.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/687b193b4f316c205f367d37bb95e23e/transformed/core-1.7.0/AndroidManifest.xml:35:9-42:20
+405            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity"
+405-->[androidx.test:core:1.7.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/687b193b4f316c205f367d37bb95e23e/transformed/core-1.7.0/AndroidManifest.xml:36:13-95
+406            android:exported="true"
+406-->[androidx.test:core:1.7.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/687b193b4f316c205f367d37bb95e23e/transformed/core-1.7.0/AndroidManifest.xml:37:13-36
+407            android:theme="@style/WhiteBackgroundTheme" >
+407-->[androidx.test:core:1.7.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/687b193b4f316c205f367d37bb95e23e/transformed/core-1.7.0/AndroidManifest.xml:38:13-56
+408            <intent-filter android:priority="-100" >
+408-->[androidx.test:core:1.7.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/687b193b4f316c205f367d37bb95e23e/transformed/core-1.7.0/AndroidManifest.xml:31:13-33:29
+408-->[androidx.test:core:1.7.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/687b193b4f316c205f367d37bb95e23e/transformed/core-1.7.0/AndroidManifest.xml:31:28-51
+409                <category android:name="android.intent.category.LAUNCHER" />
+409-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:195:17-77
+409-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:195:27-74
+410            </intent-filter>
+411        </activity>
+412        <activity
+412-->[androidx.test:core:1.7.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/687b193b4f316c205f367d37bb95e23e/transformed/core-1.7.0/AndroidManifest.xml:43:9-50:20
+413            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity"
+413-->[androidx.test:core:1.7.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/687b193b4f316c205f367d37bb95e23e/transformed/core-1.7.0/AndroidManifest.xml:44:13-103
+414            android:exported="true"
+414-->[androidx.test:core:1.7.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/687b193b4f316c205f367d37bb95e23e/transformed/core-1.7.0/AndroidManifest.xml:45:13-36
+415            android:theme="@style/WhiteBackgroundDialogTheme" >
+415-->[androidx.test:core:1.7.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/687b193b4f316c205f367d37bb95e23e/transformed/core-1.7.0/AndroidManifest.xml:46:13-62
+416            <intent-filter android:priority="-100" >
+416-->[androidx.test:core:1.7.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/687b193b4f316c205f367d37bb95e23e/transformed/core-1.7.0/AndroidManifest.xml:31:13-33:29
+416-->[androidx.test:core:1.7.0] /Users/mohammad/.gradle/caches/9.2.1/transforms/687b193b4f316c205f367d37bb95e23e/transformed/core-1.7.0/AndroidManifest.xml:31:28-51
+417                <category android:name="android.intent.category.LAUNCHER" />
+417-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:195:17-77
+417-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/AndroidManifest.xml:195:27-74
+418            </intent-filter>
+419        </activity>
+420
+421        <receiver
+421-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/mohammad/.gradle/caches/9.2.1/transforms/38317a9aa4637f371e1f6a63cfe0b207/transformed/profileinstaller-1.4.1/AndroidManifest.xml:34:9-52:20
+422            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+422-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/mohammad/.gradle/caches/9.2.1/transforms/38317a9aa4637f371e1f6a63cfe0b207/transformed/profileinstaller-1.4.1/AndroidManifest.xml:35:13-76
+423            android:directBootAware="false"
+423-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/mohammad/.gradle/caches/9.2.1/transforms/38317a9aa4637f371e1f6a63cfe0b207/transformed/profileinstaller-1.4.1/AndroidManifest.xml:36:13-44
+424            android:enabled="true"
+424-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/mohammad/.gradle/caches/9.2.1/transforms/38317a9aa4637f371e1f6a63cfe0b207/transformed/profileinstaller-1.4.1/AndroidManifest.xml:37:13-35
+425            android:exported="true"
+425-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/mohammad/.gradle/caches/9.2.1/transforms/38317a9aa4637f371e1f6a63cfe0b207/transformed/profileinstaller-1.4.1/AndroidManifest.xml:38:13-36
+426            android:permission="android.permission.DUMP" >
+426-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/mohammad/.gradle/caches/9.2.1/transforms/38317a9aa4637f371e1f6a63cfe0b207/transformed/profileinstaller-1.4.1/AndroidManifest.xml:39:13-57
+427            <intent-filter>
+427-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/mohammad/.gradle/caches/9.2.1/transforms/38317a9aa4637f371e1f6a63cfe0b207/transformed/profileinstaller-1.4.1/AndroidManifest.xml:40:13-42:29
+428                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+428-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/mohammad/.gradle/caches/9.2.1/transforms/38317a9aa4637f371e1f6a63cfe0b207/transformed/profileinstaller-1.4.1/AndroidManifest.xml:41:17-91
+428-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/mohammad/.gradle/caches/9.2.1/transforms/38317a9aa4637f371e1f6a63cfe0b207/transformed/profileinstaller-1.4.1/AndroidManifest.xml:41:25-88
+429            </intent-filter>
+430            <intent-filter>
+430-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/mohammad/.gradle/caches/9.2.1/transforms/38317a9aa4637f371e1f6a63cfe0b207/transformed/profileinstaller-1.4.1/AndroidManifest.xml:43:13-45:29
+431                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+431-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/mohammad/.gradle/caches/9.2.1/transforms/38317a9aa4637f371e1f6a63cfe0b207/transformed/profileinstaller-1.4.1/AndroidManifest.xml:44:17-85
+431-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/mohammad/.gradle/caches/9.2.1/transforms/38317a9aa4637f371e1f6a63cfe0b207/transformed/profileinstaller-1.4.1/AndroidManifest.xml:44:25-82
+432            </intent-filter>
+433            <intent-filter>
+433-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/mohammad/.gradle/caches/9.2.1/transforms/38317a9aa4637f371e1f6a63cfe0b207/transformed/profileinstaller-1.4.1/AndroidManifest.xml:46:13-48:29
+434                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+434-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/mohammad/.gradle/caches/9.2.1/transforms/38317a9aa4637f371e1f6a63cfe0b207/transformed/profileinstaller-1.4.1/AndroidManifest.xml:47:17-88
+434-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/mohammad/.gradle/caches/9.2.1/transforms/38317a9aa4637f371e1f6a63cfe0b207/transformed/profileinstaller-1.4.1/AndroidManifest.xml:47:25-85
+435            </intent-filter>
+436            <intent-filter>
+436-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/mohammad/.gradle/caches/9.2.1/transforms/38317a9aa4637f371e1f6a63cfe0b207/transformed/profileinstaller-1.4.1/AndroidManifest.xml:49:13-51:29
+437                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+437-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/mohammad/.gradle/caches/9.2.1/transforms/38317a9aa4637f371e1f6a63cfe0b207/transformed/profileinstaller-1.4.1/AndroidManifest.xml:50:17-95
+437-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/mohammad/.gradle/caches/9.2.1/transforms/38317a9aa4637f371e1f6a63cfe0b207/transformed/profileinstaller-1.4.1/AndroidManifest.xml:50:25-92
+438            </intent-filter>
+439        </receiver>
+440
+441        <service
+441-->[androidx.room:room-runtime:2.6.1] /Users/mohammad/.gradle/caches/9.2.1/transforms/b1d62adc28d82b5d286d20ba8f852917/transformed/room-runtime-2.6.1/AndroidManifest.xml:24:9-28:63
+442            android:name="androidx.room.MultiInstanceInvalidationService"
+442-->[androidx.room:room-runtime:2.6.1] /Users/mohammad/.gradle/caches/9.2.1/transforms/b1d62adc28d82b5d286d20ba8f852917/transformed/room-runtime-2.6.1/AndroidManifest.xml:25:13-74
+443            android:directBootAware="true"
+443-->[androidx.room:room-runtime:2.6.1] /Users/mohammad/.gradle/caches/9.2.1/transforms/b1d62adc28d82b5d286d20ba8f852917/transformed/room-runtime-2.6.1/AndroidManifest.xml:26:13-43
+444            android:exported="false" />
+444-->[androidx.room:room-runtime:2.6.1] /Users/mohammad/.gradle/caches/9.2.1/transforms/b1d62adc28d82b5d286d20ba8f852917/transformed/room-runtime-2.6.1/AndroidManifest.xml:27:13-37
+445        <service
+445-->[com.google.android.datatransport:transport-backend-cct:3.1.3] /Users/mohammad/.gradle/caches/9.2.1/transforms/127039b599f01ca39745edcdb6ca5953/transformed/transport-backend-cct-3.1.3/AndroidManifest.xml:29:9-35:19
+446            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+446-->[com.google.android.datatransport:transport-backend-cct:3.1.3] /Users/mohammad/.gradle/caches/9.2.1/transforms/127039b599f01ca39745edcdb6ca5953/transformed/transport-backend-cct-3.1.3/AndroidManifest.xml:30:13-103
+447            android:exported="false" >
+447-->[com.google.android.datatransport:transport-backend-cct:3.1.3] /Users/mohammad/.gradle/caches/9.2.1/transforms/127039b599f01ca39745edcdb6ca5953/transformed/transport-backend-cct-3.1.3/AndroidManifest.xml:31:13-37
+448            <meta-data
+448-->[com.google.android.datatransport:transport-backend-cct:3.1.3] /Users/mohammad/.gradle/caches/9.2.1/transforms/127039b599f01ca39745edcdb6ca5953/transformed/transport-backend-cct-3.1.3/AndroidManifest.xml:32:13-34:39
+449                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+449-->[com.google.android.datatransport:transport-backend-cct:3.1.3] /Users/mohammad/.gradle/caches/9.2.1/transforms/127039b599f01ca39745edcdb6ca5953/transformed/transport-backend-cct-3.1.3/AndroidManifest.xml:33:17-94
+450                android:value="cct" />
+450-->[com.google.android.datatransport:transport-backend-cct:3.1.3] /Users/mohammad/.gradle/caches/9.2.1/transforms/127039b599f01ca39745edcdb6ca5953/transformed/transport-backend-cct-3.1.3/AndroidManifest.xml:34:17-36
+451        </service>
+452        <service
+452-->[com.google.android.datatransport:transport-runtime:3.1.3] /Users/mohammad/.gradle/caches/9.2.1/transforms/270fadda4664c23effb224e52db792fe/transformed/transport-runtime-3.1.3/AndroidManifest.xml:26:9-30:19
+453            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+453-->[com.google.android.datatransport:transport-runtime:3.1.3] /Users/mohammad/.gradle/caches/9.2.1/transforms/270fadda4664c23effb224e52db792fe/transformed/transport-runtime-3.1.3/AndroidManifest.xml:27:13-117
+454            android:exported="false"
+454-->[com.google.android.datatransport:transport-runtime:3.1.3] /Users/mohammad/.gradle/caches/9.2.1/transforms/270fadda4664c23effb224e52db792fe/transformed/transport-runtime-3.1.3/AndroidManifest.xml:28:13-37
+455            android:permission="android.permission.BIND_JOB_SERVICE" >
+455-->[com.google.android.datatransport:transport-runtime:3.1.3] /Users/mohammad/.gradle/caches/9.2.1/transforms/270fadda4664c23effb224e52db792fe/transformed/transport-runtime-3.1.3/AndroidManifest.xml:29:13-69
+456        </service>
+457
+458        <receiver
+458-->[com.google.android.datatransport:transport-runtime:3.1.3] /Users/mohammad/.gradle/caches/9.2.1/transforms/270fadda4664c23effb224e52db792fe/transformed/transport-runtime-3.1.3/AndroidManifest.xml:32:9-34:40
+459            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+459-->[com.google.android.datatransport:transport-runtime:3.1.3] /Users/mohammad/.gradle/caches/9.2.1/transforms/270fadda4664c23effb224e52db792fe/transformed/transport-runtime-3.1.3/AndroidManifest.xml:33:13-132
+460            android:exported="false" />
+460-->[com.google.android.datatransport:transport-runtime:3.1.3] /Users/mohammad/.gradle/caches/9.2.1/transforms/270fadda4664c23effb224e52db792fe/transformed/transport-runtime-3.1.3/AndroidManifest.xml:34:13-37
+461    </application>
+462
+463</manifest>

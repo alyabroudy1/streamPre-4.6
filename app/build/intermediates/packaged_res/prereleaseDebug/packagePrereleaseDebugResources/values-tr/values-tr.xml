@@ -1,0 +1,1035 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <array name="app_layout">
+        <item>@string/automatic</item>
+        <item>@string/phone_layout</item>
+        <item>@string/tv_layout</item>
+        <item>@string/emulator_layout</item>
+    </array>
+    <array name="app_layout_values">
+        <item>-1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </array>
+    <array name="cast_expanded_controller_control_buttons">
+        
+        <item>@id/cast_button_type_rewind_30_seconds</item>
+        <item>@id/cast_button_type_rewind_30_seconds</item>
+        <item>@id/cast_button_type_forward_30_seconds</item>
+        
+        <item>@id/cast_button_type_forward_30_seconds</item>
+    </array>
+    <array name="cast_mini_controller_control_buttons">
+        <item>@id/cast_button_type_rewind_30_seconds</item>
+        <item>@id/cast_button_type_play_pause_toggle</item>
+        <item>@id/cast_button_type_forward_30_seconds</item>
+    </array>
+    <array name="dns_pref">
+        <item>@string/none</item>
+        <item>Google</item>
+        <item>Cloudflare</item>
+        
+        <item>AdGuard</item>
+        <item>DNS.WATCH</item>
+        <item>Quad9</item>
+        <item>DNS.SB</item>
+        <item>Canadian Shield</item>
+    </array>
+    <array name="dns_pref_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </array>
+    <string-array name="extension_statuses">
+        <item>Çöktü</item>
+        
+        <item>Ok</item>
+        <item>Yavaş</item>
+        <item>Beta</item>
+    </string-array>
+    <array name="limit_title_pref_names">
+        <item>@string/none</item>
+        <item>16 karakter</item>
+        <item>32 karakter</item>
+        <item>64 karakter</item>
+        <item>128 karakter</item>
+        <item>Başlığı gizle</item>
+    </array>
+    <array name="limit_title_pref_values">
+        <item>0</item>
+        <item>16</item>
+        <item>32</item>
+        <item>64</item>
+        <item>128</item>
+        <item>-1</item>
+    </array>
+    <array name="limit_title_rez_pref_names">
+        <item>@string/resolution_and_name</item>
+        <item>@string/name</item>
+        <item>@string/resolution_and_title</item>
+        <item>@string/title</item>
+        <item>@string/resolution</item>
+        <item>@string/none</item>
+    </array>
+    <array name="limit_title_rez_pref_values">
+        <item>5</item>
+        <item>4</item>
+        <item>3</item>
+        <item>2</item>
+        <item>1</item>
+        <item>0</item>
+    </array>
+    <array name="poster_ui_options">
+        <item>@string/show_hd</item>
+        <item>@string/show_dub</item>
+        <item>@string/show_sub</item>
+        <item>@string/show_rating</item>
+        <item>@string/show_title</item>
+        <item>@string/show_episode_text</item>
+    </array>
+    <array name="poster_ui_options_values">
+        <item>@string/show_hd_key</item>
+        <item>@string/show_dub_key</item>
+        <item>@string/show_sub_key</item>
+        <item>@string/show_rating_key</item>
+        <item>@string/show_title_key</item>
+        <item>@string/show_episode_text_key</item>
+    </array>
+    <array name="skip_sec_values">
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+    </array>
+    <string-array name="subtitles_encoding_list" ns1:ignore="TypographyDashes">
+        <item>@string/automatic</item>
+        <item>Universal (UTF-8)</item>
+        <item>Universal (UTF-16)</item>
+        <item>Universal (big endian UTF-16)</item>
+        <item>Universal (little endian UTF-16)</item>
+        <item>Universal, Chinese (GB18030)</item>
+        <item>Western European (Latin-9)</item>
+        <item>Western European (Windows-1252)</item>
+        <item>Western European (IBM 00850)</item>
+        <item>Eastern European (Latin-2)</item>
+        <item>Eastern European (Windows-1250)</item>
+        <item>Esperanto (Latin-3)</item>
+        <item>Nordic (Latin-6)</item>
+        <item>Cyrillic (Windows-1251)</item>
+        <item>Russian (KOI8-R)</item>
+        <item>Ukrainian (KOI8-U)</item>
+        <item>Arabic (ISO 8859-6)</item>
+        <item>Arabic (Windows-1256)</item>
+        <item>Greek (ISO 8859-7)</item>
+        <item>Greek (Windows-1253)</item>
+        <item>Hebrew (ISO 8859-8)</item>
+        <item>Hebrew (Windows-1255)</item>
+        <item>Turkish (ISO 8859-9)</item>
+        <item>Turkish (Windows-1254)</item>
+        <item>Thai (TIS 620-2533/ISO 8859-11)</item>
+        <item>Thai (Windows-874)</item>
+        <item>Baltic (Latin-7)</item>
+        <item>Baltic (Windows-1257)</item>
+        <item>Celtic (Latin-8)</item>
+        <item>South-Eastern European (Latin-10)</item>
+        <item>Simplified Chinese (ISO-2022-CN-EXT)</item>
+        <item>Simplified Chinese Unix (EUC-CN)</item>
+        <item>Japanese (7-bits JIS/ISO-2022-JP-2)</item>
+        <item>Japanese Unix (EUC-JP)</item>
+        <item>Japanese (Shift JIS)</item>
+        <item>Korean (EUC-KR/CP949)</item>
+        <item>Korean (ISO-2022-KR)</item>
+        <item>Traditional Chinese (Big5)</item>
+        <item>Traditional Chinese Unix (EUC-TW)</item>
+        <item>Hong-Kong Supplementary (HKSCS)</item>
+        <item>Vietnamese (VISCII)</item>
+        <item>Vietnamese (Windows-1258)</item>
+    </string-array>
+    <string-array name="themes_names">
+        <item>Koyu</item>
+        <item>Gri</item>
+        <item>Amoled</item>
+        <item>Flaş Bombası</item>
+        <item>Sistem</item>
+        <item>Material You</item>
+        <item>Dracula</item>
+        <item>Lavanta Rüyası</item>
+        <item>Sessiz Mavi</item>
+    </string-array>
+    <string-array name="themes_names_values">
+        <item>AmoledLight</item>
+        <item>Black</item>
+        <item>Amoled</item>
+        <item>Light</item>
+        <item>System</item>
+        <item>Monet</item>
+        <item>Dracula</item>
+        <item>Lavender</item>
+        <item>SilentBlue</item>
+    </string-array>
+    <string-array name="themes_overlay_names">
+        <item>Normal</item>
+        <item>Karahindiba sarı</item>
+        <item>Karanfil Pembesi</item>
+        <item>Turuncu</item>
+        <item>Koyu Yeşil</item>
+        <item>Kestane</item>
+        <item>Lacivert</item>
+        <item>Gri</item>
+        <item>Beyaz</item>
+        <item>Soğuk Mavi</item>
+        <item>Kahverengi</item>
+        <item>Soğuk</item>
+        <item>Ateş</item>
+        <item>Mor</item>
+        <item>Yeşil</item>
+        <item>Elma</item>
+        <item>Muz</item>
+        <item>Parti</item>
+        <item>Pembe</item>
+        <item>Lavanta</item>
+        <item>Material You</item>
+        <item>Material You (İkincil)</item>
+    </string-array>
+    <string-array name="themes_overlay_names_values">
+        <item>Normal</item>
+        <item>DandelionYellow</item>
+        <item>CarnationPink</item>
+        <item>Orange</item>
+        <item>DarkGreen</item>
+        <item>Maroon</item>
+        <item>NavyBlue</item>
+        <item>Grey</item>
+        <item>White</item>
+        <item>CoolBlue</item>
+        <item>Brown</item>
+        <item>Blue</item>
+        <item>Red</item>
+        <item>Purple</item>
+        <item>Green</item>
+        <item>GreenApple</item>
+        <item>Banana</item>
+        <item>Party</item>
+        <item>Pink</item>
+        <item>Lavender</item>
+        <item>Monet</item>
+        <item>Monet2</item>
+    </string-array>
+    <array name="video_buffer_length_names">
+        <item>@string/automatic</item>
+        <item>1dk</item>
+        <item>1dk 30sn</item>
+        <item>2dk</item>
+        <item>2dk 30sn</item>
+        <item>3dk</item>
+        <item>3dk 30sn</item>
+        <item>4dk</item>
+        <item>5dk</item>
+        <item>6dk</item>
+        <item>7dk</item>
+        <item>8dk</item>
+        <item>9dk</item>
+        <item>10dk</item>
+        <item>15dk</item>
+        <item>20dk</item>
+        <item>30dk</item>
+    </array>
+    <array name="video_buffer_length_values">
+        <item>0</item>
+        <item>60</item>
+        <item>90</item>
+        <item>120</item>
+        <item>150</item>
+        <item>180</item>
+        <item>210</item>
+        <item>240</item>
+        <item>300</item>
+        <item>360</item>
+        <item>420</item>
+        <item>480</item>
+        <item>540</item>
+        <item>600</item>
+        <item>900</item>
+        <item>1200</item>
+        <item>1800</item>
+    </array>
+    <array name="video_buffer_size_names">
+        <item>@string/automatic</item>
+        <item>10MB</item>
+        <item>20MB</item>
+        <item>30MB</item>
+        <item>40MB</item>
+        <item>50MB</item>
+        <item>60MB</item>
+        <item>70MB</item>
+        <item>80MB</item>
+        <item>90MB</item>
+        <item>100MB</item>
+        <item>150MB</item>
+        <item>200MB</item>
+        <item>250MB</item>
+        <item>300MB</item>
+        <item>350MB</item>
+        <item>400MB</item>
+        <item>450MB</item>
+        <item>500MB</item>
+    </array>
+    <array name="video_buffer_size_values">
+        <item>0</item>
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+        <item>40</item>
+        <item>50</item>
+        <item>60</item>
+        <item>70</item>
+        <item>80</item>
+        <item>90</item>
+        <item>100</item>
+        <item>150</item>
+        <item>200</item>
+        <item>250</item>
+        <item>300</item>
+        <item>350</item>
+        <item>400</item>
+        <item>450</item>
+        <item>500</item>
+    </array>
+    <string name="account">hesap</string>
+    <string name="action_add_to_bookmarks">İzleme durumunu ayarla</string>
+    <string name="action_add_to_favorites">Favorilere ekle</string>
+    <string name="action_default">Varsayılan</string>
+    <string name="action_mark_as_watched">İzlendi olarak işaretle</string>
+    <string name="action_mark_watched_up_to_this_episode">Bu bölüme kadar izlenmiş olarak işaretle</string>
+    <string name="action_open_play">@string/home_play</string>
+    <string name="action_open_watching">Daha Fazla Bilgi</string>
+    <string name="action_reload">Yeniden yükle</string>
+    <string name="action_remove_from_bookmarks">Kaldır</string>
+    <string name="action_remove_from_favorites">Favorilerden çıkar</string>
+    <string name="action_remove_from_watched">İzlenenlerden kaldır</string>
+    <string name="action_remove_mark_watched_up_to_this_episode">Bu bölümü izlenmemiş olarak işaretle</string>
+    <string name="action_remove_watching">Kaldır</string>
+    <string name="action_subscribe">Abone ol</string>
+    <string name="action_unsubscribe">Abonelikten çık</string>
+    <string name="actor_background">Geri plan</string>
+    <string name="actor_main">Baş</string>
+    <string name="actor_supporting">Yardımcı</string>
+    <string name="add_account">Hesap ekle</string>
+    <string name="add_repository">Depo ekle</string>
+    <string name="add_site_pref">Siteyi klonla</string>
+    <string name="add_site_summary">Mevcut bir sitenin farklı bir URL üstündeki kopyasını ekleyin</string>
+    <string name="add_sync">Bölüm takibi ekle</string>
+    <string formatted="true" name="added_sync_format">%s eklendi</string>
+    <string name="advanced_search">Gelişmiş arama</string>
+    <string name="advanced_search_des">Arama sonuçlarını sağlayıcıya göre ayırır</string>
+    <string name="all">Tümü</string>
+    <string name="all_languages_preference">Tüm Diller</string>
+    <string name="all_subtitles_bold">Tüm altyazıları kalın yap</string>
+    <string name="all_subtitles_italic">Tüm altyazıları italik yap</string>
+    <string name="already_voted">Zaten oyladınız</string>
+    <string name="android_tv_interface_off_seek_settings">Oynatıcı gizlenmişken atlanacak süre</string>
+    <string name="android_tv_interface_off_seek_settings_summary">Oynatıcı gizli durumdayken atlanacak süre miktarı</string>
+    <string name="android_tv_interface_on_seek_settings">Oynatıcı görünürken atlanacak süre</string>
+    <string name="android_tv_interface_on_seek_settings_summary">Oynatıcı görünür durumdayken atlanacak süre miktarı</string>
+    <string name="anim">Aynı geliştiricilerin anime uygulaması</string>
+    <string name="anime">Animeler</string>
+    <string name="anime_singular">@string/anime</string>
+    <string name="apk_installer_legacy">Eski</string>
+    <string name="apk_installer_package_installer">PaketKurucu</string>
+    <string name="apk_installer_settings">APK kurucu</string>
+    <string name="apk_installer_settings_des">Bazı cihazlar yeni paket yükleyiciyi desteklemiyor. Güncellemeler yüklenmezse eski seçeneği deneyin.</string>
+    <string formatted="true" name="app_dub_sub_episode_text_format">%1$s B. %2$d</string>
+    <string name="app_dubbed_text">Dublajlı</string>
+    <string name="app_info_intent_error">CloudStream\'in Uygulama bilgileri açılamıyor.</string>
+    <string name="app_language">Uygulama dili</string>
+    <string name="app_layout">Uygulama düzeni</string>
+    <string name="app_layout_subtext">Cihazınıza uygun uygulama görünümünü seçin</string>
+    <string name="app_name">CloudStream</string>
+    <string name="app_not_found_error">Uygulama bulunamadı</string>
+    <string name="app_storage">Uygulama</string>
+    <string name="app_subbed_text">Altyazılı</string>
+    <string name="app_theme_settings">Uygulama teması</string>
+    <string name="app_unrestricted_toast">Uygulama pil kullanımı zaten sınırsız olarak ayarlanmış</string>
+    <string name="apply_on_restart">Değişiklikleri görmek için uygulamayı yeniden başlatın.</string>
+    <string name="asian_drama">Asya dizileri</string>
+    <string name="asian_drama_singular">Asya dizisi</string>
+    <string name="audio_book_singular">Sesli Kitap</string>
+    <string name="audio_singluar">Ses</string>
+    <string name="audio_tracks">Ses parçaları</string>
+    <string name="auth_locally">Yerel Olarak Doğrula</string>
+    <string formatted="true" name="authenticated_user">%s başarıyla doğrulandı</string>
+    <string formatted="true" name="authenticated_user_fail">%s ile giriş yapılamadı</string>
+    <string name="auto_rotate_video">Otomatik döndür</string>
+    <string name="auto_rotate_video_desc">Video yönüne göre ekran yönünün otomatik olarak değişmesini sağla</string>
+    <string name="automatic">Otomatik</string>
+    <string name="automatic_plugin_download">Eklentileri otomatik olarak indir</string>
+    <string name="automatic_plugin_download_mode_title">Eklenti indirmeyi filtrelemek için mod seç</string>
+    <string name="automatic_plugin_download_summary">Eklenmiş depolardan henüz kurulmamış tüm eklentileri otomatik olarak kur.</string>
+    <string name="automatic_plugin_updates">Otomatik eklenti güncellemeleri</string>
+    <string name="autoplay_next_settings">Sonraki bölümü otomatik oynat</string>
+    <string name="autoplay_next_settings_des">Mevcut bölüm bittiğinde sonraki bölüme başla</string>
+    <string name="background_radius">Arka Plan Yarıçapı</string>
+    <string name="backup_failed">Depolama izinleri eksik. Lütfen tekrar deneyin.</string>
+    <string name="backup_failed_error_format">%s yedeklenirken hata</string>
+    <string name="backup_frequency">Yedekleme sıklığı</string>
+    <string name="backup_path_title">Yedekleme klasörü konumu</string>
+    <string name="backup_settings">Verileri yedekle</string>
+    <string name="backup_success">Başarıyla yedeklendi</string>
+    <string name="batch_download">Toplu indir</string>
+    <string formatted="true" name="batch_download_finish_format">%1$d %2$s indirildi</string>
+    <string formatted="true" name="batch_download_nothing_to_download_format">%s\'nin tamamı zaten indirildi</string>
+    <string formatted="true" name="batch_download_start_format">%1$d %2$s indirilmeye başlandı…</string>
+    <string name="battery_dialog_message">Abone olunan TV programları için kesintisiz indirme ve bildirimler sağlamak için CloudStream\'in arka planda çalışma iznine ihtiyacı var. Tamam\'a basarak bir istek iletişim kutusu göreceksiniz. Lütfen \'İzin Ver\'e basın.\n\nLütfen unutmayın, bu izin CS3’ün pilinizi tüketeceği anlamına gelmez. Yalnızca gerektiğinde, örneğin bildirim alırken veya resmi uzantılardan video indirirken arka planda çalışır.</string>
+    <string name="battery_dialog_title">Pil optimizasyonunu devre dışı bırak</string>
+    <string name="begin_speaking">Konuşmaya Başlayın…</string>
+    <string name="benene">Geliştiricilere muz ver</string>
+    <string name="benene_count_text">Geliştiricilere %d muz verildi</string>
+    <string name="benene_count_text_none">Hiç muz verilmedi</string>
+    <string name="benene_des">Verilen muz</string>
+    <string name="biometric_authentication_title">CloudStream kilidini aç</string>
+    <string name="biometric_prompt_description">Birkaç başarısız denemeden sonra istem kapanacaktır. Tekrar denemek için uygulamayı yeniden başlatmanız yeterlidir.</string>
+    <string name="biometric_setting">Biyometri ile kilitle</string>
+    <string name="biometric_setting_summary">Parmak İzi, Yüz Kimliği, PIN, Desen ve Parola ile uygulamanın kilidini açın.</string>
+    <string name="biometric_unsupported">Biyometrik kimlik doğrulama bu cihazda desteklenmiyor</string>
+    <string name="biometric_warning">CloudStream verileriniz artık yedeklenmiştir. Bunun olasılığı çok düşük olsa da tüm cihazlar farklı davranabilir. Nadiren de olsa uygulamaya erişiminizin kilitlenmesi durumunda, uygulama verilerini tamamen temizleyin ve bir yedekten geri yükleyin. Bu durumdan kaynaklanan rahatsızlıklardan dolayı çok üzgünüz.</string>
+    <string name="blank_repo_message">CloudStream, varsayılan olarak hiçbir site ile gelmez. Siteleri depolardan kurmanız gerekir.
+\n
+\nDiscord\'umuza katılın veya çevrimiçi arama yapın.</string>
+    <string name="bottom_center">Alt orta</string>
+    <string name="bottom_left">Sol alt</string>
+    <string name="bottom_right">Sağ alt</string>
+    <string name="bottom_title_settings">Afiş başlık konumu</string>
+    <string name="bottom_title_settings_des">Başlığı afişin altına yerleştir</string>
+    <string name="browser">Tarayıcı</string>
+    <string name="cancel">İptal</string>
+    <string name="cartoons">Çizgi filmler</string>
+    <string name="cartoons_singular">Çizgi film</string>
+    <string formatted="true" name="cast_format">Cast: %s</string>
+    <string name="category_account">Hesaplar ve Güvenlik</string>
+    <string name="category_general">Genel</string>
+    <string name="category_player">Oynatıcı</string>
+    <string name="category_provider_test">Sağlayıcı testi</string>
+    <string name="category_providers">Sağlayıcılar</string>
+    <string name="category_ui">Düzen</string>
+    <string name="category_updates">Güncellemeler ve Yedekleme</string>
+    <string name="check_for_update">Güncellemeleri denetle</string>
+    <string name="chromecast_subtitles_settings">Chromecast altyazıları</string>
+    <string name="chromecast_subtitles_settings_des">Chromecast altyazı ayarları</string>
+    <string name="clear_history">Geçmişi temizle</string>
+    <string name="clipboard_permission_error">Panoya erişimde hata oluştu. Lütfen tekrar deneyin.</string>
+    <string name="clipboard_too_large">Çok fazla metin. Panoya kaydedilemiyor.</string>
+    <string name="clipboard_unknown_error">Kopyalama hatası. Lütfen logcat\'i kopyalayın ve uygulama desteğiyle iletişime geçin.</string>
+    <string name="coming_soon">Çok yakında…</string>
+    <string name="concurrent_connections">Eşzamanlı bağlantılar</string>
+    <string name="concurrent_connections_settings_des">Her indirme sırasında kaç eşzamanlı bağlantı kullanılabilir</string>
+    <string name="confirm_before_exiting_desc">Uygulamadan çıkmadan önce iletişim kutusunu göster</string>
+    <string name="confirm_before_exiting_title">Çıkmadan önce onayla</string>
+    <string name="confirm_exit_dialog">Çıkmak istediğinize emin misin?</string>
+    <string name="continue_watching">İzlemeye Devam Et</string>
+    <string name="copy_link_toast">Bağlantı panoya kopyalandı</string>
+    <string name="create_account">Hesap oluştur</string>
+    <string name="cs3wiki">CloudStream bilgi</string>
+    <string name="custom">Özel</string>
+    <string name="custom_media_singluar">Medya</string>
+    <string name="delayed_update_notice">Uygulama çıkışta güncellenecektir</string>
+    <string name="delete">Sil</string>
+    <string name="delete_file">Dosyayı sil</string>
+    <string name="delete_files">Dosyaları Silin</string>
+    <string formatted="true" name="delete_format">Sil (%1$d | %2$s)</string>
+    <string formatted="true" name="delete_message">%s tamamen silinecek
+\nEmin misiniz?</string>
+    <string formatted="true" name="delete_message_multiple">Aşağıdaki öğeleri kalıcı olarak silmek istediğinizden emin misiniz?
+\n
+\n%s</string>
+    <string formatted="true" name="delete_message_series_episodes">%1$s içindeki aşağıdaki bölümleri kalıcı olarak silmek istediğinizden emin misiniz?
+\n
+\n%2$s</string>
+    <string formatted="true" name="delete_message_series_only">Aşağıdaki dizideki tüm bölümleri kalıcı olarak silmek istediğinizden emin misiniz?
+\n
+\n%s</string>
+    <string formatted="true" name="delete_message_series_section">Ayrıca aşağıdaki dizideki tüm bölümleri kalıcı olarak sileceksiniz:
+\n
+\n%s</string>
+    <string name="delete_plugin">Eklentiyi sil</string>
+    <string name="delete_repository">Depoyu sil</string>
+    <string name="delete_repository_plugins">Bu aynı zamanda tüm depo eklentilerini de siler</string>
+    <string name="deselect_all">Tüm Seçimi Kaldır</string>
+    <string name="device_pin_counter_text">Kodun süresi %1$dm %2$ds içinde doluyor</string>
+    <string name="device_pin_error_message">Cihaz PIN kodu alınamıyor, yerel kimlik doğrulamayı deneyin</string>
+    <string name="device_pin_expired_message">PIN kodunun süresi doldu!</string>
+    <string name="device_pin_url_message">Akıllı telefonunuzda veya bilgisayarınızda <b>%s</b> adresini ziyaret edin ve yukarıdaki kodu girin</string>
+    <string name="disable">Devre dışı bırak</string>
+    <string name="discord">Discord\'a katıl</string>
+    <string name="dismiss">Yoksay</string>
+    <string name="display_subbed_dubbed_settings">Dublajlı/Altyazılı animeleri görüntüle</string>
+    <string name="dns_pref">HTTPS üzerinden DNS</string>
+    <string name="dns_pref_summary">İnernet servis sağlayıcı kısıtlamalarını aşmak için kullanışlıdır</string>
+    <string name="documentaries">Belgeseller</string>
+    <string name="documentaries_singular">Belgesel</string>
+    <string name="dont_show">Gizle</string>
+    <string name="dont_show_again">Bir daha gösterme</string>
+    <string name="double_tap_to_pause_settings">İki kez dokunarak duraklat</string>
+    <string name="double_tap_to_pause_settings_des">Durdurmak için ekranın ortasına çift dokun</string>
+    <string name="double_tap_to_seek_amount_settings">Atlanacak süre (Saniye)</string>
+    <string name="double_tap_to_seek_settings">Çift dokunarak atla</string>
+    <string name="double_tap_to_seek_settings_des">İleri ve geri atlamak için sağa ve sola iki kez dokun</string>
+    <string name="download">İndir</string>
+    <string name="download_all_plugins_from_repo">Uyarı: CloudStream 3, üçüncü taraf uzantıların kullanımı için herhangi bir sorumluluk kabul etmez ve bunlar için herhangi bir destek sağlamaz!</string>
+    <string name="download_canceled">İndirme İptal Edildi</string>
+    <string name="download_done">İndirme Tamamlandı</string>
+    <string name="download_failed">İndirme Başarısız</string>
+    <string name="download_parallel_settings_des">Aynı anda kaç farklı öğe indirilebilir</string>
+    <string name="download_path_pref">İndirme konumu</string>
+    <string name="download_paused">İndirme Duraklatıldı</string>
+    <string name="download_started">İndirme Başladı</string>
+    <string name="download_storage_text">Dahili Depolama</string>
+    <string formatted="true" name="download_time_left_hour_min_sec_format">%1$dsa %2$ddk %3$dsn</string>
+    <string formatted="true" name="download_time_left_min_sec_format">%1$ddk %2$dsn</string>
+    <string formatted="true" name="download_time_left_sec_format">%1$dsn</string>
+    <string name="downloaded">İndirildi</string>
+    <string name="downloaded_file">İndirilen dosya</string>
+    <string name="downloading">İndiriliyor</string>
+    <string name="downloads_delete_select">Silinecek Öğeleri Seçin</string>
+    <string name="downloads_empty">Şu an hiç bir indirme bulunmamaktadır.</string>
+    <string name="duplicate_add">Ekle</string>
+    <string formatted="true" name="duplicate_message_multiple">Kütüphanenizde potensiyel kopya ürünler bulundu:
+\n
+\n%s
+\n
+\nYine de ekleyerek var olanları değiştirmek mi istersiniz, yoksa iptal etmek mi?</string>
+    <string formatted="true" name="duplicate_message_single">Görünüşe göre potansiyel bir kopya kütüphanenizde zaten bulunuyor: \'%s\'
+\n
+\nYine de ekleyerek var olanı değiştirmek mi istersiniz, yoksa iptal etmek mi?</string>
+    <string name="duplicate_replace">Değiştir</string>
+    <string name="duplicate_replace_all">Tümünü Değiştir</string>
+    <string name="duplicate_title">Potensiyel Kopya Bulundu</string>
+    <string name="duration">Süre</string>
+    <string formatted="true" name="duration_format">%d dakika</string>
+    <string name="edit">Düzenle</string>
+    <string name="edit_account">Hesabı düzenle</string>
+    <string name="edit_profile_image_error_empty">URL bulunamadı</string>
+    <string name="edit_profile_image_error_invalid">Geçersiz Bağlantı veya Görsel</string>
+    <string name="edit_profile_image_hint">Profil Resmi Bağlantısını Girin</string>
+    <string name="edit_profile_image_success">Görsel Başarıyla Güncellendi</string>
+    <string name="edit_profile_image_title">Profil Resmini düzenle</string>
+    <string name="eigengraumode_settings">Oynatma hızı</string>
+    <string name="empty_library_logged_in_message">Görünüşe göre bu liste boş, başka bir listeye geçmeyi deneyin.</string>
+    <string name="empty_library_no_accounts_message">Kütüphaneniz boş :(
+\nBir kütüphane hesabında oturum açın veya yerel kütüphanenize programlar ekleyin.</string>
+    <string name="emulator_layout">Emülatör düzeni</string>
+    <string name="enable_nsfw_on_providers">Desteklenen uzantılarda NSFW etkinleştir</string>
+    <string name="enable_skip_op_from_database_des">Açılış/bitiş için atlama açılır pencerelerini göster</string>
+    <string name="encoding_error">Kodlama hatası</string>
+    <string name="enter_current_pin">Geçerli PIN\'i Giriniz</string>
+    <string name="enter_pin">PIN girin</string>
+    <string formatted="true" name="enter_pin_with_name">%s için PIN girin</string>
+    <string name="episode">Bölüm</string>
+    <string name="episode_action_auto_download">Otomatik indir</string>
+    <string name="episode_action_cast_mirror">Ekran yansıtma</string>
+    <string name="episode_action_chromecast_episode">Bölümü Chromecast ile yayınla</string>
+    <string name="episode_action_chromecast_mirror">Bağlantıyı Chromecast ile yayınla</string>
+    <string name="episode_action_download_mirror">Şu kaynaktan indir</string>
+    <string name="episode_action_download_subtitle">Altyazıları indir</string>
+    <string name="episode_action_play_in_app">Burada oynat</string>
+    <string name="episode_action_play_in_format">%s üzerinden oynat</string>
+    <string name="episode_action_play_mirror">Ekranda oynat</string>
+    <string name="episode_action_reload_links">Bağlantıları yenile</string>
+    <string formatted="true" name="episode_format">%1$d %2$s</string>
+    <string name="episode_more_options_des">Daha Fazla Seçenek</string>
+    <string name="episode_poster_img_des">Bölüm Afişi</string>
+    <string name="episode_short">B</string>
+    <string name="episode_sync_settings">İzleme ilerlemesini güncelle</string>
+    <string name="episode_sync_settings_des">Mevcut bölüm ilerlemesini otomatik eşitle</string>
+    <string formatted="true" name="episode_upcoming_format">%s içinde yaklaşıyor</string>
+    <string name="episodes">Bölüm</string>
+    <string name="episodes_range">%1$d-%2$d</string>
+    <string name="error">Hata</string>
+    <string name="error_bookmarks_text">Yer imleri</string>
+    <string name="error_invalid_data">Geçersiz veri</string>
+    <string name="error_invalid_id">Geçersiz ID</string>
+    <string name="error_invalid_url">Geçersiz URL</string>
+    <string name="error_loading_links_toast">Bağlantılar yüklenirken hata oluştu</string>
+    <string name="example_email">hello@world.com</string>
+    <string name="example_ip">127.0.0.1</string>
+    <string name="example_lang_name">Dil kodu (tr)</string>
+    <string name="example_password">şifre123</string>
+    <string name="example_site_name">YeniSiteAdı</string>
+    <string name="example_site_url">https://ornek.com</string>
+    <string name="example_username">Kullanıcı Adı</string>
+    <string name="extension_authors">Geliştiriciler</string>
+    <string name="extension_description">Açıklama</string>
+    <string name="extension_install_first">Önce eklentiyi yükleyin</string>
+    <string name="extension_language">Dil</string>
+    <string formatted="true" name="extension_rating">Puan: %s</string>
+    <string name="extension_size">Boyut</string>
+    <string name="extension_status">Durum</string>
+    <string name="extension_types">Desteklenen</string>
+    <string name="extension_version">Sürüm</string>
+    <string name="extensions">Eklentiler</string>
+    <string name="extras">Ek içerikler</string>
+    <string name="favorite">Favori</string>
+    <string name="favorite_added">%s favorilere eklendi</string>
+    <string name="favorite_removed">%s favorilerden çıkarıldı</string>
+    <string name="favorites_list_name">Favoriler</string>
+    <string formatted="true" name="filler">Dolgu</string>
+    <string name="filter_bookmarks">Yer İmlerini Filtrele</string>
+    <string name="free_storage">Boş</string>
+    <string name="github">GitHub</string>
+    <string name="go_back">Geri Dön</string>
+    <string name="go_back_30">-30</string>
+    <string name="go_back_img_des">Geri git</string>
+    <string name="go_forward_30">+30</string>
+    <string name="go_to_downloads">İndirilenlere Git</string>
+    <string name="help">Yardım</string>
+    <string name="hide_player_control_names">Oynatıcı kontrolünün adlarını gizle</string>
+    <string name="history">Geçmiş</string>
+    <string name="hls_playlist">HLS Oynatma Listesi</string>
+    <string name="home_change_provider_img_des">Sağlayıcıyı Değiştir</string>
+    <string name="home_expanded_hide">Gizle</string>
+    <string name="home_info">Bilgi</string>
+    <string name="home_main_poster_img_des">Ana Afiş</string>
+    <string name="home_more_info">Daha fazla bilgi</string>
+    <string name="home_next_random_img_des">Sonraki Rastgele</string>
+    <string name="home_play">Oynat</string>
+    <string name="home_random">Rastgele</string>
+    <string name="home_source">Kaynak</string>
+    <string name="is_adult">+18</string>
+    <string name="jsdelivr_enabled">GitHub\'a ulaşılamadı. jsDelivr vekil sunucusu etkinleştiriliyor…</string>
+    <string name="jsdelivr_proxy">GitHub vekil sunucu</string>
+    <string name="jsdelivr_proxy_summary">jsDelivr kullanarak ham github URL\'lerinin engellenmesini atlayın. Güncellemelerin birkaç gün gecikmesine neden olabilir.</string>
+    <string name="kitsu_settings">Kitsu posterlerini göster</string>
+    <string name="legal_notice">Yasal uyarı</string>
+    <string name="library">Kütüphane</string>
+    <string name="lightnovel">Aynı geliştiricilerin Lightnovel Crawler uygulaması</string>
+    <string name="limit_title">Video oynatıcı başlığı karakter üst sınırı</string>
+    <string name="limit_title_rez">Oynatıcı çözünürlüğü</string>
+    <string name="links_reloaded_toast">Bağlantılar Yeniden Yüklendi</string>
+    <string name="live_singular">Canlı yayın</string>
+    <string name="livestreams">Canlı yayınlar</string>
+    <string name="loading">Yükleniyor…</string>
+    <string name="lock_profile">Profili Kilitle</string>
+    <string formatted="true" name="logged_account">%s olarak giriş yapıldı</string>
+    <string name="login">Giriş yap</string>
+    <string formatted="true" name="login_format">%1$s %2$s</string>
+    <string name="logout">Çıkış yap</string>
+    <string name="manage_accounts">Hesapları Yönet</string>
+    <string name="max">Azami</string>
+    <string name="middle_center">Orta merkez</string>
+    <string name="middle_left">Orta sol</string>
+    <string name="middle_right">Orta sağ</string>
+    <string name="min">Asgari</string>
+    <string name="mobile_data">Mobil veri</string>
+    <string name="movies">Filmler</string>
+    <string name="movies_singular">Film</string>
+    <string name="music_singlar">Müzik</string>
+    <string name="name">Ad</string>
+    <string name="network_adress_example">https://ornek.com/ornek.mp4</string>
+    <string formatted="true" name="new_update_format">Yeni güncelleme bulundu!
+\n%1$s -> %2$s</string>
+    <string name="next">Sonraki</string>
+    <string name="next_episode">Sonraki bölüm</string>
+    <string formatted="true" name="next_episode_format">Bölüm %d şu tarihte yayınlanacak</string>
+    <string formatted="true" name="next_episode_time_day_format">%1$dg %2$ds %3$dd</string>
+    <string formatted="true" name="next_episode_time_hour_format">%1$ds %2$dd</string>
+    <string formatted="true" name="next_episode_time_min_format">%dd</string>
+    <string formatted="true" name="next_season_episode_format">Sezon %1$d Bölüm %2$d tarihinde yayınlanacak</string>
+    <string name="nginx_url_pref">NGINX sunucu URL\'si</string>
+    <string name="no">Hayır</string>
+    <string name="no_account">hesap yok</string>
+    <string name="no_chromecast_support_toast">Bu sağlayıcının Chromecast desteği yok</string>
+    <string name="no_data">Veri Yok</string>
+    <string name="no_episodes_found">Bölüm bulunamadı</string>
+    <string name="no_internet_connection">İnternet bağlantısı yok.\n\nLütfen internete bağlanıp tekrar deneyin ya da çevrimdışıyken indirdiğiniz içerikleri izleyin.</string>
+    <string name="no_links_found_toast">Bağlantı bulunamadı</string>
+    <string name="no_plugins_found_error">Depoda eklenti bulunamadı</string>
+    <string name="no_plugins_updated_manually">Hiçbir eklenti güncellenmedi.</string>
+    <string name="no_repository_found_error">Depo bulunamadı, bağlantı adresini kontrol edin ve VPN deneyin</string>
+    <string name="no_season">Sezon yok</string>
+    <string name="no_subtitles">Altyazı yok</string>
+    <string name="no_subtitles_loaded">Henüz altyazı yüklenmedi</string>
+    <string name="no_update_found">Güncelleme bulunamadı</string>
+    <string name="none">Yok</string>
+    <string name="normal">Normal</string>
+    <string name="normal_no_plot">Konu Bulunamadı</string>
+    <string name="nsfw">+18</string>
+    <string name="nsfw_singular">+18</string>
+    <string name="offline_file">Çevrimdışı izlemek için kullanılabilir</string>
+    <string name="ok">Tamam</string>
+    <string name="open_downloaded_repo">Depoyu aç</string>
+    <string name="open_local_video">Yerel videoyu aç</string>
+    <string name="open_with">Şununla aç</string>
+    <string name="other_singular">Video</string>
+    <string name="others">Diğerleri</string>
+    <string name="ova">OVA</string>
+    <string name="ova_singular">@string/ova</string>
+    <string name="overscan_settings">Ekran sığdırma</string>
+    <string name="overscan_settings_des">Ekranın sınırlarını değiştirir</string>
+    <string name="parallel_downloads">Eşzamanlı indirmeler</string>
+    <string name="password_pin_authentication_title">Şifre/PIN Kimlik Doğrulama</string>
+    <string name="pause">Duraklat</string>
+    <string name="phone_layout">Telefon düzeni</string>
+    <string name="pick_source">Kaynaklar</string>
+    <string name="pick_subtitle">Altyazılar</string>
+    <string name="picture_in_picture">Resim içinde resim</string>
+    <string name="picture_in_picture_des">İçerik diğer uygulamaların üzerinde küçük bir pencerede oynatılmaya devam eder</string>
+    <string name="pin">PIN</string>
+    <string name="pin_error_incorrect">Yanlış PIN. Lütfen tekrar deneyin.</string>
+    <string name="pin_error_length">PIN 4 karakterden oluşmalı</string>
+    <string name="play_episode">Bölümü Oynat</string>
+    <string name="play_episode_toast">Bölümü oynat</string>
+    <string name="play_from_beginning_img_des">Baştan Oynat</string>
+    <string name="play_full_series_button">Tüm Seriyi Oynat</string>
+    <string name="play_livestream_button">Canlı Yayını Oynat</string>
+    <string name="play_movie_button">Filmi Oynat</string>
+    <string name="play_torrent_button">Torrent Oynat</string>
+    <string name="play_trailer_button">Fragmanı Oynat</string>
+    <string name="play_with_app_name">CloudStream ile oynat</string>
+    <string name="player_load_one_subtitle_online">İlk kullanılabiliri yükle</string>
+    <string name="player_load_subtitles">Dosyadan yükle</string>
+    <string name="player_load_subtitles_online">İnternetten yükle</string>
+    <string formatted="true" name="player_loaded_subtitles">%s eklendi</string>
+    <string name="player_notification_channel_description">Oynatıcı bildirimi arka planda oynatmasını kontrol etmek içindir</string>
+    <string name="player_notification_channel_name">Oynatıcı bildirimleri</string>
+    <string name="player_pref">Tercih edilen video oynatıcısı</string>
+    <string name="player_settings_always_ask">Her zaman sor</string>
+    <string name="player_settings_play_in_app">Dahili oynatıcı</string>
+    <string name="player_settings_select_cast_device">Yansıtılacak cihaz seç</string>
+    <string name="player_size_settings">Oynatıcı yeniden boyutlandırma butonu</string>
+    <string name="player_size_settings_des">Siyah kenarlıkları kaldır</string>
+    <string name="player_speed">Oynatıcı Hızı</string>
+    <string formatted="true" name="player_speed_text_format">Hız (%.2fx)</string>
+    <string name="player_subtitles_settings">Altyazılar</string>
+    <string name="player_subtitles_settings_des">Oynatıcı altyazı ayarları</string>
+    <string name="plugin">eklentiler</string>
+    <string name="plugin_deleted">Eklenti Silindi</string>
+    <string name="plugin_downloaded">Eklenti İndirildi</string>
+    <string formatted="true" name="plugin_load_fail">%s yüklenemedi</string>
+    <string name="plugin_loaded">Eklenti Yüklendi</string>
+    <string name="plugin_singular">eklenti</string>
+    <string formatted="true" name="plugins_disabled">Devre dışı: %d</string>
+    <string formatted="true" name="plugins_downloaded">İndirilen: %d</string>
+    <string formatted="true" name="plugins_not_downloaded">İndirilmeyen: %d</string>
+    <string formatted="true" name="plugins_updated">%d eklentiler güncellendi</string>
+    <string name="plugins_updated_manually">%d eklenti başarıyla güncellendi!</string>
+    <string name="podcast_singluar">Podcast</string>
+    <string name="popup_delete_file">Dosyayı Sil</string>
+    <string name="popup_pause_download">İndirmeyi Duraklat</string>
+    <string name="popup_play_file">Dosyayı Oynat</string>
+    <string name="popup_resume_download">İndirmeyi Sürdür</string>
+    <string name="poster_image">Afiş Resmi</string>
+    <string name="poster_size_settings">Afiş boyutu</string>
+    <string name="poster_size_settings_des">Afişlerin boyutlarını değiştir</string>
+    <string name="poster_ui_settings">Afiş üzerindeki öğeleri değiştir</string>
+    <string name="pref_category_accounts">Hesaplar</string>
+    <string name="pref_category_actions">Eylemler</string>
+    <string name="pref_category_android_tv">Android TV</string>
+    <string name="pref_category_app_updates">Uygulama güncellemeleri</string>
+    <string name="pref_category_backup">Yedek</string>
+    <string name="pref_category_bypass">İSS Kısıtlamaları</string>
+    <string name="pref_category_cache">Önbellek</string>
+    <string name="pref_category_defaults">Varsayılanlar</string>
+    <string name="pref_category_extensions">Eklentiler</string>
+    <string name="pref_category_gestures">Hareketler</string>
+    <string name="pref_category_links">Bağlantılar</string>
+    <string name="pref_category_looks">Görünüm</string>
+    <string name="pref_category_player_features">Oynatıcı özellikleri</string>
+    <string name="pref_category_player_layout">Düzen</string>
+    <string name="pref_category_security">Güvenlik</string>
+    <string name="pref_category_subtitles">Altyazılar</string>
+    <string name="pref_category_ui_features">Özellikler</string>
+    <string name="pref_filter_search_quality">Seçili video kalitesini arama sonuçlarında gizle</string>
+    <string name="preferred_media_settings">Tercih edilen medya</string>
+    <string name="preferred_media_subtext">Ne izlemek istiyorsunuz</string>
+    <string name="preview_background_img_des">Arkaplanı Önizle</string>
+    <string name="preview_seekbar">Arama çubuğu önizlemesi</string>
+    <string name="preview_seekbar_desc">Arama çubuğunda önizleme küçük resmini etkinleştir</string>
+    <string name="previous">Önceki</string>
+    <string name="primary_color_settings">Birincil renk</string>
+    <string name="profile_background_des">Profil arkaplanı</string>
+    <string name="profile_number">Profil %d</string>
+    <string name="profiles">Profiller</string>
+    <string name="provider_info_meta">Metadata site tarafından sağlanmamış, veri site\'de bulunmuyorsa video yüklenmesi başarısız olacak.</string>
+    <string name="provider_lang_settings">Uzantı dilleri</string>
+    <string name="provider_languages_tip">Videoları bu dillerde izle</string>
+    <string name="qr_image">QR Kod Görüntüsü</string>
+    <string name="qualities">Kaliteler</string>
+    <string name="quality_4k">4K</string>
+    <string name="quality_blueray">Blu-ray</string>
+    <string name="quality_cam">Cam</string>
+    <string name="quality_cam_hd">Cam</string>
+    <string name="quality_cam_rip">Cam</string>
+    <string name="quality_dvd">DVD</string>
+    <string name="quality_hd">HD</string>
+    <string name="quality_hdr">HDR</string>
+    <string name="quality_hq">HQ</string>
+    <string name="quality_profile_help">Burada kaynakların nasıl sıralandığını değiştirebilirsiniz. Bir video daha yüksek bir önceliğe sahipse, kaynak seçiminde daha yüksek görünecektir. Kaynak önceliği ve kalite önceliğinin toplamı video önceliğidir.
+\n
+\nKaynak A: 3
+\nKalite B: 7
+\nBirleştirilmiş video önceliği 10 olacaktır.
+\n
+\nNOT: Toplam 10 veya daha fazlaysa, bu bağlantı yüklendiğinde oynatıcı otomatik olarak yüklemeyi atlayacaktır!</string>
+    <string name="quality_sd">SD</string>
+    <string name="quality_sdr">SDR</string>
+    <string name="quality_tc">TC</string>
+    <string name="quality_ts">TS</string>
+    <string name="quality_uhd">UHD</string>
+    <string name="quality_webrip">Web</string>
+    <string name="quality_workprint">WP</string>
+    <string name="queued">Sıraya alındı</string>
+    <string name="random_button_settings">Rastgele düğmesi</string>
+    <string name="random_button_settings_desc">Ana sayfa ve kütüphane üstünde rastgele düğmesini göster</string>
+    <string formatted="true" name="rated_format">Puan: %.1f</string>
+    <string name="rating">Puan</string>
+    <string name="recommendations_tooltip">Önerileri göster</string>
+    <string name="recommended">Önerilen</string>
+    <string name="redo_setup_process">Kurulum işlemini tekrarla</string>
+    <string name="referer">Yönlendiren (opsiyonel)</string>
+    <string name="reload_error">Yeniden bağlan…</string>
+    <string name="reload_provider">Sağlayıcıyı yeniden yükle</string>
+    <string name="remote_error">Sunucu hatası</string>
+    <string name="remove_site_pref">Siteyi kaldır</string>
+    <string name="render_error">İşleyici hatası</string>
+    <string name="repo_copy_label">Depo adı ve URL\'si</string>
+    <string name="repository_name_hint">Depo adı (İsteğe bağlı)</string>
+    <string name="repository_url_hint">Depo URL veya Kısa Kodu</string>
+    <string name="reset_btn">Sıfırla</string>
+    <string name="resize_fill">Uzat</string>
+    <string name="resize_fit">Ekrana sığdır</string>
+    <string name="resize_zoom">Yakınlaştır</string>
+    <string name="resolution">Çözünürlük</string>
+    <string name="resolution_and_name">Çözünürlük ve ad</string>
+    <string name="resolution_and_title">Çözünürlük ve başlık</string>
+    <string name="restart">Yeniden başlat</string>
+    <string formatted="true" name="restore_failed_format">Geri yükleme başarısız oldu: %s</string>
+    <string name="restore_settings">Verileri yedekten geri yükle</string>
+    <string name="restore_success">Yedek dosyası yüklendi</string>
+    <string name="result_open_in_browser">Tarayıcıda aç</string>
+    <string name="result_poster_img_des">Afiş</string>
+    <string name="result_search_tooltip">Diğer uzantılarda ara</string>
+    <string name="result_share">Paylaş</string>
+    <string name="result_tags">Türler</string>
+    <string name="resume">Sürdür</string>
+    <string formatted="true" name="resume_remaining">%s \nkaldı</string>
+    <string formatted="true" name="resume_time_left">%dd \nkaldı</string>
+    <string name="revert">Geri al</string>
+    <string name="rotate_video">Döndür</string>
+    <string name="rotate_video_desc">Ekran yönü için bir geçiş düğmesi göster</string>
+    <string name="safe_mode_crash_info">Çökme bilgisini göster</string>
+    <string name="safe_mode_description">Çöküşe neden olan eklentiyi bulmaya yardımcı olabilmek için tüm eklentiler kapatıldı.</string>
+    <string name="safe_mode_file">Güvenli mod dosyası bulundu!
+\nDosya kaldırılana kadar başlangıçta herhangi bir uzantı yüklenmiyor.</string>
+    <string name="safe_mode_title">Güvenli mod açık</string>
+    <string name="search">Ara</string>
+    <string name="search_hint">Ara…</string>
+    <string formatted="true" name="search_hint_site">%s sağlayıcısında ara…</string>
+    <string name="search_poster_img_des">Afiş</string>
+    <string name="search_provider_text_providers">Sağlayıcıları kullanarak ara</string>
+    <string name="search_provider_text_types">Türleri kullanarak ara</string>
+    <string name="season">Sezon</string>
+    <string name="season_format">%1$s %2$d%3$s</string>
+    <string name="season_short">S</string>
+    <string name="select_all">Tümünü Seç</string>
+    <string name="select_an_account">Hesap Seç</string>
+    <string name="select_library">Kütüphane Seçin</string>
+    <string name="set_default">Varsayılanı ayarla</string>
+    <string name="settings_info">Bilgi</string>
+    <string name="setup_done">Bitti</string>
+    <string name="setup_extensions_subtext">Kullanmak istediğiniz sitelerin listesini indirin</string>
+    <string name="show">Göster</string>
+    <string name="show_dub">Dublaj etiketi</string>
+    <string name="show_fillers_settings">Anime için dolgu bölümünü göster</string>
+    <string name="show_hd">Kalite etiketi</string>
+    <string name="show_log_cat">Logcat görüntüle 🐈</string>
+    <string name="show_rating">Reyting etiketi</string>
+    <string name="show_sub">Altyazı etiketi</string>
+    <string name="show_title">Başlık</string>
+    <string name="show_trailers_settings">Fragmanları göster</string>
+    <string formatted="true" name="single_plugin_disabled">%s (Devre dışı)</string>
+    <string name="site">Site</string>
+    <string name="skip_loading">Yüklemeyi Atla</string>
+    <string name="skip_setup">Kurulumu atla</string>
+    <string name="skip_startup_account_select_pref">Başlangıçta hesap seçimini atla</string>
+    <string name="skip_type_creddits">Katkıda Bulunanlar</string>
+    <string name="skip_type_ed">Bitiş</string>
+    <string formatted="true" name="skip_type_format">Geç %s</string>
+    <string name="skip_type_intro">Giriş</string>
+    <string name="skip_type_mixed_ed">Karışık son</string>
+    <string name="skip_type_mixed_op">Karışık başlangıç</string>
+    <string name="skip_type_op">Açılış</string>
+    <string name="skip_type_recap">Özet</string>
+    <string name="skip_update">Bu güncellemeyi atla</string>
+    <string name="slide_up_again_to_exceed_100">%100 üzerine çıkmak için yukarı kaydır</string>
+    <string name="software_decoding">Yazılımsal çözücü</string>
+    <string name="software_decoding_desc">Yazılımsal kod çözücü, oynatıcının cihazınız tarafından desteklenmeyen video dosyalarını oynatmasını sağlar, ancak yüksek çözünürlükte gecikmeli veya dengesiz oynatmaya neden olabilir.</string>
+    <string name="sort">Sırala</string>
+    <string name="sort_alphabetical_a">Alfabetik (A\'dan Z’ye)</string>
+    <string name="sort_alphabetical_z">Alfabetik (Z - A)</string>
+    <string name="sort_apply">Uygula</string>
+    <string name="sort_button_date">Tarih %s</string>
+    <string name="sort_button_episode">Bölüm %s</string>
+    <string name="sort_button_rating">Puanlama %s</string>
+    <string name="sort_by">Şuna Göre Sırala</string>
+    <string name="sort_clear">Temizle</string>
+    <string name="sort_close">Kapat</string>
+    <string name="sort_copy">Kopyala</string>
+    <string name="sort_episodes_date_newest">Yayınlanma Tarihi (En Yeni)</string>
+    <string name="sort_episodes_date_oldest">Yayınlanma Tarihi (En Eski)</string>
+    <string name="sort_episodes_number_asc">Bölüm (Artan)</string>
+    <string name="sort_episodes_number_desc">Bölüm (Azalan)</string>
+    <string name="sort_episodes_rating_high_low">Puanlama (En Yüksek)</string>
+    <string name="sort_episodes_rating_low_high">Puanlama (En Düşük)</string>
+    <string name="sort_rating_asc">Derecelendirme (Düşükten Yükseğe)</string>
+    <string name="sort_rating_desc">Derecelendirme (Yüksekten Düşüğe)</string>
+    <string name="sort_release_date_new">Yayınlanma Tarihi (Yeniden Eskiye)</string>
+    <string name="sort_release_date_old">Yayınlanma Tarihi (Eskiden Yeniye)</string>
+    <string name="sort_save">Kaydet</string>
+    <string name="sort_updated_new">Güncellenme (Yeniden Eskiye)</string>
+    <string name="sort_updated_old">Güncellenme (Eskiden Yeniye)</string>
+    <string name="source_error">Kaynak hatası</string>
+    <string name="speech_recognition_unavailable">Konuşma tanıma özelliği mevcut değil</string>
+    <string name="speed_setting_summary">Oynatıcıya bir hız seçeneği ekler</string>
+    <string name="speedup_summary">2x hız için basılı tut</string>
+    <string name="speedup_title">Uzun basma hızını değiştir</string>
+    <string name="start">Başlat</string>
+    <string name="starting_plugin_update_manually">Eklenti güncellemesi başlıyor!</string>
+    <string name="status">Durum</string>
+    <string name="status_completed">Tamamlandı</string>
+    <string name="status_ongoing">Devam ediyor</string>
+    <string name="stop">Durdur</string>
+    <string name="storage_error">İndirme hatası, depolama izinlerini kontrol edin</string>
+    <string name="stream">Ağ akışı</string>
+    <string name="subs_auto_select_language">Otomatik Seçilecek Dil</string>
+    <string name="subs_background_color">Arka Plan Rengi</string>
+    <string name="subs_default_reset_toast">Varsayılan değere sıfırla</string>
+    <string name="subs_download_languages">İndirilecek Diller</string>
+    <string name="subs_edge_size">Köşe Boyutu</string>
+    <string name="subs_edge_type">Kenar Türü</string>
+    <string name="subs_font">Yazı Tipi</string>
+    <string name="subs_font_size">Yazı Boyutu</string>
+    <string name="subs_hold_to_reset_to_default">Varsayılana sıfırlamak için basılı tutun</string>
+    <string formatted="true" name="subs_import_text">Fontları içe aktarmak için %s konumuna yerleştirin</string>
+    <string name="subs_outline_color">Dış Hat Rengi</string>
+    <string name="subs_subtitle_alignment">Altyazı Hizalama</string>
+    <string name="subs_subtitle_elevation">Altyazı Yüksekliği</string>
+    <string name="subs_subtitle_languages">Altyazı Dili</string>
+    <string name="subs_text_color">Yazı Rengi</string>
+    <string name="subs_window_color">Pencere Rengi</string>
+    <string name="subscribe_tooltip">Yeni bölüm bildirimi</string>
+    <string name="subscription_deleted">%s kanalı aboneliğinden çıkıldı</string>
+    <string name="subscription_episode_released">Yeni bölüm %d yayınlandı!</string>
+    <string name="subscription_in_progress_notification">Abone olunan gösteriler güncelleniyor</string>
+    <string name="subscription_list_name">Abone olunan</string>
+    <string name="subscription_new">%s kanalına abone olundu</string>
+    <string name="subtitle_offset">Altyazı senkronu</string>
+    <string name="subtitle_offset_extra_hint_before_format">Altyazılar %d ms geç gözüküyorsa bunu kullanın</string>
+    <string name="subtitle_offset_extra_hint_later_format">Altyazılar %d ms erken görüntüleniyorsa bunu kullanın</string>
+    <string name="subtitle_offset_extra_hint_none_format">Altyazı gecikmesi yok</string>
+    <string name="subtitle_offset_hint">1000 ms</string>
+    <string name="subtitle_offset_title">Altyazı gecikmesi</string>
+    <string name="subtitles_depressed">Çökmüş</string>
+    <string name="subtitles_encoding">Altyazı kodlaması</string>
+    <string name="subtitles_example_text">Pijamalı hasta yağız şoföre çabucak güvendi</string>
+    <string name="subtitles_filter_lang">Tercih edilen medya diline göre filtrele</string>
+    <string name="subtitles_from_embedded">Yerleştir</string>
+    <string name="subtitles_from_online">Çevrimiçi</string>
+    <string name="subtitles_outline">Dış hat</string>
+    <string name="subtitles_raised">Yükseltilmiş</string>
+    <string name="subtitles_remove_bloat">Altyazılardaki şişkinliği kaldır</string>
+    <string name="subtitles_remove_captions">Altyazılardan seçmeli altyazıyı (CC) kaldır</string>
+    <string name="subtitles_settings">Altyazı Ayarları</string>
+    <string name="subtitles_shadow">Gölge</string>
+    <string name="swipe_to_change_settings">Ayarları değiştirmek için kaydır</string>
+    <string name="swipe_to_change_settings_des">Sol ve sağ taraftan yukarı kaydırarak ekran parlaklığı ve sesi ayarla</string>
+    <string name="swipe_to_seek_settings">Atlamak için kaydır</string>
+    <string name="swipe_to_seek_settings_des">Zamanı ayarlamak için yanlardan kaydır</string>
+    <string name="switch_account">Hesap değiştir</string>
+    <string name="sync_score">Puan</string>
+    <string formatted="true" name="sync_score_format">%d / 10</string>
+    <string name="sync_total_episodes_none">/??</string>
+    <string formatted="true" name="sync_total_episodes_some">/%d</string>
+    <string name="synopsis">Özet</string>
+    <string name="test_extensions">Tüm uzantıları test et</string>
+    <string name="test_extensions_summary">Bu test geliştiriciler içindir ve herhangi bir uzantının çalışmasını doğrulamaz veya reddetmez.</string>
+    <string name="test_failed">Başarısız</string>
+    <string name="test_log">Günlük</string>
+    <string name="test_passed">Başarılı</string>
+    <string name="test_warning">Uyarı</string>
+    <string name="title">Başlık</string>
+    <string name="title_downloads">İndirilenler</string>
+    <string name="title_home">Ana sayfa</string>
+    <string name="title_search">Ara</string>
+    <string name="title_settings">Ayarlar</string>
+    <string name="toast_copied">kopyalandı!</string>
+    <string name="top_center">Üst orta</string>
+    <string name="top_left">Sol üst</string>
+    <string name="top_right">Sağ üst</string>
+    <string name="torrent">Torrentler</string>
+    <string name="torrent_info">Bu video Torrent\'tir, bu video aktivitenizin takip edilebileceği anlamına gelir.\nDevam etmeden önce Torrentlemeyi iyi anladığınızdan emin olun.</string>
+    <string name="torrent_no_plot">Açıklama Bulunamadı</string>
+    <string name="torrent_not_accepted">Uygulamayı yeniden başlatın ve devam etmek için Stream Torrent açılır penceresini kabul edin.</string>
+    <string name="torrent_plot">Açıklama</string>
+    <string name="torrent_preferred_media">Ayarlar/Sağlayıcılar/Tercih edilen medya bölümünden torrenti etkinleştirin</string>
+    <string name="torrent_singular">Torrent</string>
+    <string name="tracks">Parçalar</string>
+    <string name="trailer">Fragman</string>
+    <string name="tv_layout">TV düzeni</string>
+    <string name="tv_series">Diziler</string>
+    <string name="tv_series_singular">Dizi</string>
+    <string name="type_completed">Tamamlandı</string>
+    <string name="type_dropped">Bırakıldı</string>
+    <string name="type_on_hold">Beklemede</string>
+    <string name="type_plan_to_watch">Planlandı</string>
+    <string name="type_re_watching">Yeniden izleniyor</string>
+    <string name="type_watching">İzleniyor</string>
+    <string name="unable_to_inflate">UI was unable to be created correctly, this is a MAJOR BUG and should be reported immediately %s</string>
+    <string name="unexpected_error">Beklenmeyen oynatıcı hatası</string>
+    <string name="unfavorite">Favorilerden kaldır</string>
+    <string name="unsupported_error">Desteklenmeyen hata</string>
+    <string name="update">Güncelle</string>
+    <string name="update_notification_downloading">Uygulama güncellemesi indiriliyor…</string>
+    <string name="update_notification_failed">Uygulamanın yeni sürümü kurulamadı</string>
+    <string name="update_notification_installing">Uygulama güncellemesi kuruluyor…</string>
+    <string name="update_plugins">Eklentileri Güncelle</string>
+    <string name="update_plugins_manually">Eklentileri el ile güncelle</string>
+    <string name="update_started">Güncelleme Başladı</string>
+    <string name="updates_settings">Uygulama güncellemelerini göster</string>
+    <string name="updates_settings_des">Uygulama başlatıldıktan sonra güncellemeleri ara.</string>
+    <string name="upload_sync">Senkronize et</string>
+    <string name="uppercase_all_subtitles">Tüm altyazılar büyük harf</string>
+    <string name="use">Kullan</string>
+    <string name="use_default_account">Varsayılan Hesabı Kullan</string>
+    <string name="use_system_brightness_settings">Sistem parlaklığını kullan</string>
+    <string name="use_system_brightness_settings_des">Oynatıcıyı karartmak yerine sistem parlaklığını kullan</string>
+    <string name="used_storage">Kullanılan</string>
+    <string name="video_aspect_ratio_resize">Yeniden boyutlandır</string>
+    <string name="video_buffer_clear_settings">Video ve resim önbelleğini temizle</string>
+    <string name="video_buffer_disk_settings">Diskteki video önbelleği</string>
+    <string name="video_buffer_length_settings">Video arabellek uzunluğu</string>
+    <string name="video_buffer_size_settings">Video arabellek boyutu</string>
+    <string name="video_disk_description">Çok yükseğe ayarlanırsa düşük depolama alanına sahip sistemlerde sorunlara neden olur (örn. Android TV).</string>
+    <string name="video_lock">Kilitle</string>
+    <string name="video_ram_description">Çok yükseğe ayarlanırsa düşük belleğe sahip cihazlarda çökmelere neden olur (örn. Android TV).</string>
+    <string name="video_skip_op">Jeneriği geç</string>
+    <string name="video_source">Kaynak</string>
+    <string name="video_tracks">Video parçaları</string>
+    <string name="view_public_repositories_button">Topluluk depolarını görüntüle</string>
+    <string name="view_public_repositories_button_short">Herkese açık liste</string>
+    <string name="volume_exceeded_100">Ses %100 oranını aştı</string>
+    <string name="vpn_might_be_needed">Bu sağlayıcının düzgün çalışması için bir VPN gerekebilir</string>
+    <string name="vpn_torrent">Bu sağlayıcı torrent kullanıyor, bir VPN önerilir</string>
+    <string name="watch_quality_pref">Tercih edilen görüntü kalitesi (WiFi)</string>
+    <string name="watch_quality_pref_data">Tercih edilen görüntü kalitesi (Mobil veri)</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="year">Yıl</string>
+    <string name="yes">Evet</string>
+</resources>

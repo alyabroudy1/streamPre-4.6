@@ -1,0 +1,30 @@
+R_DEF: Internal format may change without notice
+local
+drawable ic_baseline_close_24
+drawable ic_baseline_fast_forward_24
+drawable ic_baseline_pause_24
+drawable ic_baseline_play_arrow_24
+drawable ic_baseline_replay_24
+drawable ic_baseline_speed_24
+drawable ic_baseline_subtitles_24
+drawable ic_baseline_volume_up_24
+drawable ic_outline_settings_24
+drawable player_gradient_bottom
+drawable player_gradient_top
+drawable selector_play_button
+drawable selector_player_button
+id bottom_gradient
+id btn_audio
+id btn_captions
+id btn_close
+id btn_forward
+id btn_play_pause
+id btn_quality
+id btn_rewind
+id btn_speed
+id center_controls
+id seekbar
+id text_time
+id top_controls
+id top_gradient
+layout dialog_youtube_player

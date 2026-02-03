@@ -1,0 +1,1 @@
+/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/build/intermediates/compiled_navigation_res/stableDebug/compileStableDebugNavigationResources/navigation_mobile_navigation.xml.flat 

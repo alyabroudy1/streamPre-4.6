@@ -1,0 +1,28 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/mohammad/AndroidStudioProjects/streamPre-4.6/omarC/FaselHDProvider/src/main/AndroidManifest.xml:2:1-12:12
+INJECTED from /Users/mohammad/AndroidStudioProjects/streamPre-4.6/omarC/FaselHDProvider/src/main/AndroidManifest.xml:2:1-12:12
+	package
+		INJECTED from /Users/mohammad/AndroidStudioProjects/streamPre-4.6/omarC/FaselHDProvider/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/mohammad/AndroidStudioProjects/streamPre-4.6/omarC/FaselHDProvider/src/main/AndroidManifest.xml:2:11-69
+application
+ADDED from /Users/mohammad/AndroidStudioProjects/streamPre-4.6/omarC/FaselHDProvider/src/main/AndroidManifest.xml:4:5-10:19
+activity#com.example.utils.VideoSnifferActivity
+ADDED from /Users/mohammad/AndroidStudioProjects/streamPre-4.6/omarC/FaselHDProvider/src/main/AndroidManifest.xml:5:9-9:40
+	android:exported
+		ADDED from /Users/mohammad/AndroidStudioProjects/streamPre-4.6/omarC/FaselHDProvider/src/main/AndroidManifest.xml:9:13-37
+	android:configChanges
+		ADDED from /Users/mohammad/AndroidStudioProjects/streamPre-4.6/omarC/FaselHDProvider/src/main/AndroidManifest.xml:7:13-59
+	android:theme
+		ADDED from /Users/mohammad/AndroidStudioProjects/streamPre-4.6/omarC/FaselHDProvider/src/main/AndroidManifest.xml:8:13-63
+	android:name
+		ADDED from /Users/mohammad/AndroidStudioProjects/streamPre-4.6/omarC/FaselHDProvider/src/main/AndroidManifest.xml:6:13-55
+uses-sdk
+INJECTED from /Users/mohammad/AndroidStudioProjects/streamPre-4.6/omarC/FaselHDProvider/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/mohammad/AndroidStudioProjects/streamPre-4.6/omarC/FaselHDProvider/src/main/AndroidManifest.xml
+INJECTED from /Users/mohammad/AndroidStudioProjects/streamPre-4.6/omarC/FaselHDProvider/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/mohammad/AndroidStudioProjects/streamPre-4.6/omarC/FaselHDProvider/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/mohammad/AndroidStudioProjects/streamPre-4.6/omarC/FaselHDProvider/src/main/AndroidManifest.xml

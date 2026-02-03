@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "com.lagradost.cloudstream3.app-mergePrereleaseDebugResources-81:/layout-port/subtitle_offset.xml",
+        "source": "com.lagradost.cloudstream3.app-main-84:/layout-port/subtitle_offset.xml"
+    },
+    {
+        "merged": "com.lagradost.cloudstream3.app-mergePrereleaseDebugResources-81:/layout-port/player_select_source_and_subs.xml",
+        "source": "com.lagradost.cloudstream3.app-main-84:/layout-port/player_select_source_and_subs.xml"
+    },
+    {
+        "merged": "com.lagradost.cloudstream3.app-mergePrereleaseDebugResources-81:/layout-port/player_select_source_priority.xml",
+        "source": "com.lagradost.cloudstream3.app-main-84:/layout-port/player_select_source_priority.xml"
+    }
+]

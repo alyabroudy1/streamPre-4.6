@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.lagradost.cloudstream3.app-mergeStableDebugResources-80:/values-ti/values-ti.xml",
+            "map": [
+                {
+                    "source": "/Users/mohammad/AndroidStudioProjects/streamPre-4.6/app/src/main/res/values-b+ti/strings.xml",
+                    "from": {
+                        "startLines": "2,4,3",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,228,146",
+                        "endColumns": "90,66,81",
+                        "endOffsets": "141,290,223"
+                    },
+                    "to": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,146,213",
+                        "endColumns": "90,66,81",
+                        "endOffsets": "141,208,290"
+                    }
+                }
+            ]
+        }
+    ]
+}

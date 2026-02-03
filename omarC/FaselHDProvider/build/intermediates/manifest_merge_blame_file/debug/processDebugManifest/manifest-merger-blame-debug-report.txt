@@ -1,0 +1,21 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example" >
+4
+5    <uses-sdk android:minSdkVersion="21" />
+6
+7    <application>
+7-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/omarC/FaselHDProvider/src/main/AndroidManifest.xml:4:5-10:19
+8        <activity
+8-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/omarC/FaselHDProvider/src/main/AndroidManifest.xml:5:9-9:40
+9            android:name="com.example.utils.VideoSnifferActivity"
+9-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/omarC/FaselHDProvider/src/main/AndroidManifest.xml:6:13-55
+10            android:configChanges="orientation|screenSize"
+10-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/omarC/FaselHDProvider/src/main/AndroidManifest.xml:7:13-59
+11            android:exported="false"
+11-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/omarC/FaselHDProvider/src/main/AndroidManifest.xml:9:13-37
+12            android:theme="@style/Theme.AppCompat.NoActionBar" />
+12-->/Users/mohammad/AndroidStudioProjects/streamPre-4.6/omarC/FaselHDProvider/src/main/AndroidManifest.xml:8:13-63
+13    </application>
+14
+15</manifest>

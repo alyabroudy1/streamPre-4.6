@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "LINKED_RESOURCES_BINARY_FORMAT",
+    "kind": "Directory"
+  },
+  "applicationId": "com.lagradost.cloudstream3.debug",
+  "variantName": "stableDebug",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 67,
+      "versionName": "4.6.1",
+      "outputFile": "linked-resources-binary-format-stableDebug.ap_"
+    }
+  ],
+  "elementType": "File"
+}

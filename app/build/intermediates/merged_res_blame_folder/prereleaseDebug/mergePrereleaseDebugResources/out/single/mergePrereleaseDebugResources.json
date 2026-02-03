@@ -1,0 +1,2302 @@
+[
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_storage_bar_mid_box.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/storage_bar_mid_box.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_bottom_resultview_preview_tv.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/bottom_resultview_preview_tv.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-mdpi_ic_stat_name.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-debug-83:/drawable-mdpi/ic_stat_name.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-ldpi_ic_cloudstreamlogotv.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-ldpi/ic_cloudstreamlogotv.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_quick_novel_icon.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/quick_novel_icon.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_outline_notifications_24dp.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_outline_notifications_24dp.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_player_custom_layout.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/player_custom_layout.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_fragment_library_tv.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/fragment_library_tv.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_library_viewpager_page.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/library_viewpager_page.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-debug-83:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xxhdpi_ic_cloudstreamlogotv_2.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xxhdpi/ic_cloudstreamlogotv_2.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_profile_bg_pink.jpg.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/profile_bg_pink.jpg"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_tvtypes_chips.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/tvtypes_chips.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_monke_funny.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/monke_funny.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_repository_item_tv.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/repository_item_tv.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-hdpi_ic_cloudstreamlogotv_pre.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-hdpi/ic_cloudstreamlogotv_pre.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_baseline_sync_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/baseline_sync_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xxxhdpi_cloud_2_gradient_beta_old.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xxxhdpi/cloud_2_gradient_beta_old.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/mipmap-anydpi-v26_ic_banner.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-debug-83:/mipmap-anydpi-v26/ic_banner.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_activity_main.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-hdpi_baseline_grid_view_24.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-hdpi/baseline_grid_view_24.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/color_white_transparent_toggle.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/color/white_transparent_toggle.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/font_stix_general.ttf.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/font/stix_general.ttf"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/font_ubuntu_regular.ttf.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/font/ubuntu_regular.ttf"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_sun_2.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/sun_2.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_dialog_online_subtitles.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/dialog_online_subtitles.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/color_tag_stroke_color.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/color/tag_stroke_color.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_netflix_play.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/netflix_play.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_add_remove_sites.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/add_remove_sites.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-anydpi-v24_ic_cloudstreamlogotv_pre.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-anydpi-v24/ic_cloudstreamlogotv_pre.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_outline_drawable.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/outline_drawable.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/color_chip_color.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/color/chip_color.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_monke_sob.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/monke_sob.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_account_edit_dialog.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/account_edit_dialog.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/xml_backup_descriptor.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/xml/backup_descriptor.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/xml_settings_ui.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/xml/settings_ui.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_outline_drawable_forced.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/outline_drawable_forced.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_sort_bottom_footer_add_choice.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/sort_bottom_footer_add_choice.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-anydpi-v24_cloud_2_gradient_beta.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-anydpi-v24/cloud_2_gradient_beta.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_keyboard_arrow_left_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_keyboard_arrow_left_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_pause_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_pause_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_restart_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_restart_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_fragment_home_head.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/fragment_home_head.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_exit_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_exit_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/anim_rotate_around_center_point.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/anim/rotate_around_center_point.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_profile_bg_blue.jpg.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/profile_bg_blue.jpg"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_storage_bar_mid.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/storage_bar_mid.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_pin_ic.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/pin_ic.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_device_auth.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/device_auth.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_subtitle_settings.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/subtitle_settings.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_go_back_30.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/go_back_30.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_account_managment.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/account_managment.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_bottom_resultview_preview.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/bottom_resultview_preview.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_collections_bookmark_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_collections_bookmark_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_player_custom_layout_tv.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/player_custom_layout_tv.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/color_player_button_tv.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/color/player_button_tv.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xhdpi_cloud_2_gradient_debug.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xhdpi/cloud_2_gradient_debug.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_netflix_skip_back.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/netflix_skip_back.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_circular_progress_bar_filled.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/circular_progress_bar_filled.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/font_productsans_bold.ttf.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/font/productsans_bold.ttf"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/color_item_select_color.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/color/item_select_color.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_fragment_downloads.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/fragment_downloads.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_simkl_logo.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/simkl_logo.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/xml_settings_account.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/xml/settings_account.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_fragment_testing.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/fragment_testing.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_more_vert_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_more_vert_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_account_list_item_edit.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/account_list_item_edit.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-ldpi_baseline_grid_view_24.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-ldpi/baseline_grid_view_24.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_outline_bookmark_add_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/outline_bookmark_add_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xhdpi_ic_cloudstreamlogotv.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xhdpi/ic_cloudstreamlogotv.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-mdpi_cloud_2_gradient_beta_old.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-mdpi/cloud_2_gradient_beta_old.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_thumb_up_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_thumb_up_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_bg_color_top.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/bg_color_top.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_arrow_back_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_arrow_back_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_circular_progress_bar.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/circular_progress_bar.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_video_tap_button_skip.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/video_tap_button_skip.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_tune_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_tune_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_fragment_plugins.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/fragment_plugins.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_rating_fill.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/rating_fill.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xxhdpi_cloud_2_gradient_debug.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xxhdpi/cloud_2_gradient_debug.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_developer_mode_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_developer_mode_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_provider_list.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/provider_list.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_example_qr.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/example_qr.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/font_productsans_medium.ttf.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/font/productsans_medium.ttf"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/menu_library_menu.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/menu/library_menu.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-hdpi_ic_cloudstreamlogotv.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-hdpi/ic_cloudstreamlogotv.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_sun_6.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/sun_6.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_download_icon_error.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/download_icon_error.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_home_alt.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/home_alt.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_fragment_search_tv.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/fragment_search_tv.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_rdload.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/rdload.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_quick_search.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/quick_search.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_download_header_episode.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/download_header_episode.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-debug-83:/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_library_icon.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/library_icon.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-mdpi_ic_anilist_icon.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-mdpi/ic_anilist_icon.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_outline_card.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/outline_card.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_outline_big_20.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/outline_big_20.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/font_productsans_light.ttf.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/font/productsans_light.ttf"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/font_productsans_regular.ttf.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/font/productsans_regular.ttf"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-anydpi-v24_ic_anilist_icon.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-anydpi-v24/ic_anilist_icon.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_filled_notifications_24dp.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_filled_notifications_24dp.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_settings_title_top.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/settings_title_top.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_default_cover.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/default_cover.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_subtitle_settings_dialog.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/subtitle_settings_dialog.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_sort_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_sort_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_home_scroll_view.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/home_scroll_view.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_construction_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_construction_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_discord_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_discord_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/font_futura.ttf.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/font/futura.ttf"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_monke_flusdered.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/monke_flusdered.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_logcat.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/logcat.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_empty_layout.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/empty_layout.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_fragment_setup_language.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/fragment_setup_language.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/font_productsans_lightitalic.ttf.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/font/productsans_lightitalic.ttf"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_play_button_transparent.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/play_button_transparent.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/font_netflix_sans.ttf.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/font/netflix_sans.ttf"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_star_border_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_star_border_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_github_logo.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_github_logo.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_toast.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/toast.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xhdpi_cloud_2_gradient_beta_old.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xhdpi/cloud_2_gradient_beta_old.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_fragment_webview.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/fragment_webview.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_rail_header.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/rail_header.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/color_color_primary_transparent.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/color/color_primary_transparent.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_fragment_player_tv.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/fragment_player_tv.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_network_stream.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_network_stream.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_provider_test_item.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/provider_test_item.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_profile_bg_red.jpg.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/profile_bg_red.jpg"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xxxhdpi_ic_cloudstreamlogotv_pre.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xxxhdpi/ic_cloudstreamlogotv_pre.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_dashboard_black_24dp.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_dashboard_black_24dp.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_monke_party.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/monke_party.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xhdpi_ic_cloudstreamlogotv_2.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xhdpi/ic_cloudstreamlogotv_2.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_sort_bottom_sheet.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/sort_bottom_sheet.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_player_button_tv_attr.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/player_button_tv_attr.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_resume_arrow2.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_resume_arrow2.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_rddone.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/rddone.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_speed_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_speed_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xhdpi_ic_stat_name.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-debug-83:/drawable-xhdpi/ic_stat_name.png"
+    },
+    {
+        "merged": "com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_dialog_youtube_player.xml.flat",
+        "source": "com.lagradost.cloudstream3.app-main-84:/layout/dialog_youtube_player.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_arrow_and_edge_24px.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/arrow_and_edge_24px.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_subtitles_background_gradient.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/subtitles_background_gradient.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_selector_play_button.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/selector_play_button.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_public_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_public_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_remove_red_eye_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_remove_red_eye_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_baseline_remove_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/baseline_remove_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_search_background.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/search_background.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_fragment_library.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/fragment_library.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_mal_logo.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/mal_logo.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_outline_big_20_gray.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/outline_big_20_gray.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/font_gotham.ttf.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/font/gotham.ttf"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_brightness_1_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_brightness_1_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_subtitle_offset_item.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/subtitle_offset_item.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_tv_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_tv_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_fragment_extensions.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/fragment_extensions.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_profile_bg_purple.jpg.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/profile_bg_purple.jpg"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xxxhdpi_cloud_2_gradient.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xxxhdpi/cloud_2_gradient.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_tab_selector.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/tab_selector.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/font_productsans_thinitalic.ttf.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/font/productsans_thinitalic.ttf"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_download_button_view.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/download_button_view.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_notifications_black_24dp.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_notifications_black_24dp.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_player_select_source_and_subs.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/player_select_source_and_subs.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xxhdpi_cloud_2_gradient.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xxhdpi/cloud_2_gradient.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_settings_icon_outline.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/settings_icon_outline.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_storage_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_storage_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_netflix_download.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/netflix_download.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_result_selection.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/result_selection.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_selector_player_button.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/selector_player_button.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_play_arrow_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_play_arrow_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_video_pause.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/video_pause.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_progress_drawable_vertical.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/progress_drawable_vertical.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_player_select_source_priority.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/player_select_source_priority.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_check_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_check_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/xml_settings_providers.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/xml/settings_providers.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_bottom_loading.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/bottom_loading.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_subtitles_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_subtitles_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_fragment_player.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/fragment_player.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_account_switch.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/account_switch.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_outline_drawable_round_20.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/outline_drawable_round_20.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_cloud_2.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/cloud_2.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_profile_bg_teal.jpg.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/profile_bg_teal.jpg"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_fragment_home_tv.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/fragment_home_tv.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_loading_poster.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/loading_poster.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_home_result_big_grid.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/home_result_big_grid.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_title_24px.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/title_24px.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout-port_player_select_source_priority.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout-port/player_select_source_priority.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_dns_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_dns_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_example_poster.jpg.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/example_poster.jpg"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_equalizer_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_equalizer_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-hdpi_ic_stat_name.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-debug-83:/drawable-hdpi/ic_stat_name.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_pause_to_play.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/pause_to_play.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_fragment_setup_layout.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/fragment_setup_layout.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_picture_in_picture_alt_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_picture_in_picture_alt_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xxxhdpi_ic_cloudstreamlogotv_pre_2.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xxxhdpi/ic_cloudstreamlogotv_pre_2.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_add_site_input.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/add_site_input.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_episodes_shadow.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/episodes_shadow.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_add_repo_input.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/add_repo_input.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_storage_bar_left_box.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/storage_bar_left_box.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-anydpi-v24_ic_banner_foreground.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-anydpi-v24/ic_banner_foreground.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-ldpi_ic_anilist_icon.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-ldpi/ic_anilist_icon.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_extension_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_extension_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_arrow_or_edge_24px.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/arrow_or_edge_24px.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_dialog__window_background.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/dialog__window_background.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/mipmap-xhdpi_ic_banner.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-debug-83:/mipmap-xhdpi/ic_banner.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_bottom_selection_dialog_direct.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/bottom_selection_dialog_direct.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-debug-83:/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_type_bg_color.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/type_bg_color.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-mdpi_ic_cloudstreamlogotv_2.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-mdpi/ic_cloudstreamlogotv_2.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/font_productsans_bolditalic.ttf.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/font/productsans_bolditalic.ttf"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_fragment_setup_media.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/fragment_setup_media.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_baseline_text_snippet_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/baseline_text_snippet_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_circular_progress_bar_clockwise.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/circular_progress_bar_clockwise.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_folder_open_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_folder_open_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_dialog_youtube_player.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/dialog_youtube_player.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_material_outline_background.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/material_outline_background.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_rating_bg_color.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/rating_bg_color.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-anydpi-v24_ic_cloudstreamlogotv.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-anydpi-v24/ic_cloudstreamlogotv.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/anim_pop_enter.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/anim/pop_enter.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/color_toggle_button_text.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/color/toggle_button_text.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_netflix_skip_forward.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/netflix_skip_forward.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_bg_color_both.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/bg_color_both.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_indicator_background.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/indicator_background.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_fragment_easter_egg_monke.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/fragment_easter_egg_monke.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_outline_info_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_outline_info_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_subtitle_offset.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/subtitle_offset.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_replay_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_replay_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_preview_seekbar_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/preview_seekbar_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_main_settings.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/main_settings.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-debug-83:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_video_locked.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/video_locked.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_bottom_selection_dialog.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/bottom_selection_dialog.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_search_history_item.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/search_history_item.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_video_unlocked.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/video_unlocked.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_rail_footer.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/rail_footer.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/font_productsans_blackitalic.ttf.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/font/productsans_blackitalic.ttf"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/font_productsans_black.ttf.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/font/productsans_black.ttf"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_autorenew_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_autorenew_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_arrows_input_24px.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/arrows_input_24px.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_skip_next_24_big.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_skip_next_24_big.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-anydpi-v24_cloud_2_gradient_beta_old.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-anydpi-v24/cloud_2_gradient_beta_old.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/color_toggle_button.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/color/toggle_button.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_loading_episode.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/loading_episode.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_delete_outline_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_delete_outline_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_filter_list_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_filter_list_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_sort_bottom_single_provider_choice.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/sort_bottom_single_provider_choice.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/anim_rotate_right.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/anim/rotate_right.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-mdpi_baseline_grid_view_24.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-mdpi/baseline_grid_view_24.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_refresh.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_refresh.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_download_icon_load.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/download_icon_load.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_outline.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/outline.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_baseline_notifications_none_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/baseline_notifications_none_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_library_icon_filled.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/library_icon_filled.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_settings_alt.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/settings_alt.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_subtitles_preview_background.jpg.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/subtitles_preview_background.jpg"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_skip_next_rounded_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_skip_next_rounded_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_language_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_language_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_hd_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_hd_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_baseline_theaters_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/baseline_theaters_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_background_shadow.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/background_shadow.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_title_shadow.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/title_shadow.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_stream_input.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/stream_input.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_volume_up_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_volume_up_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_player_circle_bg.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/player_circle_bg.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_video_bottom_button.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/video_bottom_button.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xxxhdpi_cloud_2_gradient_debug.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xxxhdpi/cloud_2_gradient_debug.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_home_remove_grid.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/home_remove_grid.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_question_mark_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/question_mark_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_fragment_search.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/fragment_search.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_player_gradient_tv.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/player_gradient_tv.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/anim_pop_exit.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/anim/pop_exit.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_warning_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_warning_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_sun_4.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/sun_4.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_baseline_headphones_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/baseline_headphones_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_cloud_2_solid.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/cloud_2_solid.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/color_white_attr_20.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/color/white_attr_20.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_brightness_7_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_brightness_7_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_storage_bar_right.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/storage_bar_right.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_volume_mute_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_volume_mute_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_kid_star_24px.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/kid_star_24px.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_baseline_network_ping_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/baseline_network_ping_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_sun_3.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/sun_3.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_rdpause.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/rdpause.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/anim_rotate_left.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/anim/rotate_left.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_account_list_item.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/account_list_item.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/menu_cast_expanded_controller_menu.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/menu/cast_expanded_controller_menu.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_fragment_result.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/fragment_result.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xhdpi_baseline_grid_view_24.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xhdpi/baseline_grid_view_24.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_baseline_list_alt_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/baseline_list_alt_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_home_icon_filled_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/home_icon_filled_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/font_consola.ttf.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/font/consola.ttf"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_keyboard_arrow_right_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_keyboard_arrow_right_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_circular_progress_bar_counter_clockwise.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/circular_progress_bar_counter_clockwise.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/color_selectable_black.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/color/selectable_black.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_bookmark_border_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_bookmark_border_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_monke_drink.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/monke_drink.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xxhdpi_cloud_2_gradient_beta.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xxhdpi/cloud_2_gradient_beta.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_monke_benene.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/monke_benene.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_account_list_item_add.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/account_list_item_add.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_download_icon_done.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/download_icon_done.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_circle_shape.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/circle_shape.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_homepage_parent_emulator.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/homepage_parent_emulator.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_arrow_forward_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_arrow_forward_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/color_button_selector_color.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/color/button_selector_color.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/font_lucida_grande.ttf.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/font/lucida_grande.ttf"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_battery.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_battery.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_settings_icon_filled.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/settings_icon_filled.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_player_quality_profile_item.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/player_quality_profile_item.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-anydpi-v24_baseline_grid_view_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-anydpi-v24/baseline_grid_view_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_play_to_pause.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/play_to_pause.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_home_icon_outline_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/home_icon_outline_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_sun_5.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/sun_5.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xxxhdpi_cloud_2_gradient_beta.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xxxhdpi/cloud_2_gradient_beta.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_home_select_mainpage.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/home_select_mainpage.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_outline_home_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_outline_home_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/xml_settings_general.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/xml/settings_general.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_storage_bar_left.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/storage_bar_left.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/anim_enter_anim.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/anim/enter_anim.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/color_black_button_ripple.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/color/black_button_ripple.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_circle_shape_dotted.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/circle_shape_dotted.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-debug-83:/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_player_select_tracks.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/player_select_tracks.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_rounded_dialog.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/rounded_dialog.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_home_remove_grid_expanded.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/home_remove_grid_expanded.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_outline_drawable_less.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/outline_drawable_less.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/color_toggle_button_outline.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/color/toggle_button_outline.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_loading_line_short_center.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/loading_line_short_center.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_storage_bar_right_box.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/storage_bar_right_box.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_kitsu_icon.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/kitsu_icon.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-mdpi_cloud_2_gradient_beta.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-mdpi/cloud_2_gradient_beta.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_home_result_grid_expanded.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/home_result_grid_expanded.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_download_button_layout.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/download_button_layout.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-anydpi-v24_ic_cloudstreamlogotv_pre_2.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-anydpi-v24/ic_cloudstreamlogotv_pre_2.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_download_icon_pause.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/download_icon_pause.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_bottom_input_dialog.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/bottom_input_dialog.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_home_icon_selector.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/home_icon_selector.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-debug-83:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/font_comic_sans.ttf.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/font/comic_sans.ttf"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_brightness_4_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_brightness_4_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_search_result_grid_expanded.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/search_result_grid_expanded.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_brightness_6_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_brightness_6_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_benene.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/benene.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/color_check_selection_color.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/color/check_selection_color.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-mdpi_cloud_2_gradient.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-mdpi/cloud_2_gradient.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/font_open_sans.ttf.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/font/open_sans.ttf"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-hdpi_cloud_2_gradient_debug.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-hdpi/cloud_2_gradient_debug.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_fast_forward_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_fast_forward_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_hearing_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_hearing_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/color_player_on_button_tv_attr.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/color/player_on_button_tv_attr.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_launcher_background.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-anydpi-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_monke_coco.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/monke_coco.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_video_tap_button.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/video_tap_button.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_trailer_custom_layout.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/trailer_custom_layout.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_favorite_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_favorite_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_home_scroll_view_tv.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/home_scroll_view_tv.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_rounded_select_ripple.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/rounded_select_ripple.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-anydpi-v24_ic_banner_background.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-anydpi-v24/ic_banner_background.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-anydpi-v24_ic_cloudstreamlogotv_2.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-anydpi-v24/ic_cloudstreamlogotv_2.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_star_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_star_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_outline_drawable_less_inset.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/outline_drawable_less_inset.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_circular_progress_bar_top_to_bottom.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/circular_progress_bar_top_to_bottom.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_item_logcat.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/item_logcat.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_sort_bottom_single_choice_no_checkmark.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/sort_bottom_single_choice_no_checkmark.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-hdpi_cloud_2_gradient_beta.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-hdpi/cloud_2_gradient_beta.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_fragment_setup_provider_languages.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/fragment_setup_provider_languages.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_custom_preference_widget_seekbar.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/custom_preference_widget_seekbar.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_subdl_logo_big.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/subdl_logo_big.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_edit_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_edit_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_fragment_setup_extensions.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/fragment_setup_extensions.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_aspect_ratio_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_aspect_ratio_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-ldpi_cloud_2_gradient_debug.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-ldpi/cloud_2_gradient_debug.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_outline_subtitles_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_outline_subtitles_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_search_result_grid.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/search_result_grid.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_dub_bg_color.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/dub_bg_color.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_monke_cookie.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/monke_cookie.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_add_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_add_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xhdpi_cloud_2_gradient.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xhdpi/cloud_2_gradient.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_library_icon_selector.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/library_icon_selector.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_notifications_icon_selector.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/notifications_icon_selector.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_home_episodes_expanded.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/home_episodes_expanded.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_player_quality_profile_dialog.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/player_quality_profile_dialog.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-ldpi_cloud_2_gradient.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-ldpi/cloud_2_gradient.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-hdpi_cloud_2_gradient_beta_old.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-hdpi/cloud_2_gradient_beta_old.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-hdpi_ic_cloudstreamlogotv_pre_2.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-hdpi/ic_cloudstreamlogotv_pre_2.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/xml_data_extraction_rules.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_fragment_child_downloads.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/fragment_child_downloads.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-hdpi_ic_cloudstreamlogotv_2.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-hdpi/ic_cloudstreamlogotv_2.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-debug-83:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-debug-83:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_dialog_loading.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/dialog_loading.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-hdpi_ic_anilist_icon.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-hdpi/ic_anilist_icon.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_custom_preference_material.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/custom_preference_material.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-debug-83:/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-ldpi_cloud_2_gradient_beta_old.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-ldpi/cloud_2_gradient_beta_old.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-anydpi-v24_ic_stat_name.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-debug-83:/drawable-anydpi-v24/ic_stat_name.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_favorite_border_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_favorite_border_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_sun_1.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/sun_1.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_cloudstream_monochrome_big.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_cloudstream_monochrome_big.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_cloudstream_monochrome.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_cloudstream_monochrome.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-mdpi_ic_cloudstreamlogotv_pre_2.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-mdpi/ic_cloudstreamlogotv_pre_2.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_account_select_linear.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/account_select_linear.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_baseline_skip_previous_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/baseline_skip_previous_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_player_gradient_top.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/player_gradient_top.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_baseline_save_as_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/baseline_save_as_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/xml_settings_player.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/xml/settings_player.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_arrow_back_ios_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_arrow_back_ios_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-anydpi-v24_cloud_2_gradient_debug.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-anydpi-v24/cloud_2_gradient_debug.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_cast_item.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/cast_item.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/color_text_selection_color.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/color/text_selection_color.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_touch_app_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_touch_app_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_brightness_5_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_brightness_5_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_search_icon.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/search_icon.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_volume_down_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_volume_down_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout-port_player_select_source_and_subs.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout-port/player_select_source_and_subs.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_activity_account_select.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/activity_account_select.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_bg_color_center.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/bg_color_center.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xxhdpi_ic_cloudstreamlogotv_pre_2.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xxhdpi/ic_cloudstreamlogotv_pre_2.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-ldpi_cloud_2_gradient_beta.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-ldpi/cloud_2_gradient_beta.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_fragment_result_tv.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/fragment_result_tv.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_hourglass_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/hourglass_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_sun_7.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/sun_7.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_fragment_trailer.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/fragment_trailer.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/font_times_new_roman.ttf.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/font/times_new_roman.ttf"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/anim_go_right.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/anim/go_right.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_home_black_24dp.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_home_black_24dp.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/font_poppins_regular.ttf.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/font/poppins_regular.ttf"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_baseline_fullscreen_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/baseline_fullscreen_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_check_24_listview.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_check_24_listview.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xhdpi_ic_anilist_icon.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xhdpi/ic_anilist_icon.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_sort_bottom_single_choice_color.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/sort_bottom_single_choice_color.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_bookmark_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_bookmark_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_homepage_parent.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/homepage_parent.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_chromecast_subtitle_settings.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/chromecast_subtitle_settings.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/xml_settings_updates.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/xml/settings_updates.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_baseline_help_outline_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/baseline_help_outline_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-debug-83:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/font_google_sans.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/font/google_sans.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_player_prioritize_item.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/player_prioritize_item.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-mdpi_ic_cloudstreamlogotv.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-mdpi/ic_cloudstreamlogotv.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_thumb_down_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_thumb_down_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_video_tap_button_always_white.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/video_tap_button_always_white.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xxxhdpi_ic_anilist_icon.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xxxhdpi/ic_anilist_icon.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_homepage_parent_tv.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/homepage_parent_tv.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-ldpi_ic_cloudstreamlogotv_2.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-ldpi/ic_cloudstreamlogotv_2.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_screen_rotation.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/screen_rotation.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_loading_line_short.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/loading_line_short.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_mic.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_mic.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_rderror.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/rderror.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_system_update_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_system_update_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_result_recommendations.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/result_recommendations.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_result_poster.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/result_poster.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/font_trebuchet_ms.ttf.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/font/trebuchet_ms.ttf"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_fragment_home_head_tv.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/fragment_home_head_tv.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_film_roll_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_film_roll_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_monke_like.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/monke_like.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_tvtypes_chips_scroll.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/tvtypes_chips_scroll.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_sort_bottom_single_choice.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/sort_bottom_single_choice.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_result_episode.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/result_episode.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_text_format_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_text_format_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_close_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_close_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/menu_repository.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/menu/repository.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xxxhdpi_ic_cloudstreamlogotv.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xxxhdpi/ic_cloudstreamlogotv.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_outline_share_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_outline_share_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-ldpi_ic_cloudstreamlogotv_pre.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-ldpi/ic_cloudstreamlogotv_pre.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_search_result_super_compact.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/search_result_super_compact.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_circular_progress_bar_small_to_large.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/circular_progress_bar_small_to_large.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_result_episode_large.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/result_episode_large.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_result_mini_image.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/result_mini_image.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-ldpi_ic_cloudstreamlogotv_pre_2.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-ldpi/ic_cloudstreamlogotv_pre_2.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_loading_poster_dynamic.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/loading_poster_dynamic.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_custom_preference_category_material.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/custom_preference_category_material.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_visibility_off_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_visibility_off_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_video_frame.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/video_frame.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_download_child_episode.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/download_child_episode.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_playlist_play_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_playlist_play_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_banner_foreground.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-debug-83:/drawable/ic_banner_foreground.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-debug-83:/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_lock_pin_dialog.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/lock_pin_dialog.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_loading_list.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/loading_list.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/color_chip_color_text.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/color/chip_color_text.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_go_forward_30.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/go_forward_30.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_baseline_description_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/baseline_description_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_resume_arrow.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_resume_arrow.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_delete_all.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/delete_all.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/color_item_select_color_tv.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/color/item_select_color_tv.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/color_toggle_selector.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/color/toggle_selector.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-hdpi_cloud_2_gradient.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-hdpi/cloud_2_gradient.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_fragment_home.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_brightness_2_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_brightness_2_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_fingerprint.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_fingerprint.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_confirm_exit_dialog.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/confirm_exit_dialog.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_baseline_fullscreen_exit_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/baseline_fullscreen_exit_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_open_subtitles_icon.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/open_subtitles_icon.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout-port_subtitle_offset.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout-port/subtitle_offset.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/font_productsans_italic.ttf.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/font/productsans_italic.ttf"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_baseline_downloading_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/baseline_downloading_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-mdpi_ic_cloudstreamlogotv_pre.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-mdpi/ic_cloudstreamlogotv_pre.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_loading_line.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/loading_line.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/font_verdana.ttf.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/font/verdana.ttf"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/anim_go_left.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/anim/go_left.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_speed_dialog.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/speed_dialog.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xhdpi_ic_cloudstreamlogotv_pre.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xhdpi/ic_cloudstreamlogotv_pre.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_rating_empty.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/rating_empty.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xhdpi_ic_cloudstreamlogotv_pre_2.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xhdpi/ic_cloudstreamlogotv_pre_2.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xhdpi_cloud_2_gradient_beta.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xhdpi/cloud_2_gradient_beta.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_keyboard_arrow_down_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_keyboard_arrow_down_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_outline_account_circle_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_outline_account_circle_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_repository_item.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/repository_item.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_player_button_tv_attr_no_bg.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/player_button_tv_attr_no_bg.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_download_button.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/download_button.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_player_gradient_bottom.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/player_gradient_bottom.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_skip_next_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_skip_next_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xxxhdpi_ic_cloudstreamlogotv_2.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xxxhdpi/ic_cloudstreamlogotv_2.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xxhdpi_ic_cloudstreamlogotv.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xxhdpi/ic_cloudstreamlogotv.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_outline_settings_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_outline_settings_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/font_productsans_mediumitalic.ttf.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/font/productsans_mediumitalic.ttf"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_add_account_input.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/add_account_input.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_solid_primary.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/solid_primary.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/color_selectable_white.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/color/selectable_white.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_account_single.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/account_single.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_fragment_result_swipe.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/fragment_result_swipe.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_netflix_pause.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/netflix_pause.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_player_button_tv.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/player_button_tv.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xxhdpi_baseline_grid_view_24.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xxhdpi/baseline_grid_view_24.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_ondemand_video_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_ondemand_video_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-debug-83:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_speedup.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/speedup.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_notifications_active_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_notifications_active_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_bg_focus_border_red.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/bg_focus_border_red.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_outline_remove_red_eye_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_outline_remove_red_eye_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_custom_rating_bar.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/custom_rating_bar.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_home_result_grid.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/home_result_grid.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_color_lens_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_color_lens_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/anim_exit_anim.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/anim/exit_anim.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_result_tag.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/result_tag.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_profile_bg_orange.jpg.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/profile_bg_orange.jpg"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_bottom_text_dialog.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/bottom_text_dialog.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xxhdpi_ic_cloudstreamlogotv_pre.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xxhdpi/ic_cloudstreamlogotv_pre.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_open_in_new_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_open_in_new_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_play_button.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/play_button.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-mdpi_cloud_2_gradient_debug.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-mdpi/cloud_2_gradient_debug.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xxhdpi_cloud_2_gradient_beta_old.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xxhdpi/cloud_2_gradient_beta_old.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/xml_provider_paths.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/xml/provider_paths.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/font_productsans_thin.ttf.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/font/productsans_thin.ttf"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_view_test.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/view_test.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_outline_voice_over_off_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_outline_voice_over_off_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_result_sync.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/result_sync.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_sort_bottom_single_choice_double_text.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/sort_bottom_single_choice_double_text.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xxxhdpi_baseline_grid_view_24.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xxxhdpi/baseline_grid_view_24.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_search_result_compact.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/search_result_compact.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_activity_main_tv.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/activity_main_tv.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/color_player_on_button_tv.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/color/player_on_button_tv.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_splash_background.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/splash_background.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_clear_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_clear_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_settings_icon_selector.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/settings_icon_selector.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xxhdpi_ic_anilist_icon.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-xxhdpi/ic_anilist_icon.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_fragment_plugin_details.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/fragment_plugin_details.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_baseline_restore_page_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/baseline_restore_page_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_video_play.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/video_play.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_options_popup_tv.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/options_popup_tv.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_profile_bg_dark_blue.jpg.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/profile_bg_dark_blue.jpg"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_monke_burrito.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/monke_burrito.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-anydpi-v24_cloud_2_gradient.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prerelease-78:/drawable-anydpi-v24/cloud_2_gradient.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_baseline_stop_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/baseline_stop_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_ic_baseline_brightness_3_24.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/ic_baseline_brightness_3_24.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable-xxhdpi_ic_stat_name.png.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-debug-83:/drawable-xxhdpi/ic_stat_name.png"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_loading_downloads.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/loading_downloads.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_rounded_outline.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/rounded_outline.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/menu_bottom_nav_menu.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/menu/bottom_nav_menu.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/layout_standard_toolbar.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/layout/standard_toolbar.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_sub_bg_color.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/sub_bg_color.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_outline_less.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/outline_less.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_bg_color_bottom.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/bg_color_bottom.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_outline_drawable_forced_round.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/outline_drawable_forced_round.xml"
+    },
+    {
+        "merged": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-prereleaseDebug-82:/drawable_rounded_progress.xml.flat",
+        "source": "/Users/mohammad/.gradle/daemon/9.2.1/com.lagradost.cloudstream3.app-main-84:/drawable/rounded_progress.xml"
+    }
+]
