@@ -3,16 +3,16 @@ package com.arabseed
 import com.lagradost.api.Log
 import com.lagradost.cloudstream3.LoadResponse
 import com.lagradost.cloudstream3.TvType
-import com.arabseed.utils.LinkResolvers
+import com.cloudstream.shared.extractors.LinkResolvers
 import com.lagradost.cloudstream3.utils.ExtractorLink
 import org.json.JSONObject
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
-import com.arabseed.service.parsing.BaseParser
-import com.arabseed.service.parsing.ParserInterface.ParsedItem
-import com.arabseed.service.parsing.ParserInterface.ParsedLoadData
-import com.arabseed.service.parsing.ParserInterface.ParsedEpisode
+import com.cloudstream.shared.parsing.BaseParser
+import com.cloudstream.shared.parsing.ParserInterface.ParsedItem
+import com.cloudstream.shared.parsing.ParserInterface.ParsedLoadData
+import com.cloudstream.shared.parsing.ParserInterface.ParsedEpisode
 
 /**
  * Arabseed specific parsing logic.
@@ -25,23 +25,45 @@ class ArabseedParser : BaseParser() {
 
     override val isMovieSelector = "span.category:not(:contains(مسلسلات))"
 
+    /**
+     * Checks if the current document is a watch page (contains video player or quality list).
+     */
+    fun isWatchPage(doc: Document): Boolean {
+        return doc.select("ul > li[data-link], ul > h3").isNotEmpty() || 
+               doc.select("iframe[name=player_iframe]").isNotEmpty()
+    }
+
+    /**
+     * Extracts the watch URL from a movie details page.
+     * @return URL string or empty string if not found.
+     */
+    fun getWatchUrl(doc: Document): String {
+        return extractMovieWatchUrl(doc)
+    }
+
+    /**
+     * Identifies the default quality from the quality list or falls back to the highest available.
+     * @return Quality value (e.g. 1080, 720) or 480 default.
+     */
+    fun extractDefaultQuality(doc: Document, availableQualities: List<QualityData>): Int {
+        return doc.selectFirst("ul.qualities__list li.active")
+            ?.attr("data-quality")?.toIntOrNull() 
+            ?: availableQualities.lastOrNull()?.quality 
+            ?: 480
+    }
+
     // ================= MAIN PAGE & SEARCH =================
     
-    // Legacy Selectors: div.item__contents, div.MovieBlock, div.poster__single, ul.Blocks-UL > div, 
-    // div.Blocks-UL > div, div.BlockItem, div.series__box, div.search__res__container > div
+    // Exact selectors from built-in ArabseedParser.kt:56
     private val mainPageItemSelectors = listOf(
         "div.item__contents",
-        "ul.Blocks-UL > div",
-        "div.Blocks-UL > div",
         "div.MovieBlock",
         "div.poster__single",
-        "div.search__res__container", // Mobile container
-        "div.live__search__res",      // Alternative mobile
-        "div.Section",
-        "div.Container",
-        "div.Content",
-        "main",
-        "body"
+        "ul.Blocks-UL > div",
+        "div.Blocks-UL > div",
+        "div.BlockItem",
+        "div.series__box",
+        "div.search__res__container > div"
     )
 
     override fun parseMainPage(doc: Document): List<ParsedItem> {
@@ -113,8 +135,13 @@ class ArabseedParser : BaseParser() {
     // ================= LOAD PAGE (DETAILS) =================
 
     override fun parseLoadPage(doc: Document, url: String): ParsedLoadData? {
+        return parseLoadPageData(doc, url)
+    }
+    
+    override fun parseLoadPageData(doc: Document, url: String): ParsedLoadData? {
+        Log.d(providerName, "[parseLoadPageData] Parsing: ${url.take(60)}...")
+        
         // TITLE SELECTORS
-        // div.title h1, h1.postTitle, div.h1-title h1
         var title = doc.selectFirst("div.title h1")?.text() 
             ?: doc.selectFirst("h1.postTitle")?.text()
             ?: doc.selectFirst("div.h1-title h1")?.text()
@@ -122,10 +149,13 @@ class ArabseedParser : BaseParser() {
         if (title.isNullOrBlank()) {
              title = doc.title().replace(" - عرب سيد", "").replace("مترجم اون لاين", "").trim()
         }
+        
+        if (title.isNullOrBlank()) {
+            Log.e(providerName, "[parseLoadPageData] Failed to parse title!")
+            return null
+        }
 
         // POSTER SELECTORS
-        // div.posterDiv img, div.poster img, img.poster, div.single-poster img, 
-        // div.postDiv a div img, div.postDiv img, .moviePoster img
         val posterImg = doc.selectFirst("div.posterDiv img")
             ?: doc.selectFirst("div.poster img")
             ?: doc.selectFirst("img.poster")
@@ -146,7 +176,6 @@ class ArabseedParser : BaseParser() {
         }
 
         // PLOT SELECTORS
-        // div.singleInfo span:contains(القصة) p, div.singleDesc p, div.story p, div.post__story p, div.postContent p, meta og:description
         val plot = doc.selectFirst("div.singleInfo span:contains(القصة) p")?.text()
             ?: doc.selectFirst("div.singleDesc p")?.text()
             ?: doc.selectFirst("div.story p")?.text()
@@ -158,27 +187,97 @@ class ArabseedParser : BaseParser() {
         // YEAR SELECTORS
         var year = doc.select("div.singleInfo span:contains(السنة) a").text().toIntOrNull()
         if (year == null) year = doc.select("div.info__area li:has(span:contains(سنة العرض)) ul.tags__list a").text().toIntOrNull()
-        if (year == null) year = Regex("""\d{4}""").find(title ?: "")?.value?.toIntOrNull()
+        if (year == null) year = Regex("""\d{4}""").find(title)?.value?.toIntOrNull()
         
-        // TYPE DETECTION
+        // TYPE DETECTION (matches built-in logic)
         val hasEpisodes = doc.select("div.epAll, div.episodes-list, ul.episodes, div.seasonDiv, div.seasonEpsCont, div.seasons--list, a.episode__item, div.series-episodes, div#seasons__list, div.list__sub__cats, div.epi__num, ul.episodes__list").isNotEmpty()
-        val isSeriesUrl = url.contains("/seasons/") || url.contains("/series/") || url.contains("/anime/")
+        val seriesKeywords = listOf("انمي", "مسلسل", "موسم", "برنامج", "سلسلة")
+        val isSeriesTitle = seriesKeywords.any { title.contains(it, ignoreCase = true) }
+        val isSeriesUrl = url.contains("/seasons/") || url.contains("/series/") || url.contains("/selary") || url.contains("/anime/")
         
-        val type = if (hasEpisodes || isSeriesUrl) TvType.TvSeries else TvType.Movie
+        val isMovie = !hasEpisodes && !isSeriesUrl && !isSeriesTitle
+        val type = if (isMovie) TvType.Movie else TvType.TvSeries
         
         // TAGS
         var tags = doc.select("div.singleInfo span:contains(النوع) a").map { it.text() }
         if (tags.isEmpty()) tags = doc.select("div.info__area li:has(span:contains(نوع العرض)) ul.tags__list a").map { it.text() }
+        
+        // CSRF Token (for AJAX)
+        val csrfToken = extractCsrfToken(doc)
+        
+        Log.d(providerName, "[parseLoadPageData] title='$title', isMovie=$isMovie, hasEpisodes=$hasEpisodes, csrfToken=${if(csrfToken!=null) "FOUND" else "NULL"}")
+        
+        return if (isMovie) {
+            // MOVIE: Extract watch URL
+            val watchUrl = extractMovieWatchUrl(doc)
+            Log.d(providerName, "[parseLoadPageData] Movie. watchUrl='${watchUrl.take(60)}'")
+            
+            ParsedLoadData(
+                title = title,
+                url = url,
+                posterUrl = fixUrl(poster),
+                plot = plot,
+                year = year,
+                type = type,
+                tags = tags,
+                watchUrl = watchUrl.ifBlank { null },
+                episodes = null,
+                csrfToken = csrfToken
+            )
+        } else {
+            // SERIES: Parse episodes
+            val episodes = parseEpisodes(doc, null)
+            Log.d(providerName, "[parseLoadPageData] Series. episodes=${episodes.size}")
+            
+            ParsedLoadData(
+                title = title,
+                url = url,
+                posterUrl = fixUrl(poster),
+                plot = plot,
+                year = year,
+                type = type,
+                tags = tags,
+                watchUrl = null,
+                episodes = episodes,
+                csrfToken = csrfToken
+            )
+        }
+    }
+    
+    /** Extract movie watch URL from various sources */
+    private fun extractMovieWatchUrl(doc: Document): String {
+        // Try iframe with specific name
+        var watchUrl = doc.select("iframe[name=player_iframe]").attr("src")
+        
+        // Try any iframe that might be the player
+        if (watchUrl.isBlank()) {
+             watchUrl = doc.select("div.Container iframe, div.Content iframe, div.embed-player iframe")
+                 .attr("src")
+        }
 
-        return ParsedLoadData(
-            title = title ?: "",
-            url = url,
-            posterUrl = fixUrl(poster),
-            plot = plot,
-            year = year,
-            type = type,
-            tags = tags
-        )
+        // Fallback: Watch Button (critical for loadLinks)
+        if (watchUrl.isBlank()) {
+            watchUrl = doc.select("a.watch__btn").attr("href")
+            if (watchUrl.isNotBlank()) Log.d(providerName, "Found watch button URL: $watchUrl")
+        }
+
+        // Fallback: onclick
+        if (watchUrl.isBlank()) {
+            val onClick = doc.select("ul.tabs-ul li.active").attr("onclick")
+            watchUrl = Regex("""href\s*=\s*'([^']+)'""").find(onClick)?.groupValues?.get(1) ?: ""
+        }
+        
+        // Fallback: any list item
+        if (watchUrl.isBlank()) {
+            doc.select("ul.tabs-ul li").forEach { li ->
+                if (watchUrl.isBlank()) {
+                    val onClick = li.attr("onclick")
+                    watchUrl = Regex("""href\s*=\s*'([^']+)'""").find(onClick)?.groupValues?.get(1) ?: ""
+                }
+            }
+        }
+        
+        return watchUrl
     }
 
     // ================= EPISODES & SEASONS =================
@@ -388,7 +487,13 @@ class ArabseedParser : BaseParser() {
         return qualities.sortedByDescending { it.quality }
     }
 
-    data class ServerData(val postId: String, val quality: Int, val serverId: String, val title: String)
+    data class ServerData(
+        val postId: String, 
+        val quality: Int, 
+        val serverId: String, 
+        val title: String,
+        val dataLink: String = ""  // Fallback direct URL from data-link attribute
+    )
 
     fun extractVisibleServers(doc: Document): List<ServerData> {
         val servers = mutableListOf<ServerData>()
@@ -398,9 +503,10 @@ class ArabseedParser : BaseParser() {
             val serverId = li.attr("data-server")
             val quality = li.attr("data-qu").toIntOrNull() ?: 0
             val title = li.select("span").text()
+            val dataLink = li.attr("data-link")  // Direct link fallback
             
             if (serverId.isNotBlank() && quality > 0) {
-                servers.add(ServerData(postId, quality, serverId, title))
+                servers.add(ServerData(postId, quality, serverId, title, dataLink))
             }
         }
         return servers
@@ -432,17 +538,22 @@ class ArabseedParser : BaseParser() {
     }
 
     fun extractDirectEmbeds(doc: Document): List<String> {
-        // iframe[src]
+        // Broaden selector to find ANY video iframe, filtering out known ads/socials
         return doc.select("iframe[src]").mapNotNull { 
-            var src = it.attr("src")
+            var src = fixUrl(it.attr("src"))
             if (src.isBlank()) return@mapNotNull null
             
+            // Handle /play.php?url=BASE64
             if (src.contains("url=")) {
                 val param = src.substringAfter("url=").substringBefore("&")
                 try {
                     val decoded = String(android.util.Base64.decode(param, android.util.Base64.DEFAULT))
-                    if (decoded.startsWith("http")) src = decoded
-                } catch (e: Exception) { }
+                    if (decoded.startsWith("http")) {
+                        src = decoded
+                    }
+                } catch (e: Exception) {
+                    // Failed to decode, keep original
+                }
             }
             
             if (src.isNotBlank() && 
@@ -453,4 +564,5 @@ class ArabseedParser : BaseParser() {
             ) src else null
         }
     }
+
 }

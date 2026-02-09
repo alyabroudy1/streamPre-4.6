@@ -4,7 +4,10 @@ import com.lagradost.cloudstream3.plugins.CloudstreamPlugin
 import com.lagradost.cloudstream3.plugins.Plugin
 import android.content.Context
 import com.arabseed.extractors.ArabseedLazyExtractor
-import com.arabseed.utils.PluginContext
+import com.cloudstream.shared.android.PluginContext
+import com.cloudstream.shared.android.ActivityProvider
+import com.cloudstream.shared.extractors.ReviewRateExtractor
+import com.cloudstream.shared.extractors.SnifferExtractor
 
 @CloudstreamPlugin
 class ArabseedPlugin: Plugin() {
@@ -12,15 +15,20 @@ class ArabseedPlugin: Plugin() {
         PluginContext.init(context)
         
         // Initialize ActivityProvider safely
-        com.arabseed.utils.ActivityProvider.initCompat(context)
+        ActivityProvider.initCompat(context)
         if (context is android.app.Activity) {
-            com.arabseed.utils.ActivityProvider.setActivity(context)
+            ActivityProvider.setActivity(context)
         }
         
-        // Register lazy extractor (handles virtual URLs)
-        registerExtractorAPI(ArabseedLazyExtractor())
+        // Register extractors
+        registerExtractorAPI(ArabseedLazyExtractor())  // Handles virtual /get__watch__server/ URLs
+        registerExtractorAPI(com.arabseed.extractors.ArabseedVirtualExtractor()) // Handles arabseed-virtual:// URLs
+        registerExtractorAPI(ReviewRateExtractor())    // Handles reviewrate.net URLs
+        registerExtractorAPI(SnifferExtractor())       // Handles sniffer:// URLs (video sniffing fallback)
         
         // Register provider
         registerMainAPI(ArabseedV2())
     }
 }
+
+
