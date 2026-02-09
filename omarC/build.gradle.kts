@@ -5,25 +5,27 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 buildscript {
     repositories {
+        // Jitpack MUST be first for CloudStream gradle plugin
+        maven("https://jitpack.io")
         google()
         mavenCentral()
-        // Shitpack repo which contains our tools and dependencies
-        maven("https://jitpack.io")
     }
-
+    
     dependencies {
         classpath("com.android.tools.build:gradle:8.7.3")
         // Cloudstream gradle plugin which makes everything work and builds plugins
         classpath("com.github.recloudstream:gradle:-SNAPSHOT")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.21")
     }
+    
+
 }
 
 allprojects {
     repositories {
+        maven("https://jitpack.io")
         google()
         mavenCentral()
-        maven("https://jitpack.io")
     }
 }
 
@@ -91,4 +93,4 @@ subprojects {
 
 task<Delete>("clean") {
     delete(rootProject.layout.buildDirectory)
-} 
+}

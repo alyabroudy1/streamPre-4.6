@@ -50,7 +50,7 @@ class YouTubePlayerDialog(
     private lateinit var btnQuality: ImageButton
     private lateinit var btnSpeed: ImageButton
     private lateinit var btnCaptions: ImageButton
-    private lateinit var btnAudio: ImageButton
+    private lateinit var btnScale: ImageButton
     private lateinit var btnExit: ImageButton
     private lateinit var seekBar: SeekBar
     private lateinit var textCurrentTime: TextView
@@ -59,6 +59,8 @@ class YouTubePlayerDialog(
     // State
     private var isPlaying = true
     private var isVisible = false
+    private var isDestroyed = false // Prevent calls after destroy
+    private var isScaleCover = false // false = contain (fit), true = cover (zoom/fill)
     private var isSeeking = false
     private var videoDuration = 0.0
     private var currentQuality = "auto"
@@ -106,7 +108,11 @@ class YouTubePlayerDialog(
         rootLayout.addView(webView)
 
         createOverlayUI()
-        rootLayout.addView(overlayRoot)
+        if (::overlayRoot.isInitialized) {
+            rootLayout.addView(overlayRoot)
+        } else {
+            Log.e(TAG, "onCreate: overlayRoot not initialized (layout failure?)")
+        }
 
         setContentView(rootLayout)
 
@@ -121,13 +127,25 @@ class YouTubePlayerDialog(
         forceLandscape()
         
         try {
-            // Apply Match Parent
-            window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
-            window?.setBackgroundDrawable(android.graphics.drawable.ColorDrawable(android.graphics.Color.BLACK))
+            // Apply Match Parent with no padding/margin
+            window?.apply {
+                setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+                setBackgroundDrawable(android.graphics.drawable.ColorDrawable(android.graphics.Color.BLACK))
+                
+                // Remove any default padding from dialog
+                decorView?.setPadding(0, 0, 0, 0)
+                
+                // For API 30+: Handle cutout/notch properly
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
+                    attributes?.layoutInDisplayCutoutMode = 
+                        WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
+                }
+            }
 
-            // Immersive Mode
+            // Immersive Mode - setDecorFitsSystemWindows(true) to properly handle insets
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
-                window?.setDecorFitsSystemWindows(false)
+                // Use TRUE here so content fits within safe area, then hide bars
+                window?.setDecorFitsSystemWindows(true)
                 window?.insetsController?.hide(android.view.WindowInsets.Type.statusBars() or android.view.WindowInsets.Type.navigationBars())
                 window?.insetsController?.systemBarsBehavior = android.view.WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
             } else {
@@ -197,6 +215,9 @@ class YouTubePlayerDialog(
                 mediaPlaybackRequiresUserGesture = false
                 mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
                 userAgentString = "Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.120 Mobile Safari/537.36"
+                // Enable viewport meta tag support
+                useWideViewPort = true
+                loadWithOverviewMode = true
             }
             webChromeClient = object : WebChromeClient() {
                 override fun onConsoleMessage(consoleMessage: ConsoleMessage?): Boolean {
@@ -240,39 +261,282 @@ class YouTubePlayerDialog(
         }
     }
 
+
+
+    // Externally injected resources from Plugin Context
+    var pluginResources: android.content.res.Resources? = null
+    var pluginPackageName: String = "com.youtube"
+
+    private fun getResId(name: String, type: String): Int {
+        val res = pluginResources ?: context.resources
+        // 1. Try injected package name
+        var id = res.getIdentifier(name, type, pluginPackageName)
+        if (id != 0) return id
+        
+        // 2. Try explicit com.youtube (if injected was different)
+        if (pluginPackageName != "com.youtube") {
+             id = res.getIdentifier(name, type, "com.youtube")
+             if (id != 0) return id
+        }
+
+        // 3. Fallback to host app
+        id = res.getIdentifier(name, type, "com.lagradost.cloudstream3")
+        
+        if (id == 0) {
+            Log.e(TAG, "getResId FAILED for $name type $type. Tried: $pluginPackageName, com.youtube, com.lagradost.cloudstream3")
+        }
+        return id
+    }
+    
     private fun createOverlayUI() {
-        Log.d(TAG, "createOverlayUI: Inflating XML layout")
+        Log.d(TAG, "createOverlayUI: Building programmatic UI")
         
-        // Inflate the strict XML layout
-        val view = layoutInflater.inflate(R.layout.dialog_youtube_player, null)
-        overlayRoot = view as ViewGroup
-        overlayRoot.visibility = View.GONE
-        overlayRoot.isClickable = true
-        overlayRoot.isFocusable = true
+        // Root container - full screen overlay (transparent, no background to show video)
+        overlayRoot = FrameLayout(context).apply {
+            layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
+            setBackgroundColor(0x00000000) // Fully transparent - video shows through
+            visibility = View.GONE
+            isClickable = true
+            isFocusable = true
+        }
         
-        // Bind Views
-        btnPlayPause = view.findViewById(R.id.btn_play_pause)
-        btnRewind = view.findViewById(R.id.btn_rewind)
-        btnForward = view.findViewById(R.id.btn_forward)
+        // ===== TOP HEADER BAR (Close, Audio, Captions, Quality, Speed) =====
+        val topBar = LinearLayout(context).apply {
+            layoutParams = FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            ).apply {
+                gravity = Gravity.TOP
+            }
+            orientation = LinearLayout.HORIZONTAL
+            gravity = Gravity.END or Gravity.CENTER_VERTICAL
+            setPadding(dpToPx(16), dpToPx(16), dpToPx(16), dpToPx(8))
+            // Gradient background from black to transparent
+            background = android.graphics.drawable.GradientDrawable(
+                android.graphics.drawable.GradientDrawable.Orientation.TOP_BOTTOM,
+                intArrayOf(0xCC000000.toInt(), 0x00000000)
+            )
+        }
         
-        // Extended Controls
-        btnSpeed = view.findViewById(R.id.btn_speed)
-        btnQuality = view.findViewById(R.id.btn_quality) // was btn_settings
-        btnCaptions = view.findViewById(R.id.btn_captions)
-        btnAudio = view.findViewById(R.id.btn_audio)
-        btnExit = view.findViewById(R.id.btn_close)
+        // Helper to create header buttons (smaller, icon-based) with focus effect
+        fun createHeaderButton(iconRes: Int, desc: String): ImageButton {
+            // Create focus state drawable for header
+            val normalBg = android.graphics.drawable.GradientDrawable().apply {
+                shape = android.graphics.drawable.GradientDrawable.OVAL
+                setColor(0x00000000) // Transparent
+            }
+            val focusedBg = android.graphics.drawable.GradientDrawable().apply {
+                shape = android.graphics.drawable.GradientDrawable.OVAL
+                setColor(0x33FFFFFF) // Light tint
+                setStroke(dpToPx(2), 0xFFFF0000.toInt()) // Red border
+            }
+            val stateList = android.graphics.drawable.StateListDrawable().apply {
+                addState(intArrayOf(android.R.attr.state_focused), focusedBg)
+                addState(intArrayOf(android.R.attr.state_pressed), focusedBg)
+                addState(intArrayOf(), normalBg)
+            }
+            
+            return ImageButton(context).apply {
+                layoutParams = LinearLayout.LayoutParams(dpToPx(44), dpToPx(44)).apply {
+                    marginStart = dpToPx(8)
+                }
+                background = stateList
+                setImageResource(iconRes)
+                setColorFilter(0xFFFFFFFF.toInt())
+                scaleType = android.widget.ImageView.ScaleType.CENTER_INSIDE
+                setPadding(dpToPx(8), dpToPx(8), dpToPx(8), dpToPx(8))
+                contentDescription = desc
+                isFocusable = true
+                isFocusableInTouchMode = true
+            }
+        }
         
-        seekBar = view.findViewById(R.id.seekbar)
-        textCurrentTime = view.findViewById(R.id.text_time)
-        textDuration = TextView(context) 
+        btnSpeed = createHeaderButton(android.R.drawable.ic_menu_recent_history, "Speed")
+        btnQuality = createHeaderButton(android.R.drawable.ic_menu_preferences, "Quality")
+        btnCaptions = createHeaderButton(android.R.drawable.ic_menu_more, "Captions")
+        btnScale = createHeaderButton(android.R.drawable.ic_menu_crop, "Scale: Fit") // Default Fit
+        btnAudio = createHeaderButton(android.R.drawable.ic_lock_silent_mode_off, "Audio")
+        btnExit = createHeaderButton(android.R.drawable.ic_menu_close_clear_cancel, "Close")
         
-        // Ensure standard accessibility references
-        btnPlayPause.contentDescription = "Play"
-        btnPlayPause.setImageResource(android.R.drawable.ic_media_pause) // Default to Pause icon as we autoplay
-        btnExit.contentDescription = "Close"
-        btnSpeed.contentDescription = "Speed"
-        btnQuality.contentDescription = "Quality"
-        btnCaptions.contentDescription = "Captions"
+        topBar.addView(btnSpeed)
+        topBar.addView(btnQuality)
+        topBar.addView(btnCaptions)
+        topBar.addView(btnScale) // Add before audio
+        topBar.addView(btnAudio)
+        topBar.addView(btnExit)
+        
+        // ===== CENTER PLAYBACK CONTROLS (Rewind, Play/Pause, Forward) =====
+        val centerControls = LinearLayout(context).apply {
+            layoutParams = FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            ).apply {
+                gravity = Gravity.CENTER
+            }
+            orientation = LinearLayout.HORIZONTAL
+            gravity = Gravity.CENTER_VERTICAL
+            setBackgroundColor(0x00000000) // Transparent
+        }
+        
+        // Create circular background drawable with focus state
+        fun createCircleBackground(normalColor: Int, focusColor: Int, size: Int): android.graphics.drawable.StateListDrawable {
+            val normalDrawable = android.graphics.drawable.GradientDrawable().apply {
+                shape = android.graphics.drawable.GradientDrawable.OVAL
+                setColor(normalColor)
+            }
+            val focusedDrawable = android.graphics.drawable.GradientDrawable().apply {
+                shape = android.graphics.drawable.GradientDrawable.OVAL
+                setColor(0x33FFFFFF) // Light translucent
+                setStroke(dpToPx(3), focusColor) // Red border when focused
+            }
+            return android.graphics.drawable.StateListDrawable().apply {
+                addState(intArrayOf(android.R.attr.state_focused), focusedDrawable)
+                addState(intArrayOf(android.R.attr.state_pressed), focusedDrawable)
+                addState(intArrayOf(), normalDrawable)
+            }
+        }
+        
+        // Helper to create large center buttons with circular bg and focus effect
+        fun createCenterButton(iconRes: Int, desc: String, size: Int = 72): ImageButton {
+            return ImageButton(context).apply {
+                layoutParams = LinearLayout.LayoutParams(dpToPx(size), dpToPx(size)).apply {
+                    marginStart = dpToPx(20)
+                    marginEnd = dpToPx(20)
+                }
+                background = createCircleBackground(0x44000000, 0xFFFF0000.toInt(), size)
+                setImageResource(iconRes)
+                setColorFilter(0xFFFFFFFF.toInt())
+                scaleType = android.widget.ImageView.ScaleType.CENTER_INSIDE
+                setPadding(dpToPx(12), dpToPx(12), dpToPx(12), dpToPx(12))
+                contentDescription = desc
+                isFocusable = true
+                isFocusableInTouchMode = true
+            }
+        }
+        
+        btnRewind = createCenterButton(android.R.drawable.ic_media_rew, "Rewind 10s", 64)
+        btnPlayPause = createCenterButton(android.R.drawable.ic_media_pause, "Play/Pause", 88)
+        btnForward = createCenterButton(android.R.drawable.ic_media_ff, "Forward 10s", 64)
+        
+        centerControls.addView(btnRewind)
+        centerControls.addView(btnPlayPause)
+        centerControls.addView(btnForward)
+        
+        // ===== BOTTOM BAR (Timeline/SeekBar + Time) =====
+        val bottomBar = LinearLayout(context).apply {
+            layoutParams = FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            ).apply {
+                gravity = Gravity.BOTTOM
+            }
+            orientation = LinearLayout.VERTICAL
+            setPadding(dpToPx(16), dpToPx(16), dpToPx(16), dpToPx(32))
+            // Gradient background from transparent to black
+            background = android.graphics.drawable.GradientDrawable(
+                android.graphics.drawable.GradientDrawable.Orientation.BOTTOM_TOP,
+                intArrayOf(0xDD000000.toInt(), 0x00000000)
+            )
+        }
+        
+        // Time display row
+        val timeRow = LinearLayout(context).apply {
+            layoutParams = LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            orientation = LinearLayout.HORIZONTAL
+            gravity = Gravity.CENTER_VERTICAL
+        }
+        
+        textCurrentTime = TextView(context).apply {
+            layoutParams = LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            text = "0:00"
+            setTextColor(0xFFFFFFFF.toInt())
+            textSize = 12f
+            typeface = android.graphics.Typeface.DEFAULT_BOLD
+        }
+        
+        val spacer = View(context).apply {
+            layoutParams = LinearLayout.LayoutParams(0, 1, 1f)
+        }
+        
+        textDuration = TextView(context).apply {
+            layoutParams = LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            text = "0:00"
+            setTextColor(0xAAFFFFFF.toInt())
+            textSize = 12f
+        }
+        
+        timeRow.addView(textCurrentTime)
+        timeRow.addView(spacer)
+        timeRow.addView(textDuration)
+        
+        // Custom SeekBar with thin gray track + red progress + large red thumb
+        seekBar = SeekBar(context).apply {
+            layoutParams = LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                dpToPx(24) // Height for touch target
+            ).apply {
+                topMargin = dpToPx(8)
+            }
+            max = 100
+            progress = 0
+            isFocusable = true
+            isFocusableInTouchMode = true
+            
+            // Create thin custom track drawable
+            val trackHeight = dpToPx(3)
+            val trackBg = android.graphics.drawable.GradientDrawable().apply {
+                shape = android.graphics.drawable.GradientDrawable.RECTANGLE
+                cornerRadius = dpToPx(2).toFloat()
+                setColor(0x66FFFFFF) // Gray track
+                setSize(0, trackHeight)
+            }
+            val trackProgress = android.graphics.drawable.GradientDrawable().apply {
+                shape = android.graphics.drawable.GradientDrawable.RECTANGLE
+                cornerRadius = dpToPx(2).toFloat()
+                setColor(0xFFFF0000.toInt()) // Red progress
+                setSize(0, trackHeight)
+            }
+            val clip = android.graphics.drawable.ClipDrawable(
+                trackProgress, 
+                Gravity.START, 
+                android.graphics.drawable.ClipDrawable.HORIZONTAL
+            )
+            progressDrawable = android.graphics.drawable.LayerDrawable(arrayOf(trackBg, clip)).apply {
+                setId(0, android.R.id.background)
+                setId(1, android.R.id.progress)
+            }
+            
+            // Large red thumb
+            thumb = android.graphics.drawable.GradientDrawable().apply {
+                shape = android.graphics.drawable.GradientDrawable.OVAL
+                setColor(0xFFFF0000.toInt())
+                setSize(dpToPx(16), dpToPx(16))
+                setStroke(dpToPx(2), 0xFFFFFFFF.toInt())
+            }
+            thumbOffset = dpToPx(8)
+        }
+        
+        bottomBar.addView(seekBar) // SeekBar first (on top)
+        bottomBar.addView(timeRow)  // Time below
+        
+        // Add all sections to overlay
+        overlayRoot.addView(topBar)
+        overlayRoot.addView(centerControls)
+        overlayRoot.addView(bottomBar)
+        
+        Log.d(TAG, "createOverlayUI: Layout built successfully")
     }
 
     private var seekDebouncerRunnable: Runnable? = null
@@ -311,13 +575,18 @@ class YouTubePlayerDialog(
             showAudioMenu()
         }
 
+        btnScale.setOnClickListener {
+            toggleScaleMode()
+        }
+
         // SeekBar
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 if (fromUser) {
                     resetAutoHide() // Keep overlay visible while seeking
                     val time = (progress.toDouble() / 100.0) * videoDuration
-                    textCurrentTime.text = formatTime(time.toInt()) + " / " + formatTime(videoDuration.toInt())
+                    textCurrentTime.text = formatTime(time.toInt())
+                    textDuration.text = formatTime(videoDuration.toInt())
                     
                     if (!isTouching) {
                         // D-Pad Seeking detected
@@ -374,29 +643,82 @@ class YouTubePlayerDialog(
 
     private fun loadVideo() {
         Log.d(TAG, "loadVideo: $url")
-        // User Requested Test Video
-        val testUrl = "https://www.youtube.com/watch?v=pAnGwRiQ4-4"
-        webView.loadUrl(testUrl)
+        webView.loadUrl(url)
     }
 
     private fun injectFullscreenCSS() {
-        Log.d(TAG, "injectFullscreenCSS: Injecting CSS with Trusted Types Fix")
+        Log.d(TAG, "injectFullscreenCSS: Injecting CSS with viewport fix")
         val inject = {
             val js = """
                 (function() {
                     try {
-                        // CSS Content
+                        // Inject viewport meta tag for proper scaling
+                        var viewport = document.querySelector('meta[name="viewport"]');
+                        if (!viewport) {
+                            viewport = document.createElement('meta');
+                            viewport.name = 'viewport';
+                            document.head.appendChild(viewport);
+                        }
+                        viewport.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+                        
+                        // CSS Content - aggressive fullscreen
                         var css = `
-                          html, body, #player, .player-container, .html5-video-container, video, .video-stream {
-                            background: #000 !important; width: 100vw !important; height: 100vh !important;
-                            margin: 0 !important; padding: 0 !important; overflow: hidden !important;
-                            position: fixed !important; top: 0 !important; left: 0 !important; z-index: 9999 !important;
+                          /* Reset everything */
+                          * { box-sizing: border-box !important; }
+                          
+                          /* Full viewport container */
+                          html, body {
+                            background: #000 !important; 
+                            width: 100% !important; height: 100% !important;
+                            min-height: 100% !important;
+                            margin: 0 !important; padding: 0 !important; 
+                            overflow: hidden !important;
+                            position: fixed !important;
+                            top: 0 !important; left: 0 !important;
                           }
+                          
+                          /* YouTube's main container */
+                          #page, #content, ytd-app, ytd-watch-flexy, #player-theater-container,
+                          #player, .player-container, #movie_player, .html5-video-player,
+                          .html5-video-container {
+                            position: fixed !important; 
+                            top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
+                            width: 100% !important; height: 100% !important;
+                            min-height: 100% !important;
+                            margin: 0 !important; padding: 0 !important;
+                            background: #000 !important;
+                            z-index: 9999 !important;
+                            transform: none !important;
+                          }
+                          
+                          /* VIDEO element - object-fit cover to fill, or contain to fit */
+                          video, .video-stream, .html5-main-video {
+                            position: absolute !important;
+                            top: 0 !important; left: 0 !important;
+                            width: 100% !important; height: 100% !important;
+                            min-height: 100% !important;
+                            object-fit: contain !important;
+                            object-position: center center !important;
+                            background: #000 !important;
+                            z-index: 1 !important;
+                          }
+                          
+                          /* Hide ALL YouTube chrome/UI elements */
                           .mobile-topbar-header, .player-controls-top, .watch-below-the-player, 
-                          .ytp-chrome-top, .ytp-chrome-bottom, .ad-showing, .video-ads, .ytp-ad-overlay-container,
-                          .ytp-upnext, .ytp-suggestion-set, .ytp-share-panel, .ytp-watermark { 
-                              display: none !important; opacity: 0 !important; pointer-events: none !important; 
+                          .ytp-chrome-top, .ytp-chrome-bottom, .ytp-gradient-top, .ytp-gradient-bottom,
+                          .ad-showing, .video-ads, .ytp-ad-overlay-container, .ytp-ad-module,
+                          .ytp-upnext, .ytp-suggestion-set, .ytp-share-panel, .ytp-watermark,
+                          .ytp-title, .ytp-title-link, .ytp-show-cards-title,
+                          #secondary, #related, #comments, #masthead, #guide,
+                          ytd-watch-next-secondary-results-renderer, ytd-compact-video-renderer { 
+                              display: none !important; 
+                              opacity: 0 !important; 
+                              visibility: hidden !important;
+                              pointer-events: none !important;
+                              height: 0 !important;
+                              width: 0 !important;
                           }
+                          
                           video { opacity: 1 !important; visibility: visible !important; }
                           
                           /* Force Captions Visible */
@@ -428,6 +750,9 @@ class YouTubePlayerDialog(
                 })();
             """.trimIndent()
             webView.evaluateJavascript(js, null)
+            
+            // Re-apply scale preference (Fit vs Fill)
+            updateScaleMode()
         }
         inject()
         handler.postDelayed({ inject() }, 1500)
@@ -581,7 +906,8 @@ class YouTubePlayerDialog(
                         if (!isSeeking && dur > 0) {
                             seekBar.progress = ((curr / dur) * 100).toInt()
                             // FIX: Combine Current and Duration
-                            textCurrentTime.text = formatTime(curr.toInt()) + " / " + formatTime(dur.toInt())
+                            textCurrentTime.text = formatTime(curr.toInt())
+                            textDuration.text = formatTime(dur.toInt())
                         }
                         
                         // Force Icon Update if Mismatch
@@ -591,6 +917,11 @@ class YouTubePlayerDialog(
                                 btnPlayPause.setImageResource(if (isPlaying) android.R.drawable.ic_media_pause else android.R.drawable.ic_media_play)
                             } catch(e:Exception) {}
                         }
+                        // Also proactively check if icon matches state to fix "wrong icon on start" bug 
+                        // (e.g., if isPlaying=true but icon is Play)
+                        // Note: setImageResource is lightweight, safe to call redundantly if needed, 
+                        // but cleaner to check drawable constant? Hard with system resources.
+                        // We rely on isPlaying state being accurate now.
                     }
                 } catch(e: Exception) {}
             }
@@ -601,23 +932,138 @@ class YouTubePlayerDialog(
 
     private var currentSpeed: Double = 1.0
 
-    private fun showQualityDialog() {
-        val names = qualityOptions.map { it.second }.toTypedArray()
-        val checkedItem = qualityOptions.indexOfFirst { it.first == currentQuality }.coerceAtLeast(0)
 
-        val builder = android.app.AlertDialog.Builder(context, android.R.style.Theme_DeviceDefault_Dialog_Alert)
-        builder.setTitle("Quality")
-        builder.setSingleChoiceItems(names, checkedItem) { dialog, which ->
-            val (v, l) = qualityOptions[which]
-            setQuality(v, l)
-            dialog.dismiss()
+
+    private fun showQualityDialog() {
+        // Fetch real available qualities from YouTube player
+        val js = """
+            (function() {
+                try {
+                    var p = document.getElementById('movie_player');
+                    if (p && p.getAvailableQualityLevels) {
+                        var levels = p.getAvailableQualityLevels() || [];
+                        var current = p.getPlaybackQuality() || 'auto';
+                        return JSON.stringify({ levels: levels, current: current });
+                    }
+                } catch(e) { console.error(e); }
+                return JSON.stringify({ levels: ['auto'], current: 'auto' });
+            })();
+        """.trimIndent()
+
+        webView.evaluateJavascript(js) { res ->
+            try {
+                val json = res?.replace("\\\"", "\"")?.removeSurrounding("\"") ?: "{}"
+                val obj = JSONObject(json)
+                val levelsArray = obj.optJSONArray("levels") ?: org.json.JSONArray()
+                val currentLevel = obj.optString("current", "auto")
+
+                val qualities = ArrayList<Pair<String, String>>()
+                
+                // Map quality codes to display names
+                val qualityLabels = mapOf(
+                    "auto" to "Auto",
+                    "hd2160" to "4K (2160p)",
+                    "hd1440" to "1440p",
+                    "hd1080" to "1080p",
+                    "hd720" to "720p",
+                    "large" to "480p",
+                    "medium" to "360p",
+                    "small" to "240p",
+                    "tiny" to "144p"
+                )
+
+                for (i in 0 until levelsArray.length()) {
+                    val level = levelsArray.getString(i)
+                    val label = qualityLabels[level] ?: level.uppercase()
+                    qualities.add(level to label)
+                }
+
+                if (qualities.isEmpty()) {
+                    qualities.add("auto" to "Auto")
+                }
+
+                // Build menu with current quality highlighted
+                val names = qualities.map { (level, label) ->
+                    if (level == currentLevel) "✓ $label" else "   $label"
+                }.toTypedArray()
+                
+                val checkedItem = qualities.indexOfFirst { it.first == currentLevel }.coerceAtLeast(0)
+
+                android.app.AlertDialog.Builder(context, android.R.style.Theme_DeviceDefault_Dialog_Alert)
+                    .setTitle("Quality (Current: ${qualityLabels[currentLevel] ?: currentLevel})")
+                    .setSingleChoiceItems(names, checkedItem) { dialog, which ->
+                        val (level, label) = qualities[which]
+                        setQuality(level, label)
+                        dialog.dismiss()
+                    }
+                    .show()
+
+            } catch (e: Exception) {
+                // Fallback to basic quality menu
+                showToast("Could not fetch qualities")
+                Log.e(TAG, "showQualityDialog error: ${e.message}")
+            }
         }
-        builder.show()
     }
 
     private fun setQuality(q: String, l: String) {
+        currentQuality = q
         executeJs("var p = document.getElementById('movie_player'); if(p && p.setPlaybackQualityRange) { p.setPlaybackQualityRange('$q'); }")
         showToast("Quality: $l")
+    }
+
+    private fun toggleScaleMode() {
+        isScaleCover = !isScaleCover
+        updateScaleMode()
+        
+        val mode = if (isScaleCover) "Zoom/Fill" else "Fit to Screen"
+        android.widget.Toast.makeText(context, mode, android.widget.Toast.LENGTH_SHORT).show()
+        btnScale.contentDescription = "Scale: $mode"
+    }
+
+    private fun updateScaleMode() {
+        // For 'cover' mode: override YouTube's inline pixel dimensions with 100%
+        // For 'contain' mode: reset to default behavior
+        val css = if (isScaleCover) {
+            """
+            video.html5-main-video, video.video-stream, video {
+                width: 100% !important;
+                height: 100% !important;
+                left: 0px !important;
+                top: 0px !important;
+                object-fit: cover !important;
+            }
+            .html5-video-container {
+                width: 100% !important;
+                height: 100% !important;
+            }
+            """
+        } else {
+            """
+            video.html5-main-video, video.video-stream, video {
+                object-fit: contain !important;
+            }
+            """
+        }
+        
+        val js = """
+            (function() {
+                try {
+                    var style = document.getElementById('cloudstream-scale-mode');
+                    if (!style) {
+                        style = document.createElement('style');
+                        style.id = 'cloudstream-scale-mode';
+                        document.head.appendChild(style);
+                    }
+                    // Use textContent to comply with Trusted Types
+                    style.textContent = `$css`;
+                    console.log('Scale mode applied: ${if (isScaleCover) "cover (fill)" else "contain (fit)"}');
+                } catch(e) { console.error(e); }
+            })();
+        """
+        if (!isDestroyed) {
+             try { webView.evaluateJavascript(js, null) } catch(e: Exception) {}
+        }
     }
 
     private fun showSpeedMenu() {
@@ -640,6 +1086,11 @@ class YouTubePlayerDialog(
         executeJs("var v = document.querySelector('video'); if(v) { v.playbackRate = $rate; }")
         showToast("Speed: ${rate}x")
     }
+
+    private lateinit var btnAudio: ImageButton
+
+    // ... inside createOverlayUI ...
+    // btnAudio = view.findViewById(R.id.btn_audio)
 
     private fun showCaptionMenu() {
         // Parse ytInitialPlayerResponse directly as API is unreliable on Mobile
@@ -801,6 +1252,7 @@ class YouTubePlayerDialog(
         """.trimIndent()
         
         webView.evaluateJavascript(js) { res ->
+            if (res != null) Log.d(TAG, "CAPTIONS_RESULT: $res")
             if (res != null && (res.contains("success\":true") || res.contains("success\": true"))) {
                  val mode = if (!enabled) "OFF" else (translateTo?.uppercase() ?: languageCode?.uppercase() ?: "ON")
                  showToast("Captions: $mode")
@@ -815,6 +1267,8 @@ class YouTubePlayerDialog(
             }
         }
     }
+    
+    // ...
 
     private fun dumpDiagnostics() {
         val js = """
@@ -867,76 +1321,94 @@ class YouTubePlayerDialog(
        val js = """
             (function() {
                 try {
-                    // Source 1: API
-                    var p = document.querySelector('#movie_player');
-                    if (p && typeof p.getOption === 'function') {
-                        var tracks = p.getOption('audioTrack', 'tracklist');
-                        if (tracks && tracks.length > 0) return JSON.stringify(tracks);
-                    }
-                    
-                    // Source 2: ytInitialPlayerResponse
-                    if (window.ytInitialPlayerResponse && 
-                        window.ytInitialPlayerResponse.captions && 
-                        window.ytInitialPlayerResponse.captions.playerCaptionsTracklistRenderer &&
-                        window.ytInitialPlayerResponse.captions.playerCaptionsTracklistRenderer.audioTracks) {
+                    var p = document.getElementById('movie_player');
+                    if (p && p.getAvailableAudioTracks) {
+                        var tracks = p.getAvailableAudioTracks() || [];
+                        var current = p.getAudioTrack();
+                        var currentId = current ? (current.id || '') : '';
                         
-                        // Return FULL objects
-                        return JSON.stringify(window.ytInitialPlayerResponse.captions.playerCaptionsTracklistRenderer.audioTracks);
+                        var result = tracks.map(function(t, idx) {
+                            // Extract name from various nested locations
+                            var name = '';
+                            
+                            // Try displayName first (most reliable)
+                            if (t.displayName) name = t.displayName;
+                            // Try qD.name (MrBeast-style multi-audio videos)
+                            else if (t.qD && t.qD.name) name = t.qD.name;
+                            // Try direct name property
+                            else if (t.name) name = t.name;
+                            // Try languageName
+                            else if (t.languageName) name = t.languageName;
+                            // Try to extract from xtags if present (format: "lang=en")
+                            else if (t.xtags) {
+                                var langMatch = t.xtags.match(/lang=([a-z]{2})/i);
+                                if (langMatch) name = langMatch[1].toUpperCase();
+                            }
+                            // Last resort: language code
+                            else if (t.languageCode) name = t.languageCode.toUpperCase();
+                            else name = 'Track ' + (idx + 1);
+                            
+                            return {
+                                id: t.id || '',
+                                name: name,
+                                languageCode: t.languageCode || '',
+                                isDefault: t.isDefault || false,
+                                isCurrent: t.id === currentId
+                            };
+                        });
+                        
+                        return JSON.stringify({ tracks: result, currentId: currentId });
                     }
-                    
-                    return "[]";
+                    return JSON.stringify({ tracks: [], currentId: '' });
                 } catch(e) {
-                    return "[]";
+                    console.error(e);
+                    return JSON.stringify({ tracks: [], currentId: '' });
                 }
             })();
        """.trimIndent()
+
        
        webView.evaluateJavascript(js) { res ->
            try {
-               val json = res?.replace("\\\"", "\"")?.removeSurrounding("\"") ?: "[]"
-               val jsonArray = org.json.JSONArray(json)
+               val json = res?.replace("\\\"", "\"")?.removeSurrounding("\"") ?: "{}"
+               val obj = JSONObject(json)
+               val tracksArray = obj.optJSONArray("tracks") ?: org.json.JSONArray()
+               val currentId = obj.optString("currentId", "")
                
-               if (jsonArray.length() == 0) {
+               if (tracksArray.length() == 0) {
                    showToast("No Audio Tracks Available")
                    return@evaluateJavascript
                }
 
                val labels = ArrayList<String>()
-               val trackJsons = ArrayList<String>()
+               val trackIds = ArrayList<String>()
+               var currentIndex = 0
 
-               for (i in 0 until jsonArray.length()) {
-                   val t = jsonArray.getJSONObject(i)
+               for (i in 0 until tracksArray.length()) {
+                   val t = tracksArray.getJSONObject(i)
+                   val id = t.optString("id", "")
+                   val name = t.optString("name", "Track ${i + 1}")
+                   val isCurrent = t.optBoolean("isCurrent", false)
                    
-                   // Name Extraction Strategy
-                   var name = t.optString("displayName")
-                   if (name.isEmpty()) name = t.optJSONObject("name")?.optString("simpleText")
-                   if (name.isNullOrEmpty()) name = t.optString("label") // Common fallback
-                   if (name.isNullOrEmpty()) name = t.optString("languageName") // Another fallback
-                   if (name.isNullOrEmpty()) name = t.optString("name") // Another fallback
+                   if (isCurrent) currentIndex = i
                    
-                   if (name.isNullOrEmpty()) {
-                       // Last Resort: Formatted Language Code
-                       val code = t.optString("languageCode", "").uppercase()
-                       if (code.isNotEmpty()) name = "Track $code"
-                       else name = "Track ${i + 1}"
-                   }
-                   
-                   labels.add("\uD83D\uDD0A $name")
-                   trackJsons.add(t.toString())
+                   val prefix = if (isCurrent) "✓ 🔊" else "   🔊"
+                   labels.add("$prefix $name")
+                   trackIds.add(id)
                }
 
                android.app.AlertDialog.Builder(context, android.R.style.Theme_DeviceDefault_Dialog_Alert)
                 .setTitle("Audio Track")
-                .setItems(labels.toTypedArray()) { _, which ->
-                    val trackJson = trackJsons[which]
-                    val trackName = labels[which]
-                    showToast("Selecting: $trackName") // Immediate feedback
-                    setAudioTrack(trackJson)
+                .setSingleChoiceItems(labels.toTypedArray(), currentIndex) { dialog, which ->
+                    val trackId = trackIds[which]
+                    setAudioTrackById(trackId, which)
+                    dialog.dismiss()
                 }
                 .show()
 
            } catch(e: Exception) {
                showToast("Audio Tracks Unavailable")
+               Log.e(TAG, "showAudioMenu error: ${e.message}")
            }
        }
     }
@@ -987,14 +1459,48 @@ class YouTubePlayerDialog(
         }
     }
     
+    private fun setAudioTrackById(trackId: String, index: Int) {
+        // Use the track index to select from getAvailableAudioTracks()
+        val js = """
+            (function() {
+                try {
+                    var p = document.getElementById('movie_player');
+                    if (p && p.getAvailableAudioTracks && p.setAudioTrack) {
+                        var tracks = p.getAvailableAudioTracks();
+                        if (tracks && tracks[$index]) {
+                            p.setAudioTrack(tracks[$index]);
+                            return 'Selected track $index';
+                        }
+                    }
+                    return 'Failed to select track';
+                } catch(e) {
+                    return 'Error: ' + e.message;
+                }
+            })();
+        """.trimIndent()
+
+        webView.evaluateJavascript(js) { res ->
+            Log.d(TAG, "setAudioTrackById result: $res")
+        }
+        showToast("Audio Track Changed")
+    }
+    
     // Stats for Nerds (Video Info)
  
+
+
     private fun syncCurrentSettings() {
         // Implementation similar to overlay class
     }
 
     private fun executeJs(js: String) {
-        webView.evaluateJavascript("(function(){ $js })();", null)
+        if (!isDestroyed) {
+             try {
+                webView.evaluateJavascript("(function(){ $js })();", null)
+             } catch(e: Exception) {
+                 Log.e(TAG, "executeJs failed: ${e.message}")
+             }
+        }
     }
 
     private fun showToast(msg: String) {
@@ -1019,6 +1525,8 @@ class YouTubePlayerDialog(
     }
 
     override fun dismiss() {
+        if (isDestroyed) return
+        isDestroyed = true
         Log.d(TAG, "dismiss: destroying player")
         try {
             activity.requestedOrientation = previousOrientation // Restore orientation
