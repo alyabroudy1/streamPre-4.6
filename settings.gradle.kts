@@ -20,3 +20,4 @@ dependencyResolutionManagement {
 rootProject.name = "CloudStream"
 include(":app", ":library", ":docs")
 include(":omarC:YoutubeProvider")
+include(":omarC:ArabseedProvider")

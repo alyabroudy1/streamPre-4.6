@@ -1,4 +1,4 @@
-version = 6  // Fixed video sniffing: cookie sync, header handling, interceptor improvements
+version = 13 // Sniffer-integrated Interceptor resolution (v13)
 
 // Include shared source directory
 android {
